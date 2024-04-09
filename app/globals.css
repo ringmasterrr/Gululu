@@ -2,24 +2,94 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.font-omnes {
+  font-family: 'Omnes', sans-serif;
+}
+.font-omnesreg {
+  font-family: 'Omnesreg', sans-serif;
+}
+.font-omnesblack {
+  font-family: 'Omnesblack', sans-serif;
+}
+.font-Omnessemi {
+  font-family: 'Omnessemibold', sans-serif;
+}
+.font-Omnesmed {
+  font-family: 'Omnesmedium', sans-serif;
+}
+
+.subhead{
+  font-weight: 100 !important;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  font-size: 16px;
 }
+
+
+@media (max-width: 1400px) { :root {
+  font-size: 12px;
+}}
+
+
+@media (max-width: 1280px) { :root {
+  font-size: 10px;
+}}
+
+@media (max-width: 768px) { :root {
+  font-size: 8px;
+}}
+
+@media (max-width: 768px) { :root {
+  font-size: 6px;
+}}
+
+@media (max-width: 360px) { :root {
+  font-size: 4px;
+}}
+
+
+
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
+    
   }
 }
 
+@font-face {
+  font-family: 'Omnes';
+  src: url('/Omnes Bold.ttf') format('truetype');
+}
 
+@font-face {
+  font-family: 'Omnesreg';
+  src: url('/Omnes Regular.ttf') format('truetype');
+}
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+@font-face {
+  font-family: 'Omnesblack';
+  src: url('/Omnes Black.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Omnesmedium';
+  src: url('/Omnes Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Omnessemibold';
+  src: url('/Omnes Semibold.ttf') format('truetype');
 }
