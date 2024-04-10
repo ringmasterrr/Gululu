@@ -16,6 +16,7 @@ const Section1 = () => {
 
         <div>
           <div className="pl-24">
+          <div className="relative">
             <Image
               src={"/paw.svg"}
               alt="paw"
@@ -23,6 +24,7 @@ const Section1 = () => {
               width={500}
               className="absolute w-20 translate-x-24 translate-y-5 "
             />
+            </div>
             <h1 className="text-[3.5rem] text-center font-omnesblack pb-7 leading-[4.7rem]">
               HI, MY NAME IS <br /> MEMECOIN
             </h1>
