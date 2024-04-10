@@ -15,7 +15,7 @@ const Section1 = () => {
         />
 
         <Image
-          src={"/star1.svg"}
+          src={"/Star1.svg"}
           alt="paw"
           height={500}
           width={500}
@@ -23,7 +23,7 @@ const Section1 = () => {
         />
 
         <Image
-          src={"/star3.svg"}
+          src={"/Star3.svg"}
           alt="paw"
           height={500}
           width={500}
@@ -31,7 +31,7 @@ const Section1 = () => {
         />
 
         <Image
-          src={"/star4.svg"}
+          src={"/Star4.svg"}
           alt="paw"
           height={500}
           width={500}
