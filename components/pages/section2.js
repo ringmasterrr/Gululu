@@ -24,9 +24,9 @@ const Section2 = () => {
         </div>
       </div>
 
-      <div className="relative h-[90rem]">
+      <div className="relative h-[90rem] ">
 
-        <div className="flex flex-col w-[95%] bg-transparent  ">
+        <div className="flex flex-col w-[95%] items-center justify-center bg-transparent  ">
           <div className="flex flex-row w-[80%] items-center justify-start ">
             <div className="relative">
               <Image
@@ -72,7 +72,7 @@ const Section2 = () => {
           </div>
         </div>
 
-        <div className="flex flex-col w-[95%] items-center -translate-y-52 bg-transparent">
+        <div className="flex flex-col w-[95%] items-center justify-center -translate-y-[15rem] bg-transparent">
           <div className="flex flex-row-reverse w-[80%] items-center ">
             <div className="relative">
               <Image
@@ -118,7 +118,7 @@ const Section2 = () => {
           </div>
         </div>
 
-        <div className="flex flex-col w-[95%] bg-transparent -translate-y-96 ">
+        <div className="flex flex-col w-[95%] items-center justify-center bg-transparent -translate-y-[27rem] ">
           <div className="flex flex-row w-[80%] items-center justify-start ">
             <div className="relative">
               <Image
