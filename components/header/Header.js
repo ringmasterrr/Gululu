@@ -20,7 +20,7 @@ const Header = () => {
             Audit
           </Link>
         </div>
-        <button className="  font-bold z-20 px-9 py-[8px] font-omnes bg-[#121212] text-white rounded-full inline-block  ">
+        <button className="  font-bold z-20 px-9 py-[8px] font-omnes bg-black text-white rounded-full inline-block  ">
           BUY $CATMATE
         </button>
         <div className="flex space-x-2 pl-2">

@@ -4,7 +4,7 @@ import Countdown from "../Countdown";
 
 const Section1 = () => {
   return (
-    <div className="flex bg-[#F7E8D5] px-24">
+    <div className="flex bg-[#F7E8D5] px-24 pb-14">
       <div className="flex flex-col w-[55%]">
         <Image
           src={"/sec1doge.png"}
@@ -23,10 +23,10 @@ const Section1 = () => {
               width={500}
               className="absolute w-20 translate-x-24 translate-y-5 "
             />
-            <h1 className="md:text-[55px] text-2xl text-center font-omnesblack pb-7 leading-[70px]">
+            <h1 className="text-[3.5rem] text-center font-omnesblack pb-7 leading-[4.7rem]">
               HI, MY NAME IS <br /> MEMECOIN
             </h1>
-            <h3 className="subhead md:text-[25px] text-sm text-center font-omnes  pb-4">
+            <h3 className="text-[1.56rem] text-center font-omnes pb-4 leading-[2.2rem]">
               I like chess and beating everyone <br /> in the Solana Ecosystem
             </h3>
           </div>
@@ -77,10 +77,10 @@ const Section1 = () => {
               </div>
             </div>
             <div className="flex items-center justify-center gap-7 mt-36">
-              <button className="  font-bold z-20 w-64 h-14 font-omnes bg-[#121212] text-white rounded-full inline-block  ">
+              <button className="  font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block  ">
                 BUY WITH BNB
               </button>
-              <button className="  font-bold z-20 w-64 h-14 font-omnes bg-[#121212] text-white rounded-full inline-block  ">
+              <button className="  font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block  ">
                 BUY NOW
               </button>
             </div>
