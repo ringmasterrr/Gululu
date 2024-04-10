@@ -9,7 +9,7 @@ const Section2 = () => {
           Our Doge just got more rewarding
         </div>
         <div className="text-xl font-semibold text-center font-omnesreg py-[2.8rem] p-64">
-         <p> Prepare for the ultimate Doge upgrade! We're sending Elon's fave
+         <p> Prepare for the ultimate Doge upgrade! We&apos;re sending Elon&apos;s fave
           towards a more sustainable future. Stake DOGE20 today to start earning
           eco-friendly rewards.
           </p>
