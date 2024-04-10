@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Header = () => {
   return (
-    <div className="flex items-center px-44 pt-10 justify-between bg-[#F7E8D5]">
+    <div className="flex items-center md:px-44 p-4 pt-10 justify-between bg-[#F7E8D5]">
       <div className="text-3xl font-black font-omnesblack">MEMECOIN</div>
       <div className="flex items-center gap-10">
         <div className="flex justify-center font-omnesreg  font-semibold text-left items-center gap-10">

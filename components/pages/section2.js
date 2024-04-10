@@ -3,7 +3,7 @@ import React from "react";
 
 const Section2 = () => {
   return (
-    <div className="flex flex-col  px-24 py-[4.8rem] items-center justify-center bg-[#FFC8BA]">
+    <div className="flex flex-col  md:px-24 px-1 py-[4.8rem] items-center justify-center bg-[#FFC8BA]">
       <div className="flex flex-col items-center justify-center">
         <div className="text-5xl text-center font-omnes uppercase">
           Our Doge just got more rewarding
@@ -24,7 +24,7 @@ const Section2 = () => {
         </div>
       </div>
 
-      <div className="relative h-[90rem] ">
+      <div className="md:relative md:h-[90rem] h-[110rem] ">
 
         <div className="flex flex-col w-[95%] items-center justify-center bg-transparent  ">
           <div className="flex flex-row w-[80%] items-center justify-start ">
@@ -72,7 +72,7 @@ const Section2 = () => {
           </div>
         </div>
 
-        <div className="flex flex-col w-[95%] items-center justify-center -translate-y-[15rem] bg-transparent">
+        <div className="flex flex-col w-[95%] items-center justify-center md:-translate-y-[15rem] bg-transparent">
           <div className="flex flex-row-reverse w-[80%] items-center ">
             <div className="relative">
               <Image
@@ -118,7 +118,7 @@ const Section2 = () => {
           </div>
         </div>
 
-        <div className="flex flex-col w-[95%] items-center justify-center bg-transparent -translate-y-[27rem] ">
+        <div className="flex flex-col w-[95%] items-center justify-center bg-transparent md:-translate-y-[27rem] ">
           <div className="flex flex-row w-[80%] items-center justify-start ">
             <div className="relative">
               <Image

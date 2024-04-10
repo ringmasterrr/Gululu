@@ -49,7 +49,7 @@ const Dots = () => {
             alt=":"
             width={5}
             height={24}
-            className="w-[8px] h-[27px] mb-6"
+            className="w-[0.6rem] h-[1.5rem] mb-6"
           />
     </>
   )

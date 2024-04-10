@@ -11,7 +11,7 @@ const Section1 = () => {
           alt="doge"
           height={1500}
           width={1500}
-          className="w-[809px] pt-11 pb-5 ml-14"
+          className="w-[809px] pt-11 pb-5 md:ml-14"
         />
 
         <Image
@@ -39,7 +39,7 @@ const Section1 = () => {
         />
 
         <div>
-          <div className="pl-24">
+          <div className="md:pl-24">
             <div className="relative">
               <Image
                 src={"/paw.svg"}
@@ -92,13 +92,27 @@ const Section1 = () => {
                 </h3>
                 <div className="border-b-4 border-black w-48 "></div>
               </div>
-              <div className="flex items-center justify-center">
+              <div className="flex gap-32 items-center justify-center">
                 <Image
-                  src={"/payments.svg"}
+                  src={"/eth.png"}
                   alt="i"
-                  width={1000}
+                  width={500}
                   height={100}
-                  className="w-[500px] h-[35px] "
+                  className="w-20 h-8 "
+                />
+                <Image
+                  src={"/ustd.png"}
+                  alt="i"
+                  width={500}
+                  height={100}
+                  className="w-20 h-8 "
+                />
+                <Image
+                  src={"/fiat.png"}
+                  alt="i"
+                  width={500}
+                  height={100}
+                  className="w-20 h-8 "
                 />
               </div>
             </div>
