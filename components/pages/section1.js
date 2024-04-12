@@ -77,13 +77,13 @@ const Section1 = () => {
                 <h3 className="text-center text-base font-omnesreg my-3 font-bold ">
                   Your purchased DOGE20 = 0
                 </h3>
-                <Image src={"/i.svg"} alt="i" width={22} height={22} />
+                <Image src={"/i.svg"} alt="i" width={22} height={22} className=" w-7"/>
               </div>
               <div className="flex items-center justify-center gap-6 ml-8">
                 <h3 className="text-center text-base font-omnesreg my-1 font-bold ">
                   Your stakeable DOGE20 = 0
                 </h3>
-                <Image src={"/i.svg"} alt="i" width={22} height={22} />
+                <Image src={"/i.svg"} alt="i" width={22} height={22}  className=" w-7"/>
               </div>
               <div className="flex items-center justify-center gap-5">
                 <div className="border-b-4 border-black w-48 "></div>
