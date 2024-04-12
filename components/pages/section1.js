@@ -67,20 +67,20 @@ const Section1 = () => {
                 MEMECOIN launches on doge day! Last <br /> chance to buy!
               </h3>
               <Countdown />
-              <h3 className="text-center text-lg font-omnesreg font-bold my-6 ">
+              <h3 className="text-center text-xl font-omnes font-bold my-6 ">
                 Till DOGE20 claim and launch
               </h3>
               <h3 className="text-center text-2xl font-omnesblack leading-3 my-3">
                 Over $10M raised!
               </h3>
               <div className="flex items-center justify-center gap-6 ml-8 ">
-                <h3 className="text-center text-base font-omnesreg my-3 font-bold ">
+                <h3 className="text-center text-xl font-omnes my-3 font-bold ">
                   Your purchased DOGE20 = 0
                 </h3>
                 <Image src={"/i.svg"} alt="i" width={22} height={22} className=" w-7"/>
               </div>
               <div className="flex items-center justify-center gap-6 ml-8">
-                <h3 className="text-center text-base font-omnesreg my-1 font-bold ">
+                <h3 className="text-center text-xl font-omnes my-1 font-bold ">
                   Your stakeable DOGE20 = 0
                 </h3>
                 <Image src={"/i.svg"} alt="i" width={22} height={22}  className=" w-7"/>
@@ -158,7 +158,6 @@ const Section1 = () => {
           className=" absolute w-40 -right-4 top-16 "
         />
       </div>
-      .
     </div>
   );
 };
