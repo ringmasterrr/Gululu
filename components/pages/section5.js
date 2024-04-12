@@ -52,7 +52,7 @@ const Section5 = () => {
             className="w-10"
           />
           <Image
-            src={"/socials/linkedIn.svg"}
+            src={"/socials/linkedin.svg"}
             alt="i"
             width={100}
             height={100}
