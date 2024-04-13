@@ -1,4 +1,3 @@
-import Image from "next/image";
 import "./globals.css";
 import Header from "@/components/header/Header"
 import Section1 from "@/components/pages/section1"
@@ -8,6 +7,10 @@ import Section4 from "@/components/pages/section4"
 import Section5 from "@/components/pages/section5"
 import Section6 from "@/components/pages/section6"
 import Section7 from "@/components/pages/section7";
+import Section8 from "@/components/pages/section8";
+import Section9 from "@/components/pages/section9";
+import Section10 from "@/components/pages/section10";
+
 
 export default function Home() {
   return (
@@ -20,6 +23,9 @@ export default function Home() {
     <Section5/>
     <Section6/>
     <Section7/>
+    <Section8/>
+    <Section9/>
+    <Section10/>
     </div>
   );
 }

@@ -102,7 +102,7 @@ const Section6 = () => {
       />
 
       <Image
-        src={"/star13.svg"}
+        src={"/Star13.svg"}
         alt="coin"
         height={400}
         width={400}
@@ -122,7 +122,7 @@ const Section6 = () => {
         alt="coin"
         height={1600}
         width={1600}
-        className="absolute -bottom-[3rem] left-[0rem] w-[16rem]"
+        className="absolute -bottom-[2rem] left-[0rem] w-[13rem]"
       />
 
       <Image
@@ -130,7 +130,7 @@ const Section6 = () => {
         alt="coin"
         height={600}
         width={600}
-        className="absolute bottom-[1rem] right-[2rem] w-[14rem]"
+        className="absolute bottom-[0.2rem] right-[2rem] w-[13rem]"
       />
     </div>
   );
