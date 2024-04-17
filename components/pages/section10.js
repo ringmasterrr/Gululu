@@ -13,7 +13,7 @@ const Section10 = () => {
 
         <div className="flex items-center justify-center gap-20">
           <Image src={"/tel.svg"} alt="twitter" height={100} width={100} />
-          <Image src={"/x.svg"} alt="twitter" height={100} width={100} />
+          <Image src={"/X.svg"} alt="twitter" height={100} width={100} />
         </div>
 
         <div className="w-full flex items-center justify-center">
