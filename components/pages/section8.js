@@ -72,7 +72,7 @@ const Section8 = () => {
       />
       <div className="w-full flex items-center justify-center py-20">
         <button className="  font-bold z-20 h-[4.4rem] w-[21.25rem] font-omnes bg-black text-white rounded-full inline-block  ">
-          BUY $CATMATE
+          BUY GULULU
         </button>
       </div>
 

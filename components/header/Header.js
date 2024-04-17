@@ -47,7 +47,7 @@ const Header = () => {
             </Link>
           </div>
           <button className="font-bold z-20 px-9 py-[8px] font-omnes bg-black text-white rounded-full inline-block">
-            BUY $CATMATE
+            BUY GULULU
           </button>
           <div className="flex space-x-2 pl-2">
             <Image
@@ -83,7 +83,7 @@ const Header = () => {
               Audit
             </Link>
             <button className="font-bold px-4 py-2 font-omnes bg-black text-white rounded-full inline-block">
-              BUY $CATMATE
+              BUY GULULU
             </button>
           </div>
         </div>

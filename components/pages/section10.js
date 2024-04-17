@@ -18,7 +18,7 @@ const Section10 = () => {
 
         <div className="w-full flex items-center justify-center">
           <button className="  text-2xl font-bold h-[4.4rem] w-[21.25rem] font-omnes bg-black text-white rounded-full inline-block  ">
-            BUY $CATMATE
+            BUY GULULU
           </button>
         </div>
      
