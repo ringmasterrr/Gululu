@@ -7,10 +7,10 @@ const Section6 = () => {
       <div className="md:text-5xl text-3xl text-center font-omnes py-4 ">Tokenomics</div>
       <div className="md:text-xl text-base font-semibold text-center font-omnesreg">
         <p className="pb-3">
-          DOGE20 tokenomics include smart staking rewards, meaning you can earn
+          GULULU tokenomics include smart staking rewards, meaning you can earn
           right away.
         </p>
-        <p>DOGE20 Token Address:</p>
+        <p>GULULU Token Address:</p>
         <p className="font-omnes pt-1">
           0x2541A36BE4cD39286ED61a3E6AFC2307609d6
         </p>
@@ -36,7 +36,7 @@ const Section6 = () => {
           />
           <div className="flex flex-col gap-9">
             <h3 className="text-[#667CC1] font-omnes sm:text-5xl text-3xl uppercase">
-              $MEMECOIN Tokenomics
+              $GULULU Tokenomics
             </h3>
             <h3 className="text-black font-omnesreg font-semibold text-xl sm:text-2xl">
               Total Supply 1 billion

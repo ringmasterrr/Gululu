@@ -13,7 +13,7 @@ const Header = () => {
   return (
     <div className="bg-[#F7E8D5]">
       <div className="flex items-center xl:px-44 p-4 pt-10 justify-between">
-        <div className="text-3xl font-black font-omnesblack">MEMECOIN</div>
+        <div className="text-3xl font-black font-omnesblack">GULULU</div>
         <div className="md:hidden">
           <button
             onClick={toggleMenu}

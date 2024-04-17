@@ -8,8 +8,8 @@ const Section5 = () => {
       <div className="text-5xl text-center font-omnes py-5">REFERRAL</div>
       <div className="relative text-xl font-semibold text-center font-omnesreg xl:px-[20rem] px-4">
         <p>
-          Dogecoin20 offers a new passive rewards opportunity to the meme coin
-          scene but could also benefit from token price appreciation. DOGE20 has
+          GULULU offers a new passive rewards opportunity to the meme coin
+          scene but could also benefit from token price appreciation. GULULU has
           a fully diluted starting market cap nearly 900 times cheaper than the
           original Dogecoin.
         </p>

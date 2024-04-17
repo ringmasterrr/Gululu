@@ -6,7 +6,7 @@ const Section8 = () => {
     <div className="relative bg-[#F7E8D5] py-24 ">
       <div className="relative z-10">
         <h3 className=" font-omnesblack text-black text-center text-[3.5rem] uppercase leading-[5rem] pb-14">
-          Buy me $MEMECOIN
+          Buy me $GULULU
         </h3>
         <div className="flex flex-row flex-wrap items-center justify-center gap-9">
           <div className="flex flex-col items-start justify-start md:h-[34rem] bg-white rounded-md p-5">

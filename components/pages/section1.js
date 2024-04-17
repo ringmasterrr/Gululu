@@ -45,7 +45,7 @@ const Section1 = () => {
                 className=" absolute sm:w-20 w-14 sm:-left-0 -left-14 sm:top-0 top-8 "
               />
               <h1 className="md:text-[3.5rem] sm:text-5xl text-[2.3rem] text-center font-omnesblack sm:pb-7 sm:leading-[4.7rem]">
-                HI, MY NAME IS <br /> MEMECOIN
+                HI, MY NAME IS <br /> GULULU
               </h1>
             </div>
 
@@ -60,24 +60,24 @@ const Section1 = () => {
           <div className="flex flex-col justify-between ">
             <div>
               <h3 className="sm:px-24 px-4 font-omnes text-center leading-7 text-2xl ">
-                MEMECOIN launches on doge day! Last <br /> chance to buy!
+                GULULU launches on doge day! Last <br /> chance to buy!
               </h3>
               <Countdown />
               <h3 className="text-center text-xl font-omnes font-bold my-6 ">
-                Till DOGE20 claim and launch
+                Till GULULU claim and launch
               </h3>
               <h3 className="text-center text-2xl font-omnesblack leading-3 my-3">
                 Over $10M raised!
               </h3>
               <div className="flex items-center justify-center sm:gap-6 gap-2 sm:ml-8 ml-2 ">
                 <h3 className="text-center text-xl font-omnes my-3 font-bold ">
-                  Your purchased DOGE20 = 0
+                  Your purchased GULULU = 0
                 </h3>
                 <Image src={"/i.svg"} alt="i" width={22} height={22} className=" w-7"/>
               </div>
               <div className="flex items-center justify-center sm:gap-6 gap-2 sm:ml-8 ml-2">
                 <h3 className="text-center text-xl font-omnes my-1 font-bold ">
-                  Your stakeable DOGE20 = 0
+                  Your stakeable GULULU = 0
                 </h3>
                 <Image src={"/i.svg"} alt="i" width={22} height={22}  className=" w-7"/>
               </div>

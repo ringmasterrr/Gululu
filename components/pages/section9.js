@@ -9,8 +9,8 @@ const Section9 = () => {
       </div>
 
       <p className="text-xl font-semibold text-center font-omnesreg pb-[4rem] xl:px-[20rem] px-4">
-        Dogecoin20 offers a new passive rewards opportunity to the meme coin
-        scene but could also benefit from token price appreciation. DOGE20 has a
+        GULULU offers a new passive rewards opportunity to the meme coin
+        scene but could also benefit from token price appreciation. GULULU has a
         fully diluted starting market cap nearly 900 times cheaper than the
         original Dogecoin.
       </p>
@@ -18,7 +18,7 @@ const Section9 = () => {
       <div className="bg-[#CFEEFF] lg:w-[62.5rem] w-[90%] rounded-3xl text-center py-10 flex flex-col items-center justify-center px-3">
         <h3 className="text-2xl font-omnes">Returns Calculator</h3>
         <h3 className="text-xl font-omnesreg font-semibold py-2 md:px-28">
-          Input the amount of DOGE20 you&apos;re purchasing, and see what it
+          Input the amount of GULULU you&apos;re purchasing, and see what it
           would be worth at different prices.
         </h3>
         <div className=" lg:w-[75%] w-[90%] flex flex-col  justify-center">
@@ -39,7 +39,7 @@ const Section9 = () => {
             </div>
           </div>
           <div className="text-[#667CC1] text-xl font-omnes flex flex-row justify-between items-center px-1 uppercase py-2">
-            <h3 className="w-1/4 text-left">Your $DOGE20 would be worth</h3>
+            <h3 className="w-1/4 text-left">Your $GULULU would be worth</h3>
             <h3>$470</h3>
           </div>
         </div>

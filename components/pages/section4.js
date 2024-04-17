@@ -10,9 +10,9 @@ const Section4 = () => {
           <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] sm:p-16 p-8 z-10">
             <h3 className="md:text-5xl text-4xl font-omnesblack uppercase pb-6">Stage 1</h3>
             <p className="md:text-xl text-lg font-omnesreg font-semibold">
-              Utilising smart contracts powered by Ethereum, DOGE20 is much more
+              Utilising smart contracts powered by Ethereum, GULULU is much more
               than a meme coin and brings passive earning potential to the
-              community. Harness the power of your DOGE20 tokens by staking and
+              community. Harness the power of your GULULU tokens by staking and
               earning rewards, making your tokens work for you.
             </p>
 
@@ -75,9 +75,9 @@ const Section4 = () => {
           <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] sm:p-16 p-8 z-10">
             <h3 className="md:text-5xl text-4xl font-omnesblack uppercase pb-6">Stage 2</h3>
             <p className="md:text-xl text-lg font-omnesreg font-semibold">
-              Utilising smart contracts powered by Ethereum, DOGE20 is much more
+              Utilising smart contracts powered by Ethereum, GULULU is much more
               than a meme coin and brings passive earning potential to the
-              community. Harness the power of your DOGE20 tokens by staking and
+              community. Harness the power of your GULULU tokens by staking and
               earning rewards, making your tokens work for you.
             </p>
 
@@ -140,9 +140,9 @@ const Section4 = () => {
           <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] sm:p-16 p-8 z-10">
             <h3 className="md:text-5xl text-4xl font-omnesblack uppercase pb-6">Stage 3</h3>
             <p className="md:text-xl text-lg font-omnesreg font-semibold">
-              Utilising smart contracts powered by Ethereum, DOGE20 is much more
+              Utilising smart contracts powered by Ethereum, GULULU is much more
               than a meme coin and brings passive earning potential to the
-              community. Harness the power of your DOGE20 tokens by staking and
+              community. Harness the power of your GULULU tokens by staking and
               earning rewards, making your tokens work for you.
             </p>
             <Image
@@ -197,9 +197,9 @@ const Section4 = () => {
           <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] sm:p-16 p-8 z-10">
             <h3 className="md:text-5xl text-4xl font-omnesblack uppercase pb-6">Stage 4</h3>
             <p className="md:text-xl text-lg font-omnesreg font-semibold">
-              Utilising smart contracts powered by Ethereum, DOGE20 is much more
+              Utilising smart contracts powered by Ethereum, GULULU is much more
               than a meme coin and brings passive earning potential to the
-              community. Harness the power of your DOGE20 tokens by staking and
+              community. Harness the power of your GULULU tokens by staking and
               earning rewards, making your tokens work for you.
             </p>
 

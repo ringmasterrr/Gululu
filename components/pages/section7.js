@@ -7,7 +7,7 @@ const Section7 = () => {
       <div className="relative flex flex-col xl:w-[75rem] bg-black justify-start items-center lg:p-10  ">
         <div className="flex  text-white flex-col items-start justify-start xl:w-[60%] xl:mt-24 xl:p-0 sm:p-28 p-12 ">
           <h3 className=" font-omnesblack text-white md:text-[4.5rem] text-3xl  uppercase leading-[5rem] pb-14">
-            Buy me MEMECOIN
+            Buy me GULULU
           </h3>
           <p className="font-omnesreg font-bold md:text-[1.6rem] text-lg tracking-wider">
             Install a Solana Wallet: Choose a wallet like Phantom, download, and
