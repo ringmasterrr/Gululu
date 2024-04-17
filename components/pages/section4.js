@@ -5,9 +5,9 @@ const Section4 = () => {
   return (
     <div className="bg-[#F7E8D5] py-20 ">
       <div className="text-5xl text-center font-omnes pb-28">Roadmap</div>
-      <div className="flex flex-col gap-32">
-        <div className="relative flex items-end justify-center xl:justify-start xl:ml-[20rem] xl:mr-[14rem] mr-12 ml-12 h-[30rem]">
-          <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] p-16 z-10">
+      <div className="flex flex-col sm:gap-32 gap-48 py-12">
+        <div className="relative flex items-end justify-center xl:justify-start xl:ml-[20rem] xl:mr-[14rem] sm:mr-12 sm:ml-12 mx-4 md:h-[30rem]">
+          <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] sm:p-16 p-8 z-10">
             <h3 className="md:text-5xl text-4xl font-omnesblack uppercase pb-6">Stage 1</h3>
             <p className="md:text-xl text-lg font-omnesreg font-semibold">
               Utilising smart contracts powered by Ethereum, DOGE20 is much more
@@ -21,7 +21,7 @@ const Section4 = () => {
               alt="paw"
               height={500}
               width={500}
-              className="absolute md:w-[26rem] w-[14rem] md:-left-[15rem] -left-[14%] md:-bottom-[6rem] -bottom-[8rem] "
+              className="absolute md:w-[26rem] w-[14rem] md:-left-[15rem] -left-[14%] md:-bottom-[6rem] -bottom-[10rem] "
             />
             <Image
               src={"/smolshiba.svg"}
@@ -71,8 +71,8 @@ const Section4 = () => {
             className="w-[16.25rem] absolute left-[34rem] top-[7.8rem] z-0 xl:block hidden "
           />
         </div>
-        <div className="relative flex items-end justify-center xl:justify-end xl:ml-[20rem] xl:mr-[14rem] mr-12 ml-12 h-[30rem]">
-          <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] p-16 z-10">
+        <div className="relative flex items-end justify-center xl:justify-end xl:ml-[20rem] xl:mr-[14rem] sm:mr-12 sm:ml-12 mx-4 md:h-[30rem]">
+          <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] sm:p-16 p-8 z-10">
             <h3 className="md:text-5xl text-4xl font-omnesblack uppercase pb-6">Stage 2</h3>
             <p className="md:text-xl text-lg font-omnesreg font-semibold">
               Utilising smart contracts powered by Ethereum, DOGE20 is much more
@@ -86,7 +86,7 @@ const Section4 = () => {
               alt="paw"
               height={500}
               width={500}
-              className="absolute md:w-[26rem] w-[14rem] md:-left-[15rem] -left-[14%] md:-bottom-[6rem] -bottom-[8rem] "
+              className="absolute md:w-[26rem] w-[14rem] md:-left-[15rem] -left-[14%] md:-bottom-[6rem] -bottom-[10rem] "
             />
             <Image
               src={"/smolshiba.svg"}
@@ -136,8 +136,8 @@ const Section4 = () => {
             className="w-[15.25rem] absolute right-[8rem] -bottom-[10rem] z-0 xl:block hidden "
           />
         </div>
-        <div className="relative flex items-end justify-center xl:justify-start xl:ml-[20rem] xl:mr-[14rem] mr-12 ml-12 h-[30rem]">
-          <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] p-16 z-10">
+        <div className="relative flex items-end justify-center xl:justify-start xl:ml-[20rem] xl:mr-[14rem] sm:mr-12 sm:ml-12 mx-4 md:h-[30rem]">
+          <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] sm:p-16 p-8 z-10">
             <h3 className="md:text-5xl text-4xl font-omnesblack uppercase pb-6">Stage 3</h3>
             <p className="md:text-xl text-lg font-omnesreg font-semibold">
               Utilising smart contracts powered by Ethereum, DOGE20 is much more
@@ -150,7 +150,7 @@ const Section4 = () => {
               alt="paw"
               height={500}
               width={500}
-              className="absolute md:w-[26rem] w-[14rem] md:-left-[15rem] -left-[14%] md:-bottom-[6rem] -bottom-[8rem] "
+              className="absolute md:w-[26rem] w-[14rem] md:-left-[15rem] -left-[14%] md:-bottom-[6rem] -bottom-[10rem] "
             />
             <Image
               src={"/smolshiba.svg"}
@@ -193,8 +193,8 @@ const Section4 = () => {
             className="w-[16.25rem] absolute -left-[10rem] -top-[2rem] z-0 xl:block hidden"
           />
         </div>
-        <div className="relative flex items-end justify-center xl:justify-end xl:ml-[20rem] xl:mr-[14rem] mr-12 ml-12 h-[30rem]">
-          <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] p-16 z-10">
+        <div className="relative flex items-end justify-center xl:justify-end xl:ml-[20rem] xl:mr-[14rem] sm:mr-12 sm:ml-12 mx-4 md:h-[30rem]">
+          <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] sm:p-16 p-8 z-10">
             <h3 className="md:text-5xl text-4xl font-omnesblack uppercase pb-6">Stage 4</h3>
             <p className="md:text-xl text-lg font-omnesreg font-semibold">
               Utilising smart contracts powered by Ethereum, DOGE20 is much more
@@ -208,7 +208,7 @@ const Section4 = () => {
               alt="paw"
               height={500}
               width={500}
-              className="absolute md:w-[26rem] w-[14rem] md:-left-[15rem] -left-[14%] md:-bottom-[6rem] -bottom-[8rem] "
+              className="absolute md:w-[26rem] w-[14rem] md:-left-[15rem] -left-[14%] md:-bottom-[6rem] -bottom-[10rem] "
             />
             <Image
               src={"/smolshiba.svg"}

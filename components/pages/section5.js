@@ -33,7 +33,7 @@ const Section5 = () => {
         <h3 className="text-[1.7rem] text-center font-omnes">
           Referral Generated: $123.222
         </h3>
-        <h3 className="text-[1.8rem] font-semibold text-center font-omnesregular pt-10">
+        <h3 className="sm:text-[1.8rem] text-lg font-semibold text-center font-omnesregular sm:pt-10 pt-2">
           Share Your Unique Referral Link
         </h3>
         <div className="flex md:flex-row flex-wrap py-4 gap-2">

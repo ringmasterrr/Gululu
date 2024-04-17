@@ -35,25 +35,25 @@ const Section6 = () => {
             className="h-auto w-auto pb-20 xl:py-0"
           />
           <div className="flex flex-col gap-9">
-            <h3 className="text-[#667CC1] font-omnes text-5xl uppercase">
+            <h3 className="text-[#667CC1] font-omnes sm:text-5xl text-3xl uppercase">
               $MEMECOIN Tokenomics
             </h3>
-            <h3 className="text-black font-omnesreg font-semibold text-2xl">
+            <h3 className="text-black font-omnesreg font-semibold text-xl sm:text-2xl">
               Total Supply 1 billion
             </h3>
-            <h3 className="text-black font-omnesreg font-semibold text-2xl">
+            <h3 className="text-black font-omnesreg font-semibold text-xl sm:text-2xl">
               50% Tokens to Liquidity Pool
             </h3>
-            <h3 className="text-black font-omnesreg font-semibold text-2xl">
+            <h3 className="text-black font-omnesreg font-semibold text-xl sm:text-2xl">
               35% Tokens to Presale Contributors
             </h3>
-            <h3 className="text-black font-omnesreg font-semibold text-2xl">
+            <h3 className="text-black font-omnesreg font-semibold text-xl sm:text-2xl">
               5% Tokens for CEX
             </h3>
-            <h3 className="text-black font-omnesreg font-semibold text-2xl">
+            <h3 className="text-black font-omnesreg font-semibold text-xl sm:text-2xl">
               5% Tokens for Marketing
             </h3>
-            <h3 className="text-black font-omnesreg font-semibold text-2xl">
+            <h3 className="text-black font-omnesreg font-semibold text-xl sm:text-2xl">
               5% Tokens for Team and Advisors
             </h3>
           </div>

@@ -12,23 +12,23 @@ const Countdown = () => {
     const formattedSeconds = String(seconds).padStart(2, '0');
   
     return (
-      <div className=" flex flex-wrap h-28 place-items-center text-center items-center justify-evenly font-omnesblack text-xs bg-[#FFCBBF] mx-14 px-4 rounded-2xl mt-12">
-        <span className="flex flex-col items-center justify-center w-20 h-24 text-4xl font-semibold ">
+      <div className=" flex flex-wrap h-28 place-items-center text-center items-center justify-evenly font-omnesblack text-xs bg-[#FFCBBF] sm:mx-14 mx-4 px-4 rounded-2xl mt-12">
+        <span className="flex flex-col items-center justify-center sm:w-20 w-8 h-24 sm:text-4xl text-3xl font-semibold ">
           {formattedDays}
           <span className="text-sm font-light pt-3">DAY</span>
         </span>
         <Dots/>
-        <span className="flex flex-col items-center justify-center w-20 h-24 text-4xl font-semibold ">
+        <span className="flex flex-col items-center justify-center sm:w-20 w-8 h-24 sm:text-4xl text-3xl font-semibold ">
           {formattedHours}
           <span className="text-sm font-light pt-3">HRS</span>
         </span>
         <Dots/>
-        <span className="flex flex-col items-center justify-center w-20 h-24 text-4xl font-semibold ">
+        <span className="flex flex-col items-center justify-center sm:w-20 w-8 h-24 sm:text-4xl text-3xl font-semibold ">
           {formattedMinutes}
           <span className="text-sm font-light pt-3">MINS</span>
         </span>
         <Dots/>
-        <span className="flex flex-col items-center justify-center w-20 h-24 text-4xl font-semibold ">
+        <span className="flex flex-col items-center justify-center sm:w-20 w-8 h-24 sm:text-4xl text-3xl font-semibold ">
           {formattedSeconds}
           <span className="text-sm font-light pt-3">SEC</span>
         </span>

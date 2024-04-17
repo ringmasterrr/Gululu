@@ -12,7 +12,7 @@ const Header = () => {
 
   return (
     <div className="bg-[#F7E8D5]">
-      <div className="flex items-center md:px-44 p-4 pt-10 justify-between">
+      <div className="flex items-center xl:px-44 p-4 pt-10 justify-between">
         <div className="text-3xl font-black font-omnesblack">MEMECOIN</div>
         <div className="md:hidden">
           <button
@@ -69,17 +69,17 @@ const Header = () => {
       </div>
       {isMenuOpen && (
         <div className="md:hidden">
-          <div className="flex flex-col items-start gap-4 p-4">
-            <Link href="/" className="font-omnes">
+          <div className="flex flex-col items-start gap-4 p-4 text-lg ">
+            <Link href="/" className="font-omnes pl-2">
               Home
             </Link>
-            <Link href="/About" className="hover:font-bold">
+            <Link href="/About" className="hover:font-bold pl-2">
               About
             </Link>
-            <Link href="/Whitepaper" className="hover:font-bold">
+            <Link href="/Whitepaper" className="hover:font-bold pl-2">
               Whitepaper
             </Link>
-            <Link href="/Audit" className="hover:font-bold">
+            <Link href="/Audit" className="hover:font-bold pl-2">
               Audit
             </Link>
             <button className="font-bold px-4 py-2 font-omnes bg-black text-white rounded-full inline-block">
