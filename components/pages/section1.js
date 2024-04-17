@@ -56,7 +56,7 @@ const Section1 = () => {
         </div>
       </div>
       <div className="relative flex flex-col xl:max-w-[48%] w-full items-center justify-center pt-16 xl:ml-5 ml-0 ">
-        <div className="bg-[#CFEEFF] rounded-3xl md:w-10/12 w-[97%] pt-20 z-10 ">
+        <div className="bg-[#CFEEFF] rounded-3xl md:w-10/12 w-[97%] pt-20 pb-10 z-10 ">
           <div className="flex flex-col justify-between ">
             <div>
               <h3 className="sm:px-24 px-4 font-omnes text-center leading-7 text-2xl ">
@@ -88,46 +88,31 @@ const Section1 = () => {
                 </h3>
                 <div className="border-b-4 border-black w-48 "></div>
               </div>
-              <div className="flex md:flex-row flex-wrap md:gap-32 gap-4 items-center justify-center mx-4">
-                <Image
-                  src={"/eth.png"}
+              <div className="flex md:flex-row flex-wrap md:gap-32 gap-8 items-center justify-center mx-4">
+              <div className="flex gap-2 sm:text-sm text-base font-bold"> <Image
+                  src={"/sol.svg"}
                   alt="i"
                   width={500}
                   height={100}
-                  className="w-20 h-8 "
-                />
-                <Image
-                  src={"/ustd.png"}
+                  className="w-6 h-6 "
+                /> SOL</div>
+               
+               <div className="flex gap-2 sm:text-sm text-base font-bold"> <Image
+                  src={"/usdt.svg"}
                   alt="i"
                   width={500}
                   height={100}
-                  className="w-20 h-8 "
-                />
-                <Image
-                  src={"/fiat.png"}
-                  alt="i"
-                  width={500}
-                  height={100}
-                  className="w-20 h-8 "
-                />
+                  className="w-6 h-6 "
+                /> USDT</div>
               </div>
             </div>
-            <div className="flex sm:flex-row flex-col items-center justify-center gap-7 mt-36">
+            <div className="flex sm:flex-row flex-col items-center justify-center gap-7 sm:mt-36 mt-24">
               <button className="  font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block ">
                 BUY WITH BNB
               </button>
               <button className="  font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block  ">
                 BUY NOW
               </button>
-            </div>
-            <div className="flex items-center justify-center my-6">
-              <Image
-                src={"/poweredby.svg"}
-                alt="i"
-                width={1000}
-                height={100}
-                className="w-64 h-6 "
-              />
             </div>
           </div>
         </div>
