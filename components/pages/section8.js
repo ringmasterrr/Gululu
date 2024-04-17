@@ -3,14 +3,14 @@ import React from "react";
 
 const Section8 = () => {
   return (
-    <div className="relative bg-[#F7E8D5] h-[60rem] py-16 ">
+    <div className="relative bg-[#F7E8D5] py-24 ">
       <div className="relative z-10">
         <h3 className=" font-omnesblack text-black text-center text-[3.5rem] uppercase leading-[5rem] pb-14">
           Buy me $MEMECOIN
         </h3>
         <div className="flex flex-row flex-wrap items-center justify-center gap-9">
-          <div className="flex flex-col items-start justify-start h-[34rem] bg-white rounded-md p-5">
-            <div className="h-[25rem] w-[25rem] bg-[#FF933B] rounded-md rounded-br-[3rem] flex items-center justify-center ">
+          <div className="flex flex-col items-start justify-start md:h-[34rem] bg-white rounded-md p-5">
+            <div className="md:h-[25rem] md:w-[25rem] bg-[#FF933B] rounded-md rounded-br-[3rem] flex items-center justify-center ">
               <Image
                 src={"/dab.svg"}
                 alt="dab"
@@ -24,8 +24,8 @@ const Section8 = () => {
               Small Description
             </h3>
           </div>
-          <div className="flex flex-col items-start justify-start h-[34rem] bg-white rounded-md p-5">
-            <div className="h-[25rem] w-[25rem] bg-[#F49F8A] rounded-md rounded-br-[3rem] flex items-center justify-center ">
+          <div className="flex flex-col items-start justify-start md:h-[34rem] bg-white rounded-md p-5">
+            <div className="md:h-[25rem] md:w-[25rem] bg-[#F49F8A] rounded-md rounded-br-[3rem] flex items-center justify-center ">
               <Image
                 src={"/dab.svg"}
                 alt="dab"
@@ -39,8 +39,8 @@ const Section8 = () => {
               Small Description
             </h3>
           </div>
-          <div className="flex flex-col items-start justify-start h-[34rem] bg-white rounded-md p-5">
-            <div className="h-[25rem] w-[25rem] bg-[#CFEEFF] rounded-md rounded-br-[3rem] flex items-center justify-center ">
+          <div className="flex flex-col items-start justify-start md:h-[34rem] bg-white rounded-md p-5">
+            <div className="md:h-[25rem] md:w-[25rem] bg-[#CFEEFF] rounded-md rounded-br-[3rem] flex items-center justify-center ">
               <Image
                 src={"/dab.svg"}
                 alt="dab"

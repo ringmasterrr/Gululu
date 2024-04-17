@@ -3,7 +3,7 @@ import React from "react";
 
 const Section6 = () => {
   return (
-    <div className="relative flex flex-col items-center bg-[#CFEEFF] h-full pt-14 pb-48 ">
+    <div className="relative flex flex-col items-center bg-[#CFEEFF] h-full pt-14 pb-48">
       <div className="text-5xl text-center font-omnes py-4">Tokenomics</div>
       <div className="text-xl font-semibold text-center font-omnesreg ">
         <p className="pb-3">
@@ -16,14 +16,14 @@ const Section6 = () => {
           0x2541A36BE4cD39286ED61a3E6AFC2307609d6{" "}
         </p>
       </div>
-      <div className="relative flex flex-wrap bg-[#FFCBBF] h-[65rem] w-[100rem] mt-14 rounded-[1.25rem] ">
+      <div className="relative flex flex-wrap-reverse bg-[#FFCBBF] mt-14 rounded-[1.25rem] w-[90%] items-center justify-center py-10 px-10 ">
         <div className="flex items-center justify-center w-1/2">
           <Image
             src={"/dawg.png"}
             alt="dawg"
             height={1000}
             width={1000}
-            className="h-[50rem] w-auto"
+            className="lg:w-auto w-[20rem]"
           />
         </div>
 
@@ -33,7 +33,7 @@ const Section6 = () => {
             alt="dawg"
             height={1200}
             width={1200}
-            className="h-auto w-auto"
+            className="h-auto w-auto pb-20 xl:py-0"
           />
           <div className="flex flex-col gap-9">
             <h3 className="text-[#667CC1] font-omnes text-5xl uppercase">
@@ -65,7 +65,7 @@ const Section6 = () => {
           alt="i"
           width={300}
           height={300}
-          className="absolute w-[10rem] left-[90rem] -top-[7.8rem]"
+          className="absolute w-[10rem] left-[90rem] -top-[7.8rem] xl:block hidden"
         />
 
         <Image
@@ -73,7 +73,7 @@ const Section6 = () => {
           alt="i"
           width={300}
           height={300}
-          className="absolute w-[4rem] left-[13rem] top-[4rem]"
+          className="absolute w-[4rem] left-[13rem] top-[4rem] xl:block hidden"
         />
 
         <Image
@@ -81,7 +81,7 @@ const Section6 = () => {
           alt="i"
           width={300}
           height={300}
-          className="absolute w-[6rem] left-[4rem] bottom-[2rem]"
+          className="absolute w-[6rem] left-[4rem] bottom-[2rem] xl:block hidden "
         />
 
         <Image
@@ -89,7 +89,7 @@ const Section6 = () => {
           alt="i"
           width={300}
           height={300}
-          className="absolute w-[5rem] right-[4rem] bottom-[2rem]"
+          className="absolute w-[5rem] right-[4rem] bottom-[2rem] xl:block hidden"
         />
       </div>
 
@@ -98,7 +98,7 @@ const Section6 = () => {
         alt="coin"
         height={200}
         width={200}
-        className="absolute top-20 left-16 h-auto w-auto"
+        className="absolute top-20 left-16 h-auto w-auto xl:block hidden"
       />
 
       <Image
@@ -106,7 +106,7 @@ const Section6 = () => {
         alt="coin"
         height={400}
         width={400}
-        className="absolute top-[7rem] left-[32rem] w-[4rem]"
+        className="absolute top-[7rem] left-[32rem] w-[4rem] xl:block hidden"
       />
 
       <Image
@@ -114,7 +114,7 @@ const Section6 = () => {
         alt="coin"
         height={400}
         width={400}
-        className="absolute -top-[5.8rem] right-[20rem] w-[13rem]"
+        className="absolute -top-[5.8rem] right-[20rem] w-[13rem] xl:block hidden"
       />
 
       <Image

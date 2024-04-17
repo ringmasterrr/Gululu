@@ -3,13 +3,13 @@ import React from "react";
 
 const Section4 = () => {
   return (
-    <div className="bg-[#F7E8D5] py-20">
+    <div className="bg-[#F7E8D5] py-20 ">
       <div className="text-5xl text-center font-omnes pb-28">Roadmap</div>
       <div className="flex flex-col gap-32">
-        <div className="relative flex items-end justify-start ml-[20rem] mr-[14rem] h-[30rem]">
-          <div className="relative flex flex-col bg-[#CFEEFF] w-[40rem] rounded-3xl py-20 px-[5.8rem] z-10">
-            <h3 className="text-5xl font-omnesblack uppercase pb-6">Stage 1</h3>
-            <p className="text-xl font-omnesreg font-semibold">
+        <div className="relative flex items-end justify-center xl:justify-start xl:ml-[20rem] xl:mr-[14rem] mr-12 ml-12 h-[30rem]">
+          <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] p-16 z-10">
+            <h3 className="md:text-5xl text-4xl font-omnesblack uppercase pb-6">Stage 1</h3>
+            <p className="md:text-xl text-lg font-omnesreg font-semibold">
               Utilising smart contracts powered by Ethereum, DOGE20 is much more
               than a meme coin and brings passive earning potential to the
               community. Harness the power of your DOGE20 tokens by staking and
@@ -21,14 +21,14 @@ const Section4 = () => {
               alt="paw"
               height={500}
               width={500}
-              className="absolute w-[26rem] -left-[15rem] -bottom-[6rem]"
+              className="absolute md:w-[26rem] w-[14rem] md:-left-[15rem] -left-[14%] md:-bottom-[6rem] -bottom-[8rem] "
             />
             <Image
               src={"/smolshiba.svg"}
               alt="paw"
               height={500}
               width={500}
-              className="absolute w-[18rem] -right-[1.3rem] -top-[12.8rem] "
+              className="absolute md:w-[18rem] w-[10rem] -right-[1.3rem] md:-top-[12.8rem] -top-[7rem] "
             />
 
             <Image
@@ -36,7 +36,7 @@ const Section4 = () => {
               alt="paw"
               height={500}
               width={500}
-              className="absolute w-[6rem] left-[1rem] -top-[13rem] "
+              className="absolute w-[6rem] left-[1rem] -top-[13rem] xl:block hidden "
             />
 
             <Image
@@ -44,7 +44,7 @@ const Section4 = () => {
               alt="paw"
               height={500}
               width={500}
-              className="absolute w-[6rem] left-[70rem] top-[7rem] "
+              className="absolute w-[6rem] left-[70rem] top-[7rem] xl:block hidden "
             />
 
             <Image
@@ -52,7 +52,7 @@ const Section4 = () => {
               alt="paw"
               height={500}
               width={500}
-              className="absolute w-[5rem] left-[55rem] -top-[10rem] "
+              className="absolute w-[5rem] left-[55rem] -top-[10rem] xl:block hidden "
             />
 
             <Image
@@ -60,7 +60,7 @@ const Section4 = () => {
               alt="paw"
               height={500}
               width={500}
-              className="absolute w-[16rem] left-[48rem] top-[9rem] xl:block  "
+              className="absolute w-[16rem] left-[48rem] top-[9rem] xl:block hidden  "
             />
           </div>
           <Image
@@ -68,13 +68,13 @@ const Section4 = () => {
             alt="paw"
             height={500}
             width={500}
-            className="w-[16.25rem] absolute left-[34rem] top-[7.8rem] z-0"
+            className="w-[16.25rem] absolute left-[34rem] top-[7.8rem] z-0 xl:block hidden "
           />
         </div>
-        <div className="relative flex items-end justify-end ml-[20rem] mr-[14rem] h-[30rem]">
-          <div className="relative flex flex-col bg-[#CFEEFF] w-[40rem] rounded-3xl py-20 px-[5.8rem] z-10">
-            <h3 className="text-5xl font-omnesblack uppercase pb-6">Stage 2</h3>
-            <p className="text-xl font-omnesreg font-semibold">
+        <div className="relative flex items-end justify-center xl:justify-end xl:ml-[20rem] xl:mr-[14rem] mr-12 ml-12 h-[30rem]">
+          <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] p-16 z-10">
+            <h3 className="md:text-5xl text-4xl font-omnesblack uppercase pb-6">Stage 2</h3>
+            <p className="md:text-xl text-lg font-omnesreg font-semibold">
               Utilising smart contracts powered by Ethereum, DOGE20 is much more
               than a meme coin and brings passive earning potential to the
               community. Harness the power of your DOGE20 tokens by staking and
@@ -86,14 +86,14 @@ const Section4 = () => {
               alt="paw"
               height={500}
               width={500}
-              className="absolute w-[26rem] -left-[15rem] -bottom-[6rem]"
+              className="absolute md:w-[26rem] w-[14rem] md:-left-[15rem] -left-[14%] md:-bottom-[6rem] -bottom-[8rem] "
             />
             <Image
               src={"/smolshiba.svg"}
               alt="paw"
               height={500}
               width={500}
-              className="absolute w-[18rem] -right-[1.3rem] -top-[12.8rem] "
+              className="absolute md:w-[18rem] w-[10rem] -right-[1.3rem] md:-top-[12.8rem] -top-[7rem]"
             />
 
             <Image
@@ -101,7 +101,7 @@ const Section4 = () => {
               alt="paw"
               height={500}
               width={500}
-              className="absolute w-[6rem] right-[70rem] top-[1rem] "
+              className="absolute w-[6rem] right-[70rem] top-[1rem] xl:block hidden "
             />
 
             <Image
@@ -109,7 +109,7 @@ const Section4 = () => {
               alt="paw"
               height={500}
               width={500}
-              className="absolute w-[5rem] right-[80rem] top-[16rem] "
+              className="absolute w-[5rem] right-[80rem] top-[16rem]xl:block hidden "
             />
 
             <Image
@@ -117,7 +117,7 @@ const Section4 = () => {
               alt="paw"
               height={500}
               width={500}
-              className="absolute w-[5rem] right-[50rem] -top-[8rem] "
+              className="absolute w-[5rem] right-[50rem] -top-[8rem] xl:block hidden "
             />
 
             <Image
@@ -125,7 +125,7 @@ const Section4 = () => {
               alt="paw"
               height={500}
               width={500}
-              className="absolute w-[16rem] right-[55rem] top-[9rem] xl:block"
+              className="absolute w-[16rem] right-[55rem] top-[9rem] xl:block hidden "
             />
           </div>
           <Image
@@ -133,33 +133,31 @@ const Section4 = () => {
             alt="paw"
             height={500}
             width={500}
-            className="w-[15.25rem] absolute right-[8rem] -bottom-[10rem] z-0"
+            className="w-[15.25rem] absolute right-[8rem] -bottom-[10rem] z-0 xl:block hidden "
           />
         </div>
-        <div className="relative flex items-end justify-start ml-[20rem] mr-[14rem] h-[30rem]">
-          <div className="relative flex flex-col bg-[#CFEEFF] w-[40rem] rounded-3xl py-20 px-[5.8rem] z-10">
-            <h3 className="text-5xl font-omnesblack uppercase pb-6">Stage 3</h3>
-
-            <p className="text-xl font-omnesreg font-semibold">
+        <div className="relative flex items-end justify-center xl:justify-start xl:ml-[20rem] xl:mr-[14rem] mr-12 ml-12 h-[30rem]">
+          <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] p-16 z-10">
+            <h3 className="md:text-5xl text-4xl font-omnesblack uppercase pb-6">Stage 3</h3>
+            <p className="md:text-xl text-lg font-omnesreg font-semibold">
               Utilising smart contracts powered by Ethereum, DOGE20 is much more
               than a meme coin and brings passive earning potential to the
               community. Harness the power of your DOGE20 tokens by staking and
               earning rewards, making your tokens work for you.
             </p>
-
             <Image
               src={"/smoldog.svg"}
               alt="paw"
               height={500}
               width={500}
-              className="absolute w-[26rem] -left-[15rem] -bottom-[6rem]"
+              className="absolute md:w-[26rem] w-[14rem] md:-left-[15rem] -left-[14%] md:-bottom-[6rem] -bottom-[8rem] "
             />
             <Image
               src={"/smolshiba.svg"}
               alt="paw"
               height={500}
               width={500}
-              className="absolute w-[18rem] -right-[1.3rem] -top-[12.8rem] "
+              className="absolute md:w-[18rem] w-[10rem] -right-[1.3rem] md:-top-[12.8rem] -top-[7rem]"
             />
 
             <Image
@@ -167,7 +165,7 @@ const Section4 = () => {
               alt="paw"
               height={500}
               width={500}
-              className="absolute w-[6rem] left-[65rem] top-[2rem] "
+              className="absolute w-[6rem] left-[65rem] top-[2rem] xl:block hidden "
             />
 
             <Image
@@ -175,7 +173,7 @@ const Section4 = () => {
               alt="paw"
               height={500}
               width={500}
-              className="absolute w-[5rem] left-[77rem] top-[15rem] "
+              className="absolute w-[5rem] left-[77rem] top-[15rem] xl:block hidden "
             />
 
             <Image
@@ -183,7 +181,7 @@ const Section4 = () => {
               alt="paw"
               height={500}
               width={500}
-              className="absolute w-[16rem] left-[50rem] top-[9rem] xl:block"
+              className="absolute w-[16rem] left-[50rem] top-[9rem] xl:block hidden "
             />
           </div>
 
@@ -192,13 +190,13 @@ const Section4 = () => {
             alt="paw"
             height={500}
             width={500}
-            className="w-[16.25rem] absolute -left-[10rem] -top-[2rem] z-0"
+            className="w-[16.25rem] absolute -left-[10rem] -top-[2rem] z-0 xl:block hidden"
           />
         </div>
-        <div className="relative flex items-end justify-end ml-[20rem] mr-[14rem] h-[30rem]">
-          <div className="relative flex flex-col bg-[#CFEEFF] w-[40rem] rounded-3xl py-20 px-[5.8rem] z-10">
-            <h3 className="text-5xl font-omnesblack uppercase pb-6">Stage 4</h3>
-            <p className="text-xl font-omnesreg font-semibold">
+        <div className="relative flex items-end justify-center xl:justify-end xl:ml-[20rem] xl:mr-[14rem] mr-12 ml-12 h-[30rem]">
+          <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] p-16 z-10">
+            <h3 className="md:text-5xl text-4xl font-omnesblack uppercase pb-6">Stage 4</h3>
+            <p className="md:text-xl text-lg font-omnesreg font-semibold">
               Utilising smart contracts powered by Ethereum, DOGE20 is much more
               than a meme coin and brings passive earning potential to the
               community. Harness the power of your DOGE20 tokens by staking and
@@ -210,21 +208,21 @@ const Section4 = () => {
               alt="paw"
               height={500}
               width={500}
-              className="absolute w-[26rem] -left-[15rem] -bottom-[6rem]"
+              className="absolute md:w-[26rem] w-[14rem] md:-left-[15rem] -left-[14%] md:-bottom-[6rem] -bottom-[8rem] "
             />
             <Image
               src={"/smolshiba.svg"}
               alt="paw"
               height={500}
               width={500}
-              className="absolute w-[18rem] -right-[1.3rem] -top-[12.8rem] "
+              className="absolute md:w-[18rem] w-[10rem] -right-[1.3rem] md:-top-[12.8rem] -top-[7rem]"
             />
             <Image
               src={"/smolpaw5.svg"}
               alt="paw"
               height={500}
               width={500}
-              className="absolute w-[6.5rem] right-[70rem] top-[4rem] "
+              className="absolute w-[6.5rem] right-[70rem] top-[4rem] xl:block hidden "
             />
 
             <Image
@@ -232,7 +230,7 @@ const Section4 = () => {
               alt="paw"
               height={500}
               width={500}
-              className="absolute w-[5rem] right-[77rem]  top-[17rem] "
+              className="absolute w-[5rem] right-[77rem]  top-[17rem] xl:block hidden "
             />
           </div>
           <Image
@@ -240,7 +238,7 @@ const Section4 = () => {
             alt="paw"
             height={500}
             width={500}
-            className="w-[16.25rem] absolute right-[30rem] -top-[4rem] z-0"
+            className="w-[16.25rem] absolute right-[30rem] -top-[4rem] z-0 xl:block hidden "
           />
         </div>
       </div>

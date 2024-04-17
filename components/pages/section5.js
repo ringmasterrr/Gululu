@@ -4,9 +4,9 @@ import ReferralBox from "@/components/refferal";
 
 const Section5 = () => {
   return (
-    <div className="flex flex-col items-center   bg-[#FFC67D] h-[51rem] py-10 ">
+    <div className="flex flex-col items-center   bg-[#FFC67D] py-10 ">
       <div className="text-5xl text-center font-omnes py-5">REFERRAL</div>
-      <div className="relative text-xl font-semibold text-center font-omnesreg px-[22rem]">
+      <div className="relative text-xl font-semibold text-center font-omnesreg xl:px-[20rem] px-4">
         <p>
           Dogecoin20 offers a new passive rewards opportunity to the meme coin
           scene but could also benefit from token price appreciation. DOGE20 has
@@ -28,15 +28,15 @@ const Section5 = () => {
           className="absolute w-[10rem] left-[105rem] -top-[4rem]"
         />
       </div>
-      <div className=" flex items-end justify-end w-[70rem]">
-      <div className="relative flex flex-col bg-[#CFEEFF]  pl-[13rem] pb-10 my-24 w-[50rem] rounded-3xl px-[5.8rem] z-10 h-[27rem] items-center justify-center ">
+      <div className=" flex items-end justify-end lg:w-[70rem]">
+      <div className="relative flex flex-col bg-[#CFEEFF]  lg:pl-[13rem] pb-10 my-24 lg:w-[50rem] rounded-3xl md:px-[5.8rem] px-10 z-10 lg:h-[27rem] items-center justify-center py-10 lg:py-0">
         <h3 className="text-[1.7rem] text-center font-omnes">
           Referral Generated: $123.222
         </h3>
         <h3 className="text-[1.8rem] font-semibold text-center font-omnesregular pt-10">
           Share Your Unique Referral Link
         </h3>
-        <div className="flex flex-row py-4 gap-2">
+        <div className="flex md:flex-row flex-wrap py-4 gap-2">
           <Image
             src={"/socials/facebook.svg"}
             alt="i"
@@ -114,7 +114,7 @@ const Section5 = () => {
           alt="i"
           width={1000}
           height={1000}
-          className="absolute w-[40rem] right-[33rem]"
+          className="lg:absolute w-[40rem] right-[33rem]"
         />
       </div>
       </div>

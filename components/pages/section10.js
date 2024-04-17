@@ -4,9 +4,9 @@ import Image from "next/image";
 
 const Section10 = () => {
   return (
-    <div className="bg-[#F7E8D5] h-[100rem] flex flex-col items-center gap-36">
+    <div className="bg-[#F7E8D5] sm:pb-96 pb-10 flex flex-col items-center gap-36">
       <FAQ />
-      <div className="relative bg-[#CFEEFF] h-[30rem] w-[60rem] rounded-2xl flex flex-col justify-between p-14">
+      <div className="relative bg-[#CFEEFF] lg:w-[60rem] w-[90%] rounded-2xl flex flex-col justify-between p-14 gap-10">
         <div className="text-5xl text-center font-omnesblack  py-5 uppercase">
           JOIN OUR SOCIALS
         </div>
@@ -22,8 +22,8 @@ const Section10 = () => {
           </button>
         </div>
      
-        <Image src={"/left.png"} alt="left" height={800} width={800} className="absolute -bottom-[20rem] right-[35rem]  w-[40rem] "/>
-        <Image src={"/right.png"} alt="left" height={800} width={800} className="absolute -bottom-[20rem] left-[35rem]  w-[40rem] "/>
+        <Image src={"/left.png"} alt="left" height={800} width={800} className="absolute lg:-bottom-[20rem] -bottom-[15rem] md:right-[35rem] right-20  xl:w-[40rem] lg:w-[25rem] md:w-[20rem] md:block hidden"/>
+        <Image src={"/right.png"} alt="left" height={800} width={800} className="absolute lg:-bottom-[20rem] -bottom-[15rem] md:left-[35rem] left-20 xl:w-[40rem] lg:w-[25rem] md:w-[20rem] md:block hidden"/>
 
       </div>
       
