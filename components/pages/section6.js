@@ -3,17 +3,16 @@ import React from "react";
 
 const Section6 = () => {
   return (
-    <div className="relative flex flex-col items-center bg-[#CFEEFF] h-full pt-14 pb-48">
-      <div className="text-5xl text-center font-omnes py-4">Tokenomics</div>
-      <div className="text-xl font-semibold text-center font-omnesreg ">
+    <div className="relative flex flex-col items-center bg-[#CFEEFF] h-full pt-14 pb-8">
+      <div className="md:text-5xl text-3xl text-center font-omnes py-4 ">Tokenomics</div>
+      <div className="md:text-xl text-base font-semibold text-center font-omnesreg">
         <p className="pb-3">
           DOGE20 tokenomics include smart staking rewards, meaning you can earn
           right away.
         </p>
-        <p>DOGE20 Token Address:</p>{" "}
+        <p>DOGE20 Token Address:</p>
         <p className="font-omnes pt-1">
-          {" "}
-          0x2541A36BE4cD39286ED61a3E6AFC2307609d6{" "}
+          0x2541A36BE4cD39286ED61a3E6AFC2307609d6
         </p>
       </div>
       <div className="relative flex flex-wrap-reverse bg-[#FFCBBF] mt-14 rounded-[1.25rem] w-[90%] items-center justify-center py-10 px-10 ">
@@ -122,7 +121,7 @@ const Section6 = () => {
         alt="coin"
         height={1600}
         width={1600}
-        className="absolute -bottom-[2rem] left-[0rem] w-[13rem]"
+        className="absolute -bottom-[2rem] left-[0rem] w-[13rem] xl:block hidden"
       />
 
       <Image
@@ -130,7 +129,7 @@ const Section6 = () => {
         alt="coin"
         height={600}
         width={600}
-        className="absolute bottom-[0.2rem] right-[2rem] w-[13rem]"
+        className="absolute bottom-[0.2rem] right-[2rem] w-[13rem] xl:block hidden"
       />
     </div>
   );
