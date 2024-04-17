@@ -14,7 +14,7 @@ import Section10 from "@/components/pages/section10";
 
 export default function Home() {
   return (
-    <div>
+    <div className="overflow-hidden">
     <Header/>
     <Section1/>
     <Section2/>

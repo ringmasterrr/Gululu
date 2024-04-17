@@ -9,7 +9,7 @@ const Section4 = () => {
         <div className="relative flex items-end justify-start ml-[20rem] mr-[14rem] h-[30rem]">
           <div className="relative flex flex-col bg-[#CFEEFF] w-[40rem] rounded-3xl py-20 px-[5.8rem] z-10">
             <h3 className="text-5xl font-omnesblack uppercase pb-6">Stage 1</h3>
-            <p className="text-lg font-omnesreg font-semibold">
+            <p className="text-xl font-omnesreg font-semibold">
               Utilising smart contracts powered by Ethereum, DOGE20 is much more
               than a meme coin and brings passive earning potential to the
               community. Harness the power of your DOGE20 tokens by staking and
@@ -60,7 +60,7 @@ const Section4 = () => {
               alt="paw"
               height={500}
               width={500}
-              className="absolute w-[16rem] left-[48rem] top-[9rem] "
+              className="absolute w-[16rem] left-[48rem] top-[9rem] xl:block  "
             />
           </div>
           <Image
@@ -74,7 +74,7 @@ const Section4 = () => {
         <div className="relative flex items-end justify-end ml-[20rem] mr-[14rem] h-[30rem]">
           <div className="relative flex flex-col bg-[#CFEEFF] w-[40rem] rounded-3xl py-20 px-[5.8rem] z-10">
             <h3 className="text-5xl font-omnesblack uppercase pb-6">Stage 2</h3>
-            <p className="text-lg font-omnesreg font-semibold">
+            <p className="text-xl font-omnesreg font-semibold">
               Utilising smart contracts powered by Ethereum, DOGE20 is much more
               than a meme coin and brings passive earning potential to the
               community. Harness the power of your DOGE20 tokens by staking and
@@ -125,7 +125,7 @@ const Section4 = () => {
               alt="paw"
               height={500}
               width={500}
-              className="absolute w-[16rem] right-[55rem] top-[9rem] "
+              className="absolute w-[16rem] right-[55rem] top-[9rem] xl:block"
             />
           </div>
           <Image
@@ -140,7 +140,7 @@ const Section4 = () => {
           <div className="relative flex flex-col bg-[#CFEEFF] w-[40rem] rounded-3xl py-20 px-[5.8rem] z-10">
             <h3 className="text-5xl font-omnesblack uppercase pb-6">Stage 3</h3>
 
-            <p className="text-lg font-omnesreg font-semibold">
+            <p className="text-xl font-omnesreg font-semibold">
               Utilising smart contracts powered by Ethereum, DOGE20 is much more
               than a meme coin and brings passive earning potential to the
               community. Harness the power of your DOGE20 tokens by staking and
@@ -183,7 +183,7 @@ const Section4 = () => {
               alt="paw"
               height={500}
               width={500}
-              className="absolute w-[16rem] left-[50rem] top-[9rem] "
+              className="absolute w-[16rem] left-[50rem] top-[9rem] xl:block"
             />
           </div>
 
@@ -198,7 +198,7 @@ const Section4 = () => {
         <div className="relative flex items-end justify-end ml-[20rem] mr-[14rem] h-[30rem]">
           <div className="relative flex flex-col bg-[#CFEEFF] w-[40rem] rounded-3xl py-20 px-[5.8rem] z-10">
             <h3 className="text-5xl font-omnesblack uppercase pb-6">Stage 4</h3>
-            <p className="text-lg font-omnesreg font-semibold">
+            <p className="text-xl font-omnesreg font-semibold">
               Utilising smart contracts powered by Ethereum, DOGE20 is much more
               than a meme coin and brings passive earning potential to the
               community. Harness the power of your DOGE20 tokens by staking and

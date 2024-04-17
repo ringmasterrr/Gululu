@@ -4,7 +4,7 @@ import Countdown from "../Countdown";
 
 const Section1 = () => {
   return (
-    <div className="flex flex-wrap bg-[#F7E8D5] px-24 pb-14 pt-10 md:pt-0 justify-center">
+    <div className="relative flex flex-wrap bg-[#F7E8D5] zl:px-8  pb-14 pt-10 md:pt-0 justify-center">
       <div className=" relative flex flex-col xl:max-w-[50%] w-10/12 ">
         <Image
           src={"/sec1doge.png"}
@@ -13,7 +13,6 @@ const Section1 = () => {
           width={1500}
           className="w-[809px] pt-11 pb-5 md:ml-14"
         />
-
         <Image
           src={"/Star1.svg"}
           alt="paw"
@@ -21,7 +20,6 @@ const Section1 = () => {
           width={500}
           className=" absolute w-10 left-32 bottom-[27rem]  "
         />
-
         <Image
           src={"/Star3.svg"}
           alt="paw"
@@ -29,7 +27,6 @@ const Section1 = () => {
           width={500}
           className=" absolute w-[5rem] left-[92%] top-[10%] "
         />
-
         <Image
           src={"/Star4.svg"}
           alt="paw"
@@ -37,7 +34,6 @@ const Section1 = () => {
           width={500}
           className=" absolute w-[3.5rem] left-[97%] top-[50%] "
         />
-
         <div>
           <div className="md:pl-24">
             <div className="relative">
@@ -46,7 +42,7 @@ const Section1 = () => {
                 alt="paw"
                 height={500}
                 width={500}
-                className=" absolute w-20 left-20 "
+                className=" absolute w-20    "
               />
               <h1 className="text-[3.5rem] text-center font-omnesblack pb-7 leading-[4.7rem]">
                 HI, MY NAME IS <br /> MEMECOIN

@@ -34,8 +34,8 @@ const Section9 = () => {
             <h3 className="text-[#667CC1] font-bold text-start">
               And the token price reaches: $0.00047
             </h3>
-            <div class=" bg-white rounded-full h-[1.1rem] mt-2 border border-black w-[99%]">
-              <div class="bg-black h-[1rem] rounded-full w-[50%]"></div>
+            <div className=" bg-white rounded-full h-[1.1rem] mt-2 border border-black w-[99%]">
+              <div className="bg-black h-[1rem] rounded-full w-[50%]"></div>
             </div>
           </div>
           <div className="text-[#667CC1] text-xl font-omnes flex flex-row justify-between items-center px-1 uppercase py-2">
