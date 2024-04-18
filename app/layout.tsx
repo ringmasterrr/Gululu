@@ -15,6 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-0k6XCqP6x7FhW7DmaLZ7wq8Btkl0HvQTxv77xQM6uzHlRlQeNv9tU1xq0jOhARa2"/>
+      </head>
       <body className="font-omnesreg">{children}</body>
     </html>
   );
