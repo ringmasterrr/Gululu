@@ -1,7 +1,24 @@
-import Image from "next/image";
-import React from "react";
+"use client"
+
+import React, { useState } from "react";
 
 const Section9 = () => {
+  const [rupeesValue, setRupeesValue] = useState("");
+  const [dollarsValue, setDollarsValue] = useState("");
+
+  // Conversion rate from Indian Rupees to Dollars
+  const conversionRate = 0.013;
+
+  // Function to handle input change and calculate dollars value
+  const handleInputChange = (e) => {
+    const inputValue = e.target.value;
+    setRupeesValue(inputValue);
+
+    // Calculate dollars value based on the conversion rate
+    const dollarsAmount = parseFloat(inputValue) * conversionRate;
+    setDollarsValue(dollarsAmount.toFixed(2)); // Round to 2 decimal places
+  };
+
   return (
     <div className="relative bg-[#FFC67D] flex flex-col items-center justify-center py-6">
       <div className="text-5xl text-center font-omnes py-5 uppercase">
@@ -28,11 +45,13 @@ const Section9 = () => {
           <input
             type="number"
             placeholder="1000000"
+            value={rupeesValue}
+            onChange={handleInputChange}
             className="rounded-full px-4 py-1 w-[100%] h-[3.8rem] text-xl outline-none border border-black "
           />
           <div className="flex flex-col w-full pt-8">
             <h3 className="text-[#667CC1] font-bold text-start">
-              And the token price reaches: $0.00047
+              Your $GULULU would be worth approximately:
             </h3>
             <div className=" bg-white rounded-full h-[1.1rem] mt-2 border border-black w-[99%]">
               <div className="bg-black h-[1rem] rounded-full w-[50%]"></div>
@@ -40,34 +59,10 @@ const Section9 = () => {
           </div>
           <div className="text-[#667CC1] text-xl font-omnes flex flex-row justify-between items-center px-1 uppercase py-2">
             <h3 className="w-1/4 text-left">Your $GULULU would be worth</h3>
-            <h3>$470</h3>
+            <h3>${dollarsValue}</h3>
           </div>
         </div>
       </div>
-
-      <Image
-        src={"/smolshiba2.svg"}
-        alt="auction"
-        height={500}
-        width={500}
-        className=" absolute h-auto w-auto -bottom-[6rem] left-0 z-0 xl:block hidden"
-      />
-
-      <Image
-        src={"/bone11.svg"}
-        alt="auction"
-        height={500}
-        width={500}
-        className=" absolute h-auto w-auto -bottom-[4.5rem] right-[18rem] z-0 xl:block hidden"
-      />
-
-      <Image
-        src={"/bone12.svg"}
-        alt="auction"
-        height={500}
-        width={500}
-        className=" absolute h-auto w-auto -top-[5.6rem] left-[8rem] z-0 xl:block hidden"
-      />
     </div>
   );
 };
