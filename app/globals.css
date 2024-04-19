@@ -62,3 +62,22 @@
   font-family: 'Omnessemibold';
   src: url('/Omnes Semibold.ttf') format('truetype');
 }
+
+.custom_slider{
+  outline: none;
+  height: 20px;
+  background: #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid #000000 ;
+  border-color: #000000;
+  overflow: hidden;
+  width: 85%;
+}
+
+.custom_slider::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  width: 0px;
+  height: 20px;
+  box-shadow: -400px 0 0 400px rgba(0, 0, 0); /* Using percentage */
+  cursor: pointer;
+}

@@ -33,6 +33,7 @@ const Section9 = () => {
   };
 
   // Calculate dollars and rupees value based on the coin amount and phase price
+
   useEffect(() => {
     const dollarsAmount =
       parseFloat(coinAmount) * getPhasePrice(coinPhase) || 0;
@@ -41,18 +42,26 @@ const Section9 = () => {
   }, [coinAmount, coinPhase]);
 
   // Function to get the price per coin for a given phase
+  
   const getPhasePrice = (phase) => {
     switch (phase) {
+      case 0:
+        return 0.000;
       case 1:
         return 0.005;
+
       case 2:
         return 0.006;
+
       case 3:
         return 0.0072;
+
       case 4:
         return 0.0085;
+
       case 5:
         return 0.01;
+
       default:
         return 0.005;
     }
@@ -111,16 +120,16 @@ const Section9 = () => {
 
           <div className="flex flex-col w-full pt-8">
             <h3 className="text-[#667CC1] font-bold text-start">
-              And the token price reaches: {getPhasePrice(coinPhase)}
+              And the token price reaches: {getPhasePrice(coinPhase)}$
             </h3>
             <div className="flex items-start justify-between mt-4 mb-8">
               <input
                 type="range"
-                min={1}
+                min={0}
                 max={5}
                 value={coinPhase}
                 onChange={handlePhaseChange}
-                className="custom-slider w-[80%] h-[30px] rounded-full "
+                className="custom_slider appearance-none mt-[1px] "
               />
               <div className="text-gray-800 text-base font-omnes">
                 Phase {coinPhase}
