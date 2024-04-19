@@ -131,7 +131,7 @@ const Section9 = () => {
                 onChange={handlePhaseChange}
                 className="custom_slider appearance-none mt-[1px] "
               />
-              <div className="text-gray-800 text-base font-omnes">
+              <div className="text-gray-800 md:text-base text-sm pl-2 font-omnes">
                 Phase {coinPhase}
               </div>
             </div>
