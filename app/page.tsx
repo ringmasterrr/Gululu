@@ -1,20 +1,20 @@
 import "./globals.css";
 import Header from "@/components/header/Header"
-import Section1 from "@/components/pages/section1"
-import Section2 from "@/components/pages/section2"
-import Section3 from "@/components/pages/section3"
-import Section4 from "@/components/pages/section4"
-import Section5 from "@/components/pages/section5"
-import Section6 from "@/components/pages/section6"
-import Section7 from "@/components/pages/section7";
-import Section8 from "@/components/pages/section8";
-import Section9 from "@/components/pages/section9";
-import Section10 from "@/components/pages/section10";
+import Section1 from "@/components/pages/Hero"
+import Section2 from "@/components/pages/SubHero"
+import Section3 from "@/components/pages/FeaturedIn"
+import Section4 from "@/components/pages/Roadmap"
+import Section5 from "@/components/pages/Referral";
+import Section6 from "@/components/pages/Tokenomics";
+import Section7 from "@/components/pages/BuyMe"
+import Section8 from "@/components/pages/BuyMe2"
+import Section9 from "@/components/pages/RewardsCalculator";
+import Section10 from "@/components/footer/Footer";
 
 
 export default function Home() {
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden ">
     <Header/>
     <Section1/>
     <Section2/>

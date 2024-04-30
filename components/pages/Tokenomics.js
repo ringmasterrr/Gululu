@@ -3,7 +3,7 @@ import React from "react";
 
 const Section6 = () => {
   return (
-    <div className="relative flex flex-col items-center bg-[#CFEEFF] h-full pt-14 pb-8">
+    <div className="relative flex flex-col items-center bg-[#CFEEFF] h-full pt-14 pb-8 ">
       <div className="md:text-5xl text-3xl text-center font-omnes py-4 ">Tokenomics</div>
       <div className="md:text-xl text-base font-semibold text-center font-omnesreg">
         <p className="pb-3">

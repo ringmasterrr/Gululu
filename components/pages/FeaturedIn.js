@@ -3,7 +3,7 @@ import React from "react";
 
 const Section3 = () => {
   return (
-    <div className="relative bg-[#FFC67D] py-20 flex flex-col items-center justify-center">
+    <div className="relative bg-[#FFC67D] py-20 flex flex-col items-center justify-center ">
     <Image
           src={"/bone4.svg"}
           alt="paw"

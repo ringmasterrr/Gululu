@@ -4,7 +4,7 @@ import Countdown from "../Countdown";
 
 const Section1 = () => {
   return (
-    <div className="relative flex flex-wrap bg-[#F7E8D5] sm:px-8 px-4  pb-14 pt-10 md:pt-0 justify-center">
+    <div className="relative flex flex-wrap bg-[#F7E8D5] sm:px-8 px-4  pb-14 pt-10 md:pt-0 justify-center ">
       <div className=" relative flex flex-col xl:max-w-[50%] w-10/12 ">
         <Image
           src={"/sec1doge.png"}
