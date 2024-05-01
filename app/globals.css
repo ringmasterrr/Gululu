@@ -76,7 +76,7 @@
 
 .custom_slider::-webkit-slider-thumb{
   -webkit-appearance: none;
-  width: 100px;
+  width: 60px;
   height: 20px;
   box-shadow: -400px 0 0 400px rgba(0, 0, 0); /* Using percentage */
   cursor: pointer;
