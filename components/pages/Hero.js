@@ -4,35 +4,14 @@ import Countdown from "../Countdown";
 
 const Section1 = () => {
   return (
-    <div className="relative flex flex-wrap bg-[#F7E8D5] sm:px-8 px-4  pb-14 pt-10 md:pt-0 justify-center ">
-      <div className=" relative flex flex-col xl:max-w-[50%] w-10/12 ">
+    <div className="relative flex flex-wrap bg-[#F7E8D5] sm:px-8 px-4  pb-14 pt-10 md:pt-0 justify-center">
+      <div className=" relative flex flex-col xl:max-w-[50%] w-10/12 items-center justify-center ">
         <Image
           src={"/sec1doge.png"}
           alt="doge"
           height={1500}
           width={1500}
           className="w-[809px] pt-11 pb-5 xl:ml-14"
-        />
-        <Image
-          src={"/Star1.svg"}
-          alt="paw"
-          height={500}
-          width={500}
-          className=" absolute w-10 left-32 bottom-[27rem]  "
-        />
-        <Image
-          src={"/Star3.svg"}
-          alt="paw"
-          height={500}
-          width={500}
-          className=" absolute md:w-[5rem] w-[3rem] left-[92%] top-[10%] "
-        />
-        <Image
-          src={"/Star4.svg"}
-          alt="paw"
-          height={500}
-          width={500}
-          className=" absolute w-[3.5rem] left-[97%] top-[50%] "
         />
         <div>
           <div className="lg:pl-24">
@@ -42,7 +21,7 @@ const Section1 = () => {
                 alt="paw"
                 height={500}
                 width={500}
-                className=" absolute sm:w-20 w-14 sm:-left-0 -left-14 sm:top-0 top-8 "
+                className=" absolute sm:w-20 w-14 2xl:right-[30rem] xl:right-[28rem] right-[30rem] sm:top-0 top-8 "
               />
               <h1 className="md:text-[3.5rem] sm:text-5xl text-[2.3rem] text-center font-omnesblack sm:pb-7 sm:leading-[4.7rem]">
                 HI, MY NAME IS <br /> GULULU
@@ -55,8 +34,8 @@ const Section1 = () => {
           </div>
         </div>
       </div>
-      <div className="relative flex flex-col xl:max-w-[48%] w-full items-center justify-center pt-16 xl:ml-5 ml-0 ">
-        <div className="bg-[#CFEEFF] rounded-3xl md:w-10/12 w-[97%] pt-20 pb-10 z-10 ">
+      <div className="relative flex flex-col xl:max-w-[48%] w-full items-center justify-center pt-16 ml-0 ">
+        <div className="bg-[#CFEEFF] rounded-3xl md:w-[78%] w-[97%] pt-20 pb-10 z-10 ">
           <div className="flex flex-col justify-between ">
             <div>
               <h3 className="sm:px-24 px-4 font-omnes text-center leading-7 text-2xl ">
@@ -81,12 +60,12 @@ const Section1 = () => {
                 </h3>
                 <Image src={"/i.svg"} alt="i" width={22} height={22}  className=" w-7"/>
               </div>
-              <div className="flex items-center justify-center gap-5">
-                <div className="border-b-4 border-black w-48 "></div>
-                <h3 className="text-center text-xl font-omnes my-6">
+              <div className="flex items-center justify-between 2xl:gap-5 gap-2 px-4">
+                <div className="border-b-4 border-black 2xl:w-40 w-32 "></div>
+                <h3 className="text-center 2xl:text-lg  font-omnes my-6">
                   1 MEME20 = $0.00022
                 </h3>
-                <div className="border-b-4 border-black w-48 "></div>
+                <div className="border-b-4 border-black 2xl:w-40 w-32 "></div>
               </div>
               <div className="flex md:flex-row flex-wrap md:gap-32 gap-8 items-center justify-center mx-4">
               <div className="flex gap-2 sm:text-sm text-base font-bold"> <Image

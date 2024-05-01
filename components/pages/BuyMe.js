@@ -3,8 +3,8 @@ import React from "react";
 
 const Section7 = () => {
   return (
-    <div className="xl:flex ">
-      <div className="relative flex flex-col xl:w-[75rem] bg-black justify-start items-center lg:p-10  ">
+    <div className="xl:flex xl:min-h-[60rem] ">
+      <div className="relative flex flex-col xl:w-[65rem] bg-black justify-start items-center lg:p-10  ">
         <div className="flex  text-white flex-col items-start justify-start xl:w-[60%] xl:mt-24 xl:p-0 sm:p-28 p-12 ">
           <h3 className=" font-omnesblack text-white md:text-[4.5rem] text-3xl  uppercase leading-[5rem] pb-14">
             Buy me GULULU

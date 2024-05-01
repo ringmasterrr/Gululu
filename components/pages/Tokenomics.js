@@ -3,7 +3,7 @@ import React from "react";
 
 const Section6 = () => {
   return (
-    <div className="relative flex flex-col items-center bg-[#CFEEFF] h-full pt-14 pb-8 ">
+    <div className="relative flex flex-col items-center bg-[#CFEEFF] h-full pt-14 pb-40 ">
       <div className="md:text-5xl text-3xl text-center font-omnes py-4 ">Tokenomics</div>
       <div className="md:text-xl text-base font-semibold text-center font-omnesreg">
         <p className="pb-3">
@@ -15,7 +15,7 @@ const Section6 = () => {
           0x2541A36BE4cD39286ED61a3E6AFC2307609d6
         </p>
       </div>
-      <div className="relative flex flex-wrap-reverse bg-[#FFCBBF] mt-14 rounded-[1.25rem] w-[90%] items-center justify-center py-10 px-10 ">
+      <div className="relative flex flex-wrap-reverse bg-[#FFCBBF] mt-14 rounded-[1.25rem] w-[80%] items-center justify-center py-10 px-10 ">
         <div className="flex items-center justify-center w-1/2">
           <Image
             src={"/dawg.png"}
@@ -26,7 +26,7 @@ const Section6 = () => {
           />
         </div>
 
-        <div className="flex flex-col items-start py-20 justify-between">
+        <div className="flex flex-col items-start py-20 justify-between gap-10">
           <Image
             src={"/tokenomics.svg"}
             alt="dawg"
@@ -64,7 +64,7 @@ const Section6 = () => {
           alt="i"
           width={300}
           height={300}
-          className="absolute w-[10rem] left-[90rem] -top-[7.8rem] xl:block hidden"
+          className="absolute w-[10rem] right-[2rem] -top-[7.8rem] xl:block hidden"
         />
 
         <Image
@@ -105,7 +105,7 @@ const Section6 = () => {
         alt="coin"
         height={400}
         width={400}
-        className="absolute top-[7rem] left-[32rem] w-[4rem] xl:block hidden"
+        className="absolute top-[7rem] right-[85rem] w-[4rem] 2xl:block hidden "
       />
 
       <Image

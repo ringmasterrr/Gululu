@@ -1,12 +1,12 @@
 import Image from "next/image";
 import React from "react";
-import ReferralBox from "@/components/refferal";
+import ReferralBox from "../refferal";
 
 const Section5 = () => {
   return (
     <div className="flex flex-col items-center   bg-[#FFC67D] py-10 ">
       <div className="text-5xl text-center font-omnes py-5">REFERRAL</div>
-      <div className="relative text-xl font-semibold text-center font-omnesreg xl:px-[20rem] px-4">
+      <div className="relative text-xl font-semibold text-center font-omnesreg xl:px-[20rem] px-[10rem] px-4">
         <p>
           GULULU offers a new passive rewards opportunity to the meme coin
           scene but could also benefit from token price appreciation. GULULU has
@@ -18,14 +18,14 @@ const Section5 = () => {
           alt="i"
           width={1000}
           height={1000}
-          className="absolute w-[7rem] right-[100rem] -top-[4rem]"
+          className="absolute w-[7rem] left-[10rem] -top-[4rem]"
         />
         <Image
           src={"/bone9.svg"}
           alt="i"
           width={1000}
           height={1000}
-          className="absolute w-[10rem] left-[105rem] -top-[4rem]"
+          className="absolute w-[10rem] right-[5rem] -top-[4rem]"
         />
       </div>
       <div className=" flex items-end justify-end lg:w-[70rem]">

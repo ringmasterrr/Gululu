@@ -58,7 +58,7 @@ const Header = () => {
               className="w-[34px] h-[34px] cursor-pointer"
             />
             <Image
-              src="/twitter-icon.svg"
+              src="/telegram.svg"
               alt="Instagram Icon"
               width={31}
               height={31}
