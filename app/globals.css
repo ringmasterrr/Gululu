@@ -71,14 +71,15 @@
   border: 1px solid #000000 ;
   border-color: #000000;
   overflow: hidden;
-  width: 85%;
+  width: 100%;
 }
 
 .custom_slider::-webkit-slider-thumb{
   -webkit-appearance: none;
-  width: 0px;
+  width: 100px;
   height: 20px;
   box-shadow: -400px 0 0 400px rgba(0, 0, 0); /* Using percentage */
   cursor: pointer;
+  background-color: rgba(0, 0, 0);
 }
 
