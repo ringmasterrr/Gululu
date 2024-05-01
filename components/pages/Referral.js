@@ -18,14 +18,14 @@ const Section5 = () => {
           alt="i"
           width={1000}
           height={1000}
-          className="absolute w-[7rem] left-[10rem] -top-[4rem]"
+          className="absolute w-[7rem] left-[10rem] -top-[4rem] xl:block hidden "
         />
         <Image
           src={"/bone9.svg"}
           alt="i"
           width={1000}
           height={1000}
-          className="absolute w-[10rem] right-[5rem] -top-[4rem]"
+          className="absolute w-[10rem] right-[5rem] -top-[4rem] xl:block hidden"
         />
       </div>
       <div className=" flex items-end justify-end lg:w-[70rem]">

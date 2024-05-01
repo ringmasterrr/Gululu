@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { FaFlag } from "react-icons/fa";
 import { GiUsaFlag } from "react-icons/gi";
@@ -72,12 +73,34 @@ const Section9 = () => {
   };
 
   return (
-    <div className="relative bg-[#FFC67D] flex flex-col items-center justify-center py-6">
+    <div className="relative bg-[#FFC67D] flex flex-col items-center justify-center py-12">
+     <Image
+        src={"/smolshiba2.svg"}
+        alt="auction"
+        height={500}
+        width={500}
+        className=" absolute h-auto w-auto -bottom-[6rem] left-0 z-0  2xl:block hidden"
+      />
+        <Image
+        src={"/bone12.svg"}
+        alt="auction"
+        height={500}
+        width={500}
+        className=" absolute h-auto w-auto -top-[5rem] left-10 z-0 "
+      />
+        <Image
+        src={"/smolpaw8.svg"}
+        alt="auction"
+        height={500}
+        width={500}
+        className=" absolute h-auto w-auto top-[25rem] right-[85%] z-0 2xl:block hidden"
+      />
+      
       <div className="text-5xl text-center font-omnes py-5 uppercase">
         Rewards Calculator
       </div>
 
-      <p className="text-xl font-semibold text-center font-omnesreg pb-[4rem] xl:px-[20rem] px-4">
+      <p className="text-xl font-semibold text-center font-omnesreg pb-[4rem] md:px-[20rem] px-4">
         GULULU offers a new passive rewards opportunity to the meme coin scene
         but could also benefit from token price appreciation. GULULU has a fully
         diluted starting market cap nearly 900 times cheaper than the original
