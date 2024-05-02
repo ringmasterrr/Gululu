@@ -105,9 +105,6 @@ const Section1 = () => {
               <button className="  font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block ">
                 BUY WITH BNB
               </button>
-              <button className="  font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block  ">
-                BUY NOW
-              </button>
             </div>
           </div>
         </div>
