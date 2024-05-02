@@ -102,7 +102,7 @@ const Section9 = () => {
         Rewards Calculator
       </div>
 
-      <p className="text-xl font-semibold text-center font-omnesreg pb-[4rem] xl:px-[15rem] px-[5rem]">
+      <p className="text-xl font-semibold text-center font-omnesreg pb-[4rem] xl:px-[15rem] px-[2rem]">
         GULULU offers a new passive rewards opportunity to the meme coin scene
         but could also benefit from token price appreciation. GULULU has a fully
         diluted starting market cap nearly 900 times cheaper than the original

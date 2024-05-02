@@ -5,7 +5,7 @@ const Section6 = () => {
   return (
     <div className="relative flex flex-col items-center bg-[#CFEEFF] h-full pt-14 pb-40 ">
       <div className="md:text-5xl text-3xl text-center font-omnes py-4 ">Tokenomics</div>
-      <div className="md:text-xl text-base font-semibold text-center font-omnesreg">
+      <div className="md:text-xl text-base font-semibold text-center font-omnesreg mx-5">
         <p className="pb-3">
           GULULU tokenomics include smart staking rewards, meaning you can earn
           right away.

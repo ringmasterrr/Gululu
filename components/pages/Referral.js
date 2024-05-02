@@ -6,7 +6,7 @@ const Section5 = () => {
   return (
     <div className="flex flex-col items-center   bg-[#FFC67D] py-10 ">
       <div className="text-5xl text-center font-omnes py-5">REFERRAL</div>
-      <div className="relative text-xl font-semibold text-center font-omnesreg xl:px-[20rem] px-[10rem] px-4">
+      <div className="relative text-xl font-semibold text-center font-omnesreg xl:px-[20rem] md:px-[10rem] px-4">
         <p>
           GULULU offers a new passive rewards opportunity to the meme coin
           scene but could also benefit from token price appreciation. GULULU has
