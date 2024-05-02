@@ -48,32 +48,13 @@ const Section1 = () => {
               <h3 className="text-center text-xl font-omnes font-bold my-6 ">
                 Till GULULU claim and launch
               </h3>
-              <h3 className="text-center text-2xl font-omnesblack leading-3 my-3">
-                Over $10M raised!
+              <h3 className="text-center text-3xl font-omnesblack leading-3 my-3">
+              <span className=" font-omnesreg font-bold ">Over</span> $10M <span className=" font-omnesreg font-bold ">raised!</span>
               </h3>
-              <div className="flex items-center justify-center sm:gap-6 gap-2 sm:ml-8 ml-2 ">
+              <div className="flex items-center justify-center sm:gap-6 gap-2  ml-2 my-4 ">
                 <h3 className="text-center text-xl font-omnes my-3 font-bold ">
-                  Your purchased GULULU = 0
+                  <span className="text-xl font-omnesreg font-bold ">Your purchased</span> GULULU = 0
                 </h3>
-                <Image
-                  src={"/i.svg"}
-                  alt="i"
-                  width={22}
-                  height={22}
-                  className=" w-7"
-                />
-              </div>
-              <div className="flex items-center justify-center sm:gap-6 gap-2 sm:ml-8 ml-2">
-                <h3 className="text-center text-xl font-omnes my-1 font-bold ">
-                  Your stakeable GULULU = 0
-                </h3>
-                <Image
-                  src={"/i.svg"}
-                  alt="i"
-                  width={22}
-                  height={22}
-                  className=" w-7"
-                />
               </div>
               <div className="flex items-center justify-between 2xl:gap-5 gap-2 px-4">
                 <div className="border-b-4 border-black 2xl:w-40 w-32 "></div>
