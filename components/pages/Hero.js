@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import React from "react";
 import Countdown from "../Countdown";
+import Dropp from "./dropdown";
 
 const Section1 = () => {
   return (
@@ -52,13 +55,25 @@ const Section1 = () => {
                 <h3 className="text-center text-xl font-omnes my-3 font-bold ">
                   Your purchased GULULU = 0
                 </h3>
-                <Image src={"/i.svg"} alt="i" width={22} height={22} className=" w-7"/>
+                <Image
+                  src={"/i.svg"}
+                  alt="i"
+                  width={22}
+                  height={22}
+                  className=" w-7"
+                />
               </div>
               <div className="flex items-center justify-center sm:gap-6 gap-2 sm:ml-8 ml-2">
                 <h3 className="text-center text-xl font-omnes my-1 font-bold ">
                   Your stakeable GULULU = 0
                 </h3>
-                <Image src={"/i.svg"} alt="i" width={22} height={22}  className=" w-7"/>
+                <Image
+                  src={"/i.svg"}
+                  alt="i"
+                  width={22}
+                  height={22}
+                  className=" w-7"
+                />
               </div>
               <div className="flex items-center justify-between 2xl:gap-5 gap-2 px-4">
                 <div className="border-b-4 border-black 2xl:w-40 w-32 "></div>
@@ -67,25 +82,45 @@ const Section1 = () => {
                 </h3>
                 <div className="border-b-4 border-black 2xl:w-40 w-32 "></div>
               </div>
+              <div className="text-center pt-2 pb-6 text-xl font-extrabold">Wallet Balance</div>
               <div className="flex md:flex-row flex-wrap md:gap-32 gap-8 items-center justify-center mx-4">
-              <div className="flex gap-2 sm:text-sm text-base font-bold"> <Image
-                  src={"/sol.svg"}
-                  alt="i"
-                  width={500}
-                  height={100}
-                  className="w-6 h-6 "
-                /> SOL</div>
-               
-               <div className="flex gap-2 sm:text-sm text-base font-bold"> <Image
-                  src={"/usdt.svg"}
-                  alt="i"
-                  width={500}
-                  height={100}
-                  className="w-6 h-6 "
-                /> USDT</div>
+                <div className="flex gap-2 sm:text-sm text-base font-bold">
+                  
+                  <Image
+                    src={"/sol.svg"}
+                    alt="i"
+                    width={500}
+                    height={100}
+                    className="w-6 h-6 "
+                  />
+                  SOL: 100
+                </div>
+
+                <div className="flex gap-2 sm:text-sm text-base font-bold">
+                
+                  <Image
+                    src={"/usdt.svg"}
+                    alt="i"
+                    width={500}
+                    height={100}
+                    className="w-6 h-6 "
+                  />
+                  USDT: 100
+                </div>
+              </div>
+              <div className="flex md:flex-row flex-wrap  gap-8  mx-4 py-8 text-black items-end justify-center">
+
+                <div className=" text-black font-bold flex flex-col items-center justify-center text-center gap-3">Your Invested Amount <input type="text" placeholder="$100" className="text-center rounded-full w-40 p-4 placeholder-black text-base font-black font-omnes border border-black"></input></div>
+
+                <div className="text-black font-bold flex flex-col items-center justify-center text-center gap-3">
+                <h3>Choose Currency</h3>
+                  <Dropp />
+                </div>
+
+                <div className="  text-black font-bold flex flex-col items-center justify-center text-center gap-3">You Get <input type="text" placeholder="$100" className="text-center rounded-full w-40 p-4 bg-[#FFC67D] placeholder-black text-base font-black font-omnes border "></input></div>
               </div>
             </div>
-            <div className="flex sm:flex-row flex-col items-center justify-center gap-7 sm:mt-36 mt-24">
+            <div className="flex sm:flex-row flex-col items-center justify-center gap-7 sm:mt-32 mt-20">
               <button className="  font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block ">
                 BUY WITH BNB
               </button>
