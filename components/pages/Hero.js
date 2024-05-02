@@ -14,7 +14,7 @@ const Section1 = () => {
           alt="doge"
           height={1500}
           width={1500}
-          className="w-[809px] pt-11 pb-5 xl:ml-14"
+          className="w-[809px] pb-5 xl:ml-14"
         />
         <div>
           <div className="lg:pl-24">
@@ -51,19 +51,19 @@ const Section1 = () => {
               <h3 className="text-center text-3xl font-omnesblack leading-3 my-3">
               <span className=" font-omnesreg font-bold ">Over</span> $10M <span className=" font-omnesreg font-bold ">raised!</span>
               </h3>
-              <div className="flex items-center justify-center sm:gap-6 gap-2  ml-2 my-4 ">
+              <div className="flex items-center justify-center sm:gap-6 gap-2  ml-2 my-2 ">
                 <h3 className="text-center text-xl font-omnes my-3 font-bold ">
                   <span className="text-xl font-omnesreg font-bold ">Your purchased</span> GULULU = 0
                 </h3>
               </div>
               <div className="flex items-center justify-between 2xl:gap-5 gap-2 px-4">
                 <div className="border-b-4 border-black 2xl:w-40 xl:w-32 w-52 "></div>
-                <h3 className="text-center 2xl:text-lg  font-omnes my-6">
+                <h3 className="text-center 2xl:text-lg  font-omnes my-4">
                   1 MEME20 = $0.00022
                 </h3>
                 <div className="border-b-4 border-black 2xl:w-40 xl:w-32 w-52 "></div>
               </div>
-              <div className="text-center pt-2 pb-6 text-xl font-extrabold">Wallet Balance</div>
+              <div className="text-center pb-6 text-xl font-extrabold">Wallet Balance</div>
               <div className="flex md:flex-row flex-wrap md:gap-32 gap-8 items-center justify-center mx-4">
                 <div className="flex gap-2 sm:text-sm text-base font-bold">
                   
@@ -101,7 +101,7 @@ const Section1 = () => {
                 <div className="  text-black font-bold flex flex-col items-center justify-center text-center gap-3">You Get <input type="text" placeholder="$100" className="text-center rounded-full w-40 p-4 bg-[#FFC67D] placeholder-black text-base font-black font-omnes border "></input></div>
               </div>
             </div>
-            <div className="flex sm:flex-row flex-col items-center justify-center gap-7 sm:mt-32 mt-20">
+            <div className="flex sm:flex-row flex-col items-center justify-center gap-7 ">
               <button className="  font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block ">
                 BUY WITH BNB
               </button>
