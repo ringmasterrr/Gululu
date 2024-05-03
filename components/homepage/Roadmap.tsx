@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import RoadmapStages from "./RoadmapStages";
 
 const Decorations = ({ src, css }: { src: string; css: string }) => {
   return (
@@ -10,7 +9,20 @@ const Decorations = ({ src, css }: { src: string; css: string }) => {
   );
 };
 
-const Section4 = () => {
+const RoadmapStages = ({ stage, description }: { stage: number, description: string })  => {
+  return (
+      <div>
+        <h3 className="md:text-5xl text-4xl font-omnesblack uppercase pb-6">
+          Stage {stage}
+        </h3>
+        <p className="md:text-xl text-lg font-omnesreg font-semibold">
+          {description}
+        </p>        
+      </div>
+  );
+};
+
+const Roadmap = () => {
   return (
     <div className="bg-theme-peach">
       <div className="py-20 max-w-[1920px] mx-auto">
@@ -178,4 +190,4 @@ const Section4 = () => {
   );
 };
 
-export default Section4;
+export default Roadmap;
