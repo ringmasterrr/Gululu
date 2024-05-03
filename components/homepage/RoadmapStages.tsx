@@ -4,12 +4,12 @@ import React from "react";
 export const Decorations = ({ src, css }: { src: string; css: string }) => {
   return (
     <div>
-      <Image src={src} alt="paw" height={500} width={500} className={css} />
+      <Image src={src} alt="Decorations" height={500} width={500} className={css} />
     </div>
   );
 };
 
-export const RoadmapStages = ({
+export const RoadmapData = ({
   stage,
   description,
 }: {

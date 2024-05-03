@@ -4,7 +4,7 @@ import {  useState } from "react";
 
 
 
-export default function Dropp() {
+export default function SelectCurrency() {
   const [selectedItem, setSelectedItem] = useState({ text: "SOL", image: "/sol.svg" });
 
   const handleItemClick = ( {text}: any , {image}: any ) => {

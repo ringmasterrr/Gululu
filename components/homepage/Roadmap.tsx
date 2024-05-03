@@ -1,7 +1,5 @@
-import Image from "next/image";
 import React from "react";
 import { RoadmapData, Decorations } from "./RoadmapStages";
-
 
 
 const Roadmap = () => {
