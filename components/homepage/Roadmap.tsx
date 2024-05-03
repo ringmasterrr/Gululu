@@ -9,16 +9,22 @@ const Decorations = ({ src, css }: { src: string; css: string }) => {
   );
 };
 
-const RoadmapStages = ({ stage, description }: { stage: number, description: string })  => {
+const RoadmapStages = ({
+  stage,
+  description,
+}: {
+  stage: number;
+  description: string;
+}) => {
   return (
-      <div>
-        <h3 className="md:text-5xl text-4xl font-omnesblack uppercase pb-6">
-          Stage {stage}
-        </h3>
-        <p className="md:text-xl text-lg font-omnesreg font-semibold">
-          {description}
-        </p>        
-      </div>
+    <div>
+      <h3 className="md:text-5xl text-4xl font-omnesblack uppercase pb-6">
+        Stage {stage}
+      </h3>
+      <p className="md:text-xl text-lg font-omnesreg font-semibold">
+        {description}
+      </p>
+    </div>
   );
 };
 
@@ -28,10 +34,9 @@ const Roadmap = () => {
       <div className="py-20 max-w-[1920px] mx-auto">
         <div className="text-5xl text-center font-omnes pb-28">Roadmap</div>
         <div className="flex flex-col sm:gap-32 gap-48 py-12 ">
+          {/* Section 1 */}
           <div className="relative flex items-end justify-center xl:justify-start xl:ml-[15%] 2xl:ml-[20rem] sm:ml-12 mx-4 md:h-[30rem]">
             <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] sm:p-16 p-8 z-10">
-              {/* Section 1 */}
-
               <RoadmapStages
                 stage={1}
                 description="Utilising smart contracts powered by Ethereum, GULULU is much
