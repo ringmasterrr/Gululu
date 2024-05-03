@@ -1,32 +1,8 @@
 import Image from "next/image";
 import React from "react";
+import { RoadmapData, Decorations } from "./RoadmapStages";
 
-const Decorations = ({ src, css }: { src: string; css: string }) => {
-  return (
-    <div>
-      <Image src={src} alt="paw" height={500} width={500} className={css} />
-    </div>
-  );
-};
 
-const RoadmapStages = ({
-  stage,
-  description,
-}: {
-  stage: number;
-  description: string;
-}) => {
-  return (
-    <div>
-      <h3 className="md:text-5xl text-4xl font-omnesblack uppercase pb-6">
-        Stage {stage}
-      </h3>
-      <p className="md:text-xl text-lg font-omnesreg font-semibold">
-        {description}
-      </p>
-    </div>
-  );
-};
 
 const Roadmap = () => {
   return (
@@ -37,7 +13,7 @@ const Roadmap = () => {
           {/* Section 1 */}
           <div className="relative flex items-end justify-center xl:justify-start xl:ml-[15%] 2xl:ml-[20rem] sm:ml-12 mx-4 md:h-[30rem]">
             <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] sm:p-16 p-8 z-10">
-              <RoadmapStages
+              <RoadmapData
                 stage={1}
                 description="Utilising smart contracts powered by Ethereum, GULULU is much
                 more than a meme coin and brings passive earning potential to
@@ -79,7 +55,7 @@ const Roadmap = () => {
           {/* Section 2 */}
           <div className="relative flex items-end justify-center xl:justify-end xl:mr-[6%] 2xl:mr-[14rem] sm:mr-12 mx-4 md:h-[30rem]">
             <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] sm:p-16 p-8 z-10">
-              <RoadmapStages
+              <RoadmapData
                 stage={2}
                 description="Utilising smart contracts powered by Ethereum, GULULU is much
                 more than a meme coin and brings passive earning potential to
@@ -121,7 +97,7 @@ const Roadmap = () => {
           {/* Section 3 */}
           <div className="relative flex items-end justify-center xl:justify-start xl:ml-[15%] 2xl:ml-[20rem] mx-4 md:h-[30rem]">
             <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] sm:p-16 p-8 z-10">
-              <RoadmapStages
+              <RoadmapData
                 stage={3}
                 description="Utilising smart contracts powered by Ethereum, GULULU is much
                 more than a meme coin and brings passive earning potential to
@@ -159,7 +135,7 @@ const Roadmap = () => {
           {/* Section 4 */}
           <div className="relative flex items-end justify-center xl:justify-end xl:mr-[6%] 2xl:mr-[14rem] sm:mr-12 mx-4 md:h-[30rem]">
             <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] sm:p-16 p-8 z-10">
-              <RoadmapStages
+              <RoadmapData
                 stage={4}
                 description="Utilising smart contracts powered by Ethereum, GULULU is much
                 more than a meme coin and brings passive earning potential to
