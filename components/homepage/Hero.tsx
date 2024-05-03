@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React from "react";
 import Countdown from "../Countdown";
-import Dropp from "./dropdown";
+import SelectCurrency from "../dropdown";
 
 const Section1 = () => {
   return (
@@ -95,7 +95,7 @@ const Section1 = () => {
 
                 <div className="text-black font-bold flex flex-col items-center justify-center text-center gap-3">
                 <h3>Choose Currency</h3>
-                  <Dropp />
+                  <SelectCurrency />
                 </div>
 
                 <div className="  text-black font-bold flex flex-col items-center justify-center text-center gap-3">You Get <input type="text" placeholder="$100" className="text-center rounded-full w-40 p-4 bg-[#FFC67D] placeholder-black text-base font-black font-omnes border "></input></div>
