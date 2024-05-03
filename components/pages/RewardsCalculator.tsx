@@ -1,67 +1,56 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
-import { FaFlag } from "react-icons/fa";
-import { GiUsaFlag } from "react-icons/gi";
+import React, { useState, useEffect, ChangeEvent } from "react";
 
-const Section9 = () => {
-  const [coinAmount, setCoinAmount] = useState("1");
-  const [dollarsValue, setDollarsValue] = useState("");
-  const [rupeesValue, setRupeesValue] = useState("");
-  const [coinPhase, setCoinPhase] = useState(10);
-  const [currency, setCurrency] = useState("USD");
+interface PhasePrices {
+  [key: number]: number;
+}
 
-  // Function to handle input change and calculate dollars value
-  const handleInputChange = (e) => {
-    const inputValue = e.target.value;
+const Section9: React.FC = () => {
+  const [coinAmount, setCoinAmount] = useState<string>("1");
+  const [dollarsValue, setDollarsValue] = useState<string>("");
+  const [rupeesValue, setRupeesValue] = useState<string>("");
+  const [coinPhase, setCoinPhase] = useState<number>(10);
+  const [currency, setCurrency] = useState<string>("USD");
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    const inputValue: string = e.target.value;
     setCoinAmount(inputValue);
-    // Calculate the value of dollars and rupees when input changes
-    const dollarsAmount =
+    const dollarsAmount: number =
       parseFloat(inputValue) * getPhasePrice(coinPhase) || 0;
-    setDollarsValue(dollarsAmount.toFixed(2)); // Round to 2 decimal places
-    setRupeesValue((dollarsAmount * 83).toFixed(2)); // Convert dollars to rupees
+    setDollarsValue(dollarsAmount.toFixed(2));
+    setRupeesValue((dollarsAmount * 83).toFixed(2));
   };
 
-  // Function to handle phase change and update coin phase
-  const handlePhaseChange = (e) => {
-    const newPhase = parseFloat(e.target.value);
+  const handlePhaseChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    const newPhase: number = parseFloat(e.target.value);
     setCoinPhase(newPhase);
-    // Calculate the phase price based on the slider value
-    const phasePrice = 0.005 + (newPhase - 1) * 0.0001;
-    // Recalculate dollars and rupees value when phase changes
-    const dollarsAmount = parseFloat(coinAmount) * phasePrice || 0;
-    setDollarsValue(dollarsAmount.toFixed(2)); // Round to 2 decimal places
-    setRupeesValue((dollarsAmount * 83).toFixed(2)); // Convert dollars to rupees
+    const phasePrice: number = 0.005 + (newPhase - 1) * 0.0001;
+    const dollarsAmount: number = parseFloat(coinAmount) * phasePrice || 0;
+    setDollarsValue(dollarsAmount.toFixed(2));
+    setRupeesValue((dollarsAmount * 83).toFixed(2));
   };
-
-  // Calculate dollars and rupees value based on the coin amount and phase price
 
   useEffect(() => {
-    const dollarsAmount =
+    const dollarsAmount: number =
       parseFloat(coinAmount) * getPhasePrice(coinPhase) || 0;
-    setDollarsValue(dollarsAmount.toFixed(2)); // Round to 2 decimal places
-    setRupeesValue((dollarsAmount * 83).toFixed(2)); // Convert dollars to rupees
+    setDollarsValue(dollarsAmount.toFixed(2));
+    setRupeesValue((dollarsAmount * 83).toFixed(2));
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [coinAmount, coinPhase]);
 
-  // Function to get the price per coin for a given phase
-
-  const getPhasePrice = (phase) => {
-    const currentPhase = Math.floor(phase / 10) * 10;
-    const nextPhase = currentPhase + 10;
-  
-    // Calculate the phase price dynamically based on current and next phase
-    const currentPrice = phasePrices[currentPhase] || 0;
-    const nextPrice = phasePrices[nextPhase] || 0;
-  
-    const phaseDiff = phase - currentPhase;
-    const priceDiff = nextPrice - currentPrice;
-  
+  const getPhasePrice = (phase: number): number => {
+    const currentPhase: number = Math.floor(phase / 10) * 10;
+    const nextPhase: number = currentPhase + 10;
+    const currentPrice: number = phasePrices[currentPhase] || 0;
+    const nextPrice: number = phasePrices[nextPhase] || 0;
+    const phaseDiff: number = phase - currentPhase;
+    const priceDiff: number = nextPrice - currentPrice;
     return currentPrice + (priceDiff / 10) * phaseDiff;
   };
-  
 
-  const phasePrices = {
+  const phasePrices: PhasePrices = {
     0: 0.0,
     10: 0.005,
     20: 0.006,
@@ -70,7 +59,7 @@ const Section9 = () => {
     50: 0.01,
   };
 
-  const handleCurrencyChange = (event) => {
+  const handleCurrencyChange = (event: ChangeEvent<HTMLSelectElement>): void => {
     setCurrency(event.target.value);
   };
 
@@ -126,8 +115,8 @@ const Section9 = () => {
               </select>
               <h2>
                 {currency === "USD"
-                  ? `${(0.005 * coinAmount).toFixed(2)}`
-                  : `${(0.005 * 83 * coinAmount).toFixed(2)}`}
+                  ? `${(0.005 * parseFloat(coinAmount)).toFixed(2)}`
+                  : `${(0.005 * 83 * parseFloat(coinAmount)).toFixed(2)}`}
               </h2>
             </div>
           </div>

@@ -101,7 +101,7 @@ const Section1 = () => {
                 <div className="  text-black font-bold flex flex-col items-center justify-center text-center gap-3">You Get <input type="text" placeholder="$100" className="text-center rounded-full w-40 p-4 bg-[#FFC67D] placeholder-black text-base font-black font-omnes border "></input></div>
               </div>
             </div>
-            <div className="flex sm:flex-row flex-col items-center justify-center gap-7 ">
+            <div className="flex sm:flex-row flex-col items-center justify-center gap-7 mt-14 ">
               <button className="  font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block ">
                 BUY WITH BNB
               </button>
