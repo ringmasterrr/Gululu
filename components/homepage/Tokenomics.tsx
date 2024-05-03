@@ -1,10 +1,21 @@
 import Image from "next/image";
 import React from "react";
+import { Decorations } from "./RoadmapStages";
+
+const Tokenomicslist = ({ text }: { text: string }) => {
+  return (
+    <h3 className="text-black font-omnesreg font-semibold text-xl sm:text-2xl">
+      {text}
+    </h3>
+  );
+};
 
 const Section6 = () => {
   return (
     <div className="relative flex flex-col items-center bg-[#CFEEFF] h-full pt-14 pb-40 ">
-      <div className="md:text-5xl text-3xl text-center font-omnes py-4 ">Tokenomics</div>
+      <div className="md:text-5xl text-3xl text-center font-omnes py-4 ">
+        Tokenomics
+      </div>
       <div className="md:text-xl text-base font-semibold text-center font-omnesreg mx-5">
         <p className="pb-3">
           GULULU tokenomics include smart staking rewards, meaning you can earn
@@ -38,98 +49,56 @@ const Section6 = () => {
             <h3 className="text-[#667CC1] font-omnes sm:text-5xl text-3xl uppercase">
               $GULULU Tokenomics
             </h3>
-            <h3 className="text-black font-omnesreg font-semibold text-xl sm:text-2xl">
-              Total Supply 1 billion
-            </h3>
-            <h3 className="text-black font-omnesreg font-semibold text-xl sm:text-2xl">
-              50% Tokens to Liquidity Pool
-            </h3>
-            <h3 className="text-black font-omnesreg font-semibold text-xl sm:text-2xl">
-              35% Tokens to Presale Contributors
-            </h3>
-            <h3 className="text-black font-omnesreg font-semibold text-xl sm:text-2xl">
-              5% Tokens for CEX
-            </h3>
-            <h3 className="text-black font-omnesreg font-semibold text-xl sm:text-2xl">
-              5% Tokens for Marketing
-            </h3>
-            <h3 className="text-black font-omnesreg font-semibold text-xl sm:text-2xl">
-              5% Tokens for Team and Advisors
-            </h3>
+            <Tokenomicslist text="Total Supply 1 billion" />
+            <Tokenomicslist text="50% Tokens to Liquidity Pool" />
+            <Tokenomicslist text="35% Tokens to Presale Contributors" />
+            <Tokenomicslist text="5% Tokens for CEX" />
+            <Tokenomicslist text="5% Tokens for Marketing" />
+            <Tokenomicslist text="5% Tokens for Team and Advisors" />
           </div>
         </div>
 
-        <Image
-          src={"/coin1.svg"}
-          alt="i"
-          width={300}
-          height={300}
-          className="absolute w-[10rem] right-[2rem] -top-[7.8rem] xl:block hidden"
+        <Decorations
+          src="/coin1.svg"
+          css="absolute w-[10rem] right-[2rem] -top-[7.8rem] xl:block hidden"
         />
-
-        <Image
-          src={"/minipaw.svg"}
-          alt="i"
-          width={300}
-          height={300}
-          className="absolute w-[4rem] left-[13rem] top-[4rem] xl:block hidden"
+        <Decorations
+          src="/minipaw.svg"
+          css="absolute w-[4rem] left-[13rem] top-[4rem] xl:block hidden"
         />
-
-        <Image
-          src={"/smolerpaw.svg"}
-          alt="i"
-          width={300}
-          height={300}
-          className="absolute w-[6rem] left-[4rem] bottom-[2rem] xl:block hidden "
+        <Decorations
+          src="/smolerpaw.svg"
+          css="absolute w-[6rem] left-[4rem] bottom-[2rem] xl:block hidden "
         />
-
-        <Image
-          src={"/Star13.svg"}
-          alt="i"
-          width={300}
-          height={300}
-          className="absolute w-[5rem] right-[4rem] bottom-[2rem] xl:block hidden"
+        <Decorations
+          src="/Star13.svg"
+          css="absolute w-[5rem] right-[4rem] bottom-[2rem] xl:block hidden"
         />
       </div>
 
-      <Image
-        src={"/coin4.svg"}
-        alt="coin"
-        height={200}
-        width={200}
-        className="absolute top-20 left-16 h-auto w-auto xl:block hidden"
+      <Decorations
+        src="/coin4.svg"
+        css="absolute top-20 left-16 h-auto w-auto xl:block hidden"
       />
 
-      <Image
-        src={"/Star13.svg"}
-        alt="coin"
-        height={400}
-        width={400}
-        className="absolute top-[7rem] right-[85rem] w-[4rem] 2xl:block hidden "
+      <Decorations
+        src="/Star13.svg"
+        css="absolute top-[7rem] right-[85rem] w-[4rem] 2xl:block hidden "
       />
 
-      <Image
-        src={"/bone10.svg"}
-        alt="coin"
-        height={400}
-        width={400}
-        className="absolute -top-[5.8rem] right-[20rem] w-[13rem] xl:block hidden"
+      <Decorations
+        src="/bone10.svg"
+        css="absolute -top-[5.8rem] right-[20rem] w-[13rem] xl:block hidden"
       />
 
-      <Image
-        src={"/coin3.svg"}
-        alt="coin"
-        height={1600}
-        width={1600}
-        className="absolute -bottom-[2rem] left-[0rem] w-[13rem] xl:block hidden"
+      <Decorations
+        src="/coin3.svg"
+        css="absolute -bottom-[2rem] left-[0rem] w-[13rem] xl:block hidden"
       />
 
-      <Image
-        src={"/coin2.svg"}
-        alt="coin"
-        height={600}
-        width={600}
-        className="absolute bottom-[0.2rem] right-[2rem] w-[13rem] xl:block hidden"
+      <Decorations
+        src="/coin2.svg"
+        css="absolute bottom-[0.2rem] right-[2rem] w-[13rem] xl:block hidden"
       />
     </div>
   );
