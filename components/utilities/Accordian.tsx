@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import openIcon from "../public/close.svg";
-import closeIcon from "../public/open.svg";
+import openIcon from "../../public/close.svg";
+import closeIcon from "../../public/open.svg";
 
 interface AccordionProps {
   title: string;
