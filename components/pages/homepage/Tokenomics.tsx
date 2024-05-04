@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { Decorations } from "./RoadmapStages";
+import Decorations  from "../../ui/Decorations";
 
 const Tokenomicslist = ({ text }: { text: string }) => {
   return (

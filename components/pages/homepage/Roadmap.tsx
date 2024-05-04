@@ -1,5 +1,6 @@
 import React from "react";
-import { RoadmapData, Decorations } from "./RoadmapStages";
+import RoadmapData  from "./RoadmapStages";
+import Decorations from "@/components/ui/Decorations";
 
 
 const Roadmap = () => {

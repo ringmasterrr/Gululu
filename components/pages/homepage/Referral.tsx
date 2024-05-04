@@ -1,18 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import ReferralBox from "../../utilities/Refferal";
+import SocialIcon from "../../ui/Socials";
 
-const SocialIcon = ({ src }: any) => {
-  return (
-    <Image
-      src={src}
-      alt="SocialMediaIcon"
-      height={100}
-      width={100}
-      className="w-10"
-    />
-  );
-};
 
 const Section5 = () => {
   return (

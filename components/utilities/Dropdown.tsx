@@ -2,13 +2,13 @@ import { Menu } from "@headlessui/react";
 import Image from "next/image";
 import { useState } from "react";
 
-export default function SelectCurrency() {
+export default function Dropp() {
   const [selectedItem, setSelectedItem] = useState({
     text: "SOL",
     image: "/sol.svg",
   });
 
-  const handleItemClick = ({ text }: any, { image }: any) => {
+  const handleItemClick = (text: string, image: string) => {
     setSelectedItem({ text, image });
   };
 
@@ -20,39 +20,40 @@ export default function SelectCurrency() {
             <Image
               src={selectedItem.image}
               alt="icon"
-              width={100}
               height={100}
+              width={100}
               className="w-4 h-4"
             />
           )}
           {selectedItem.text}
+
           <Image
             src={"/arrowdown.svg"}
             alt="i"
             width={500}
             height={100}
-            className="w-3 h-3 "
+            className="w-4 h-4 "
           />
         </Menu.Button>
       </div>
 
-      <Menu.Items className="absolute top-[3.3rem] right-[0.7rem] items-center justify-center text-center mt-2 w-[inherit] origin-top-right divide-y divide-gray-400 rounded-xl border-slate-400 bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
-        <div>
+      <Menu.Items className="absolute top-[3.3rem] right-[0.7rem] items-center justify-center text-center mt-2 w-[inherit] origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
+        <div className="px-1 py-1 space-y-2">
           <Menu.Item>
             <div
-              className="flex items-center justify-center gap-2 hover:bg-slate-100 rounded-xl cursor-pointer w-32 text-base font-black font-omnes py-2"
+              className="flex items-center justify-center gap-2 hover:bg-slate-100 w-32 text-base font-black font-omnes cursor-pointer"
               onClick={() => handleItemClick("SOL", "/sol.svg")}
             >
-              <Image src="/sol.svg" alt="Solana" width={20} height={20} />
+              <Image src="/sol.svg" alt="Solana" width={24} height={24} />
               <h3>SOL</h3>
             </div>
           </Menu.Item>
           <Menu.Item>
             <div
-              className="flex items-center justify-center gap-2 hover:bg-slate-100 rounded-xl cursor-pointer w-32 text-base font-black font-omnes py-2"
+              className="flex items-center justify-center gap-2 hover:bg-slate-100 w-32 text-base font-black font-omnes cursor-pointer"
               onClick={() => handleItemClick("USDT", "/usdt.svg")}
             >
-              <Image src="/usdt.svg" alt="USDT" width={20} height={20} />
+              <Image src="/usdt.svg" alt="USDT" width={24} height={24} />
               <h3>USDT</h3>
             </div>
           </Menu.Item>
