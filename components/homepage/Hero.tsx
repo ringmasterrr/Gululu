@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import React from "react";
-import Countdown from "../Countdown";
-import SelectCurrency from "../Dropdown";
+import Countdown from "../utilities/Countdown";
+import SelectCurrency from "../utilities/Dropdown";
 
 const Section1 = () => {
   return (

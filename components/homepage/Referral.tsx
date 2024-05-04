@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import ReferralBox from "../Refferal";
+import ReferralBox from "../utilities/Refferal";
 
 const SocialIcon = ({ src }: any) => {
   return (
