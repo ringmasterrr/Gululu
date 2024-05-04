@@ -1,14 +1,14 @@
 import "./globals.css";
 import Header from "@/components/header/Header"
-import Section1 from "@/components/homepage/Hero"
-import Section2 from "@/components/homepage/SubHero"
-import Section3 from "@/components/homepage/FeaturedIn"
-import Section4 from "@/components/homepage/Roadmap"
-import Section5 from "@/components/homepage/Referral";
-import Section6 from "@/components/homepage/Tokenomics";
-import Section7 from "@/components/homepage/BuyMe"
-import Section8 from "@/components/homepage/BuyMe2"
-import Section9 from "@/components/homepage/RewardsCalculator";
+import Section1 from "@/components/pages/homepage/Hero"
+import Section2 from "@/components/pages/homepage/SubHero"
+import Section3 from "@/components/pages/homepage/FeaturedIn"
+import Section4 from "@/components/pages/homepage/Roadmap"
+import Section5 from "@/components/pages/homepage/Referral";
+import Section6 from "@/components/pages/homepage/Tokenomics";
+import Section7 from "@/components/pages/homepage/BuyMe"
+import Section8 from "@/components/pages/homepage/BuyMe2"
+import Section9 from "@/components/pages/homepage/RewardsCalculator";
 import Section10 from "@/components/footer/Footer";
 
 
