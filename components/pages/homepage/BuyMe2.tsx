@@ -1,3 +1,4 @@
+import Heading from "@/components/ui/Heading";
 import Image from "next/image";
 import React from "react";
 
@@ -5,10 +6,8 @@ const Section8 = () => {
   return (
     <div className="relative bg-[#F7E8D5] py-24 ">
       <div className="relative z-10">
-        <h3 className=" font-omnesblack text-black text-center text-[3.5rem] uppercase leading-[5rem] pb-14">
-          Buy me $GULULU
-        </h3>
-        <div className="flex flex-row flex-wrap items-center justify-center gap-9">
+        <Heading text="BUY ME $GULULU"/>
+        <div className="flex flex-row flex-wrap items-center justify-center gap-9 pt-2">
           <div className="flex flex-col items-start justify-start md:h-[34rem] bg-white rounded-md p-5">
             <div className="md:h-[25rem] md:w-[25rem] bg-[#FF933B] rounded-md rounded-br-[3rem] flex items-center justify-center ">
               <Image

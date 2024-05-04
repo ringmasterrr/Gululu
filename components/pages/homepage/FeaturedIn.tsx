@@ -1,3 +1,4 @@
+import Heading from "@/components/ui/Heading";
 import Image from "next/image";
 import React from "react";
 
@@ -23,7 +24,7 @@ const Section3 = () => {
         width={500}
         className=" absolute xl:w-60 w-32 right-52 xl:-top-36 -top-14 "
       />
-      <div className="text-5xl text-center font-omnes">Featured In</div>
+      <Heading text="Featured In" />
       <div className="flex flex-wrap items-center justify-evenly md:w-[70%] w-[85%] py-20 gap-16 ">
         <Logo src="/feature1.svg" />
         <Logo src="/feature2.svg" />

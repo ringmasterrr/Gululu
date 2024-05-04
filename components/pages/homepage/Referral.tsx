@@ -2,19 +2,21 @@ import Image from "next/image";
 import React from "react";
 import ReferralBox from "../../utilities/Refferal";
 import SocialIcon from "../../ui/Socials";
-
+import Heading from "@/components/ui/Heading";
+import Paragraph from "@/components/ui/Para";
 
 const Section5 = () => {
   return (
     <div className="flex flex-col items-center   bg-[#FFC67D] py-10 ">
-      <div className="text-5xl text-center font-omnes py-5">REFERRAL</div>
-      <div className="relative text-xl font-semibold text-center font-omnesreg xl:px-[20rem] md:px-[10rem] px-4">
-        <p>
-          GULULU offers a new passive rewards opportunity to the meme coin scene
-          but could also benefit from token price appreciation. GULULU has a
-          fully diluted starting market cap nearly 900 times cheaper than the
-          original Dogecoin.
-        </p>
+      <Heading text="REFERRAL" />
+      <div className="relative text-xl font-semibold text-center font-omnesreg xl:px-[20rem] md:px-[10rem] px-4 flex items-center justify-center">
+       
+        <Paragraph text="
+        GULULU offers a new passive rewards opportunity to the meme coin scene
+        but could also benefit from token price appreciation. GULULU has a fully
+        diluted starting market cap nearly 900 times cheaper than the original
+        Dogecoin." />
+      
         <Image
           src={"/smolpaw6.svg"}
           alt="i"

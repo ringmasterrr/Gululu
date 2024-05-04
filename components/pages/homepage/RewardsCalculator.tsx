@@ -1,5 +1,7 @@
 "use client";
 
+import Heading from "@/components/ui/Heading";
+import Paragraph from "@/components/ui/Para";
 import Image from "next/image";
 import React, { useState, useEffect, ChangeEvent } from "react";
 
@@ -37,7 +39,7 @@ const Section9: React.FC = () => {
       parseFloat(coinAmount) * getPhasePrice(coinPhase) || 0;
     setDollarsValue(dollarsAmount.toFixed(2));
     setRupeesValue((dollarsAmount * 83).toFixed(2));
-     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [coinAmount, coinPhase]);
 
   const getPhasePrice = (phase: number): number => {
@@ -59,7 +61,9 @@ const Section9: React.FC = () => {
     50: 0.01,
   };
 
-  const handleCurrencyChange = (event: ChangeEvent<HTMLSelectElement>): void => {
+  const handleCurrencyChange = (
+    event: ChangeEvent<HTMLSelectElement>
+  ): void => {
     setCurrency(event.target.value);
   };
 
@@ -87,16 +91,13 @@ const Section9: React.FC = () => {
         className=" absolute h-auto w-auto top-[25rem] right-[85%] z-0 2xl:block hidden"
       />
 
-      <div className="text-5xl text-center font-omnes py-5 uppercase">
-        Rewards Calculator
-      </div>
+      <Heading text="REWARDS CALCULATOR" />
 
-      <p className="text-xl font-semibold text-center font-omnesreg pb-[4rem] xl:px-[15rem] px-[2rem]">
+      <Paragraph text="
         GULULU offers a new passive rewards opportunity to the meme coin scene
         but could also benefit from token price appreciation. GULULU has a fully
         diluted starting market cap nearly 900 times cheaper than the original
-        Dogecoin.
-      </p>
+        Dogecoin." />
 
       <div className="bg-[#CFEEFF] lg:w-[62.5rem] w-[90%] rounded-3xl text-center py-10 flex flex-col items-center justify-center px-3">
         <h3 className="text-2xl font-omnes">Returns Calculator</h3>
@@ -130,7 +131,8 @@ const Section9: React.FC = () => {
 
           <div className="flex flex-col w-full pt-8">
             <h3 className="text-[#667CC1] font-bold text-start">
-              And the token price reaches: {getPhasePrice(coinPhase).toFixed(3)}$
+              And the token price reaches: {getPhasePrice(coinPhase).toFixed(3)}
+              $
             </h3>
             <div className="flex items-start justify-between mt-4 mb-8">
               <input

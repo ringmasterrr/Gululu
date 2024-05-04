@@ -1,6 +1,8 @@
 import Image from "next/image";
 import React from "react";
-import Decorations  from "../../ui/Decorations";
+import Decorations from "../../ui/Decorations";
+import Heading from "@/components/ui/Heading";
+import Paragraph from "@/components/ui/Para";
 
 const Tokenomicslist = ({ text }: { text: string }) => {
   return (
@@ -13,14 +15,10 @@ const Tokenomicslist = ({ text }: { text: string }) => {
 const Section6 = () => {
   return (
     <div className="relative flex flex-col items-center bg-[#CFEEFF] h-full pt-14 pb-40 ">
-      <div className="md:text-5xl text-3xl text-center font-omnes py-4 ">
-        Tokenomics
-      </div>
-      <div className="md:text-xl text-base font-semibold text-center font-omnesreg mx-5">
-        <p className="pb-3">
-          GULULU tokenomics include smart staking rewards, meaning you can earn
-          right away.
-        </p>
+      <Heading text="Tokenomics" />
+      <div className="md:text-xl text-base font-semibold text-center font-omnesreg mx-5 flex flex-col items-center justify-center ">
+      <Paragraph text="
+         GULULU tokenomics include smart staking rewards, meaning you can earn right away." />
         <p>GULULU Token Address:</p>
         <p className="font-omnes pt-1">
           0x2541A36BE4cD39286ED61a3E6AFC2307609d6
