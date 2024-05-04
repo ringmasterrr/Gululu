@@ -1,5 +1,5 @@
 import React from "react";
-import Accordion from "./accordian";
+import Accordion from "./Accordian";
 
 const FAQ = () => {
   return (

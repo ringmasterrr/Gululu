@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React from "react";
 import Countdown from "../Countdown";
-import SelectCurrency from "../dropdown";
+import SelectCurrency from "../Dropdown";
 
 const Section1 = () => {
   return (
