@@ -44,18 +44,12 @@ const Section1 = () => {
       tokenPda,
       true,
     );
-
-    //console.log("controle here")
   
     const destination = await getAssociatedTokenAddress(
       mint,
       //@ts-ignore
       payer
     );
-
-    // const balance = await program.provider.connection.getTokenAccountBalance(destination);
-    // let initialBalance = balance.value.uiAmount;
-    // console.log("Initial Balance of the user Token account:", initialBalance);
 
     const context = {
       mint,
