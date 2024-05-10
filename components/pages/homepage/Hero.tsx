@@ -1,11 +1,85 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import Countdown from "../../utilities/Countdown";
 import SelectCurrency from "../../utilities/Dropdown";
+import { AnchorProvider, BN, Program, web3 } from "@coral-xyz/anchor";
+import { ASSOCIATED_TOKEN_PROGRAM_ID, TOKEN_PROGRAM_ID, getAssociatedTokenAddress } from '@solana/spl-token';
+import { AnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
+import { IDL } from "@/components/utilities/idl";
+import { MEME_PROGRAM_ID } from "@/components/utilities/programConsts";
 
 const Section1 = () => {
+  const [mintAmount, setMintAmount] = useState(0);
+
+  const { connection } = useConnection();
+  const wallet = useWallet();
+  const payer = wallet.publicKey;
+
+  const provider = new AnchorProvider(connection, wallet as AnchorWallet, {
+    commitment: 'confirmed',
+  });
+
+  const program = new Program(IDL, MEME_PROGRAM_ID, provider);
+
+  const TOKEN_SEED = "token";
+  const MINT_SEED = "mint";
+
+
+  //@ts-ignore
+  const handleButtonClick: MouseEventHandler<HTMLButtonElement> = async(event) => {
+    const [mint] = await web3.PublicKey.findProgramAddressSync(
+      [Buffer.from(MINT_SEED)],
+      MEME_PROGRAM_ID
+    );
+  
+    const [tokenPda] = await web3.PublicKey.findProgramAddressSync(
+      [Buffer.from(TOKEN_SEED)],
+      MEME_PROGRAM_ID
+    );
+  
+    const fromAta = await getAssociatedTokenAddress(
+      mint,
+      tokenPda,
+      true,
+    );
+
+    //console.log("controle here")
+  
+    const destination = await getAssociatedTokenAddress(
+      mint,
+      //@ts-ignore
+      payer
+    );
+
+    // const balance = await program.provider.connection.getTokenAccountBalance(destination);
+    // let initialBalance = balance.value.uiAmount;
+    // console.log("Initial Balance of the user Token account:", initialBalance);
+
+    const context = {
+      mint,
+      tokenPda,
+      fromAta,
+      referrer: null,
+      destination,
+      payer,
+      rent: web3.SYSVAR_RENT_PUBKEY,
+      systemProgram: web3.SystemProgram.programId,
+      tokenProgram: TOKEN_PROGRAM_ID,
+      associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+    };
+
+    const decimals = 9;
+    console.log("Mint amount:", mintAmount);
+    //@ts-ignore
+    const txHash = await program.methods.buyTokens(new BN(mintAmount * 10 ** decimals)).accounts(context).rpc();
+
+    await connection.confirmTransaction(txHash);
+    console.log(`  https://explorer.solana.com/tx/${txHash}?cluster=devnet`);
+  } 
+
+  
   return (
     <div className="relative flex flex-wrap bg-[#F7E8D5] sm:px-8 px-4  pb-14 pt-10 md:pt-0 justify-center">
       <div className=" relative flex flex-col xl:max-w-[50%] w-10/12 items-center justify-center ">
@@ -98,11 +172,14 @@ const Section1 = () => {
                   <SelectCurrency />
                 </div>
 
-                <div className="  text-black font-bold flex flex-col items-center justify-center text-center gap-3">You Get <input type="text" placeholder="$100" className="text-center rounded-full w-40 p-4 bg-[#FFC67D] placeholder-black text-base font-black font-omnes border "></input></div>
+                <div className="  text-black font-bold flex flex-col items-center justify-center text-center gap-3">You Get <input value={mintAmount} onChange={(e)=> setMintAmount(e.target.valueAsNumber)} type="number" placeholder="$100" className="text-center rounded-full w-40 p-4 bg-[#FFC67D] placeholder-black text-base font-black font-omnes border "></input></div>
               </div>
             </div>
             <div className="flex sm:flex-row flex-col items-center justify-center gap-7 mt-14 ">
-              <button className="  font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block ">
+              <button 
+                className="  font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block "
+                onClick={handleButtonClick}
+                >
                 BUY WITH BNB
               </button>
             </div>

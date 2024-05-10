@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -46,6 +47,7 @@ const Header = () => {
               Audit
             </Link>
           </div>
+          <WalletMultiButton style={{}} />
           <button className="font-bold z-20 px-9 py-[8px] font-omnes bg-black text-white rounded-full inline-block">
           &nbsp;&nbsp;BUY $GULULU &nbsp;&nbsp;
           </button>
@@ -82,6 +84,7 @@ const Header = () => {
             <Link href="/Audit" className="hover:font-bold pl-2">
               Audit
             </Link>
+            <WalletMultiButton style={{}} />
             <button className="font-bold px-4 py-2 font-omnes bg-black text-white rounded-full inline-block">
               BUY GULULU
             </button>
