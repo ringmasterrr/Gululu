@@ -17,7 +17,7 @@ const Section1 = () => {
                 Claimable Balance
               </h3>
 
-              <div className="flex gap-2 sm:text-sm text-base font-bold items-center justify-center">
+              <div className="flex gap-2 sm:text-sm lg:text-xl text-lg font-bold items-center justify-center">
                 <Image
                   src={"/gululuicon.svg"}
                   alt="i"
@@ -34,17 +34,18 @@ const Section1 = () => {
             </div>
             <div className="border-b border-black w-[90%] place-self-center"></div>
              
-            <div>
-              <div className="flex flex-col gap-2 my-6 justify-between px-10">
-                <div className="font-medium">
+            <div className="flex flex-col items-center">
+              <div className="flex flex-col gap-6 my-6 items-center justify-between w-full px-10">
+                <div className="font-medium lg:text-xl text-lg ">
                   Available Balance: <span className="font-bold">$100,000</span>
                 </div>
-                <div className=" text-black font-bold flex flex-wrap items-center justify-between text-center w-full ">
+                <div className=" text-black font-bold flex gap-4 2xl:flex-row flex-col items-center justify-between text-center w-full ">
                   <input
                     type="text"
                     placeholder="$100"
                     className="text-center rounded-full w-64 p-[0.9rem] placeholder-black text-base font-black font-omnes border border-black"
-                  ></input>
+                  >
+                  </input>
                   <button className=" text-base font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block ">
                     STAKE
                   </button>
@@ -53,7 +54,7 @@ const Section1 = () => {
             </div>
 
             <div className="border-b border-black w-[90%] place-self-center"></div>
-            <div className="place-self-center font-medium py-4 text-xl flex items-center justify-center gap-2">
+            <div className="place-self-center font-medium py-4 lg:text-xl text-lg flex items-center justify-center gap-2">
               <div>Timer to Unstake</div>
               <Image
                 src={"/exclaim.svg"}
@@ -64,7 +65,7 @@ const Section1 = () => {
               />
             </div>
             <Countdown css={"!mt-4"} />
-            <div className="flex flex-wrap items-center justify-between  mt-6 px-10 ">
+            <div className=" flex 2xl:flex-row flex-col items-center justify-between  mt-6 px-10 ">
               <div className="flex flex-col items-center justify-center gap-2">
                 <div className="font-medium">
                   Staked Amount: <span className="font-bold">$100,000</span>
