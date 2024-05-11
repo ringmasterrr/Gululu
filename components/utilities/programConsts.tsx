@@ -8,7 +8,7 @@ import {IDL} from './idl';
 
 // After updating your program ID (e.g. after running `anchor keys sync`) update the value below.
 export const MEME_PROGRAM_ID = new PublicKey(
-  '8SXDKYbosQzGBS5N1FUNPrFJq1v55iyBkxwShreiFPca'
+  '8dw68VDX3pWPibpZH39vQtG1GK1DEY8pT6dyKeHbA5c2'
 );
 
 //EmQEUUDYPZqHrtSVTCvTkvPdXdS5GiRgW4srWF9kUckz
