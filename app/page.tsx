@@ -1,4 +1,3 @@
-import "./globals.css";
 import Header from "@/components/header/Header"
 import Section1 from "@/components/pages/homepage/Hero"
 import Section2 from "@/components/pages/homepage/SubHero"
