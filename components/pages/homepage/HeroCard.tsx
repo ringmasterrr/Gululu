@@ -76,7 +76,7 @@ const Section1 = () => {
               </div>
               <div className="flex flex-col items-center justify-center gap-2">
                 <div className="font-medium">
-                  Staked Amount: <span className="font-bold">$100,000</span>
+                  Reward collected: <span className="font-bold">$100,000</span>
                 </div>
                 <button className=" text-base font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block ">
                   CLAIM REWARD
