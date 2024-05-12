@@ -45,6 +45,7 @@ export type Meme = {
           "isSigner": false,
           "isOptional": true
         },
+        { "name": "priceFeed", "isMut": false, "isSigner": false },
         { "name": "rent", "isMut": false, "isSigner": false },
         { "name": "systemProgram", "isMut": false, "isSigner": false },
         { "name": "tokenProgram", "isMut": false, "isSigner": false },
@@ -146,9 +147,16 @@ export type Meme = {
       "name": "PhaseFiveEnded",
       "msg": "Phase Five mint ended...."
     },
-    { "code": 6008, "name": "MintEnded", "msg": "Mint has ended...." }
+    { "code": 6008, "name": "MintEnded", "msg": "Mint has ended...." },
+    { "code": 6009, "name": "InvalidPriceFeed", "msg": "Invalid Price Feed" },
+    {
+      "code": 6010,
+      "name": "PriceFeedDown",
+      "msg": "SOL/USD price feed is down, try again later"
+    }
   ]
 }
+
 
   
 
@@ -215,6 +223,7 @@ export type Meme = {
             "isSigner": false,
             "isOptional": true
           },
+          { "name": "priceFeed", "isMut": false, "isSigner": false },
           { "name": "rent", "isMut": false, "isSigner": false },
           { "name": "systemProgram", "isMut": false, "isSigner": false },
           { "name": "tokenProgram", "isMut": false, "isSigner": false },
@@ -316,7 +325,13 @@ export type Meme = {
         "name": "PhaseFiveEnded",
         "msg": "Phase Five mint ended...."
       },
-      { "code": 6008, "name": "MintEnded", "msg": "Mint has ended...." }
+      { "code": 6008, "name": "MintEnded", "msg": "Mint has ended...." },
+      { "code": 6009, "name": "InvalidPriceFeed", "msg": "Invalid Price Feed" },
+      {
+        "code": 6010,
+        "name": "PriceFeedDown",
+        "msg": "SOL/USD price feed is down, try again later"
+      }
     ]
   }
   

@@ -9,6 +9,7 @@ import { ASSOCIATED_TOKEN_PROGRAM_ID, TOKEN_PROGRAM_ID, getAssociatedTokenAddres
 import { AnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { IDL } from "@/components/utilities/idl";
 import { MEME_PROGRAM_ID } from "@/components/utilities/programConsts";
+import { PublicKey } from "@solana/web3.js";
 
 const Section1 = () => {
   const [mintAmount, setMintAmount] = useState(0);
@@ -25,6 +26,7 @@ const Section1 = () => {
 
   const TOKEN_SEED = "token";
   const MINT_SEED = "mint";
+  const priceFeed = new PublicKey("J83w4HKfqxwcq3BEMMkPFSppX3gqekLyLJBexebFVkix");
 
 
   //@ts-ignore
@@ -55,7 +57,8 @@ const Section1 = () => {
       mint,
       tokenPda,
       fromAta,
-      referrer: null,
+      referrer: null,  // pass the referrer address publickey like: new PublicKey("PUBLICKEY OF THE REFERRER")
+      priceFeed: priceFeed,
       destination,
       payer,
       rent: web3.SYSVAR_RENT_PUBKEY,
