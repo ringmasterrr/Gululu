@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
-import {useState} from "react";
 import Countdown from "../../utilities/Countdown";
 import SelectCurrency from "../../utilities/Dropdown";
 import { AnchorProvider, BN, Program, web3 } from "@coral-xyz/anchor";
