@@ -193,7 +193,7 @@ const Section1 = () => {
                 className="  font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block "
                 onClick={handleButtonClick}
                 >
-                BUY WITH BNB
+                BUY GULULU
               </button>
             </div>
           </div>
