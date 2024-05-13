@@ -9,11 +9,15 @@ import { ASSOCIATED_TOKEN_PROGRAM_ID, TOKEN_PROGRAM_ID, getAssociatedTokenAddres
 import { AnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { IDL } from "@/components/utilities/idl";
 import { MEME_PROGRAM_ID } from "@/components/utilities/programConsts";
-import { PublicKey } from "@solana/web3.js";
+import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
+import { useSearchParams } from "next/navigation";
 
 const Section1 = () => {
   const [mintAmount, setMintAmount] = useState(0);
 
+  const search = useSearchParams();
+  const publicKey = search.get('ref');
+  console.log("PUBLICKEY:", publicKey)
   const { connection } = useConnection();
   const wallet = useWallet();
   const payer = wallet.publicKey;
@@ -27,6 +31,10 @@ const Section1 = () => {
   const TOKEN_SEED = "token";
   const MINT_SEED = "mint";
   const priceFeed = new PublicKey("J83w4HKfqxwcq3BEMMkPFSppX3gqekLyLJBexebFVkix");
+
+
+
+  console.log("")
 
 
   //@ts-ignore
@@ -53,11 +61,25 @@ const Section1 = () => {
       payer
     );
 
+    //@ts-ignore
+    const walletBalance = await connection.getBalance(wallet.publicKey);
+
+    const programBalance = await connection.getBalance(tokenPda);
+
+    const pgTokenBalance = (await connection.getTokenAccountBalance(fromAta)).value.uiAmount;
+
+    console.log("PROGRAM BALANCE _ AMT RAISED:", programBalance/LAMPORTS_PER_SOL +" SOL");
+    console.log("Number of tokens available:", pgTokenBalance);
+    console.log("WALLET BALANCE:", walletBalance/LAMPORTS_PER_SOL +" SOL");
+
+
+
+
     const context = {
       mint,
       tokenPda,
       fromAta,
-      referrer: null,  // pass the referrer address publickey like: new PublicKey("PUBLICKEY OF THE REFERRER")
+      referrer: publicKey? publicKey: null,  // pass the referrer address publickey like: new PublicKey("PUBLICKEY OF THE REFERRER")
       priceFeed: priceFeed,
       destination,
       payer,
