@@ -48,10 +48,6 @@ const Section1 = () => {
       </div>
       <div className="relative flex flex-col xl:max-w-[48%] w-full items-center justify-center pt-16 ml-0 ">
 
-      {isButtonClicked ? (
-        <HeroCard /> // Render replacement component if button is clicked
-      ) : (
-
         <div className=" buytoken bg-[#CFEEFF] rounded-3xl md:w-[78%] w-[97%] pt-20 pb-10 z-10 ">
           <div className="flex flex-col justify-between ">
             <div>
@@ -137,8 +133,6 @@ const Section1 = () => {
             </div>
           </div>
         </div>
-
-      )}
 
         <Image
           src={"/bone1.svg"}
