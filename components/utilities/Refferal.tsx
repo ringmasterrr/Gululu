@@ -8,7 +8,7 @@ const ReferralBox = () => {
   const [referralLink, setReferralLink] = useState("dsfadsfasdfads");
 
   useEffect(() => {
-    setReferralLink(`${window.location.origin}/referral?ref=${referralLink}`);
+    setReferralLink(`${window.location.origin}?ref=${referralLink}`);
   }, []); 
 
   const copyReferralLink = () => {

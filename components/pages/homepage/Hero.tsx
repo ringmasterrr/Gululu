@@ -77,7 +77,7 @@ const Section1 = () => {
               <div className="flex items-center justify-between 2xl:gap-5 gap-2 px-4">
                 <div className="border-b-4 border-black 2xl:w-40 xl:w-32 w-52 "></div>
                 <h3 className="text-center 2xl:text-lg  font-omnes my-4">
-                  1 MEME20 = 1 GULULU
+                  1 GULULU = $0.00022
                 </h3>
                 <div className="border-b-4 border-black 2xl:w-40 xl:w-32 w-52 "></div>
               </div>
