@@ -3,7 +3,13 @@
 import Image from "next/image";
 import CountdownComp from "react-countdown";
 
-const Countdown = () => {
+interface Props {
+  css: string;
+}
+
+
+
+const Countdown: React.FC<Props>  = ({css}) => {
   const renderer = ({ days, hours, minutes, seconds }: any) => {
     // Add leading zeros to ensure two-digit format
     const formattedDays = String(days).padStart(2, '0');
@@ -12,7 +18,7 @@ const Countdown = () => {
     const formattedSeconds = String(seconds).padStart(2, '0');
   
     return (
-      <div className=" flex flex-wrap h-28 place-items-center text-center items-center justify-evenly font-omnesblack text-xs bg-[#FFCBBF] sm:mx-8 mx-4 px-4 rounded-2xl mt-12">
+      <div className={` flex flex-wrap h-28 place-items-center text-center items-center justify-evenly font-omnesblack text-xs bg-[#FFCBBF] sm:mx-8 mx-4 px-4 rounded-2xl mt-12 ${css}`} >
         <span className="flex flex-col items-center justify-center sm:w-20 w-8 h-24 sm:text-4xl text-3xl font-semibold ">
           {formattedDays}
           <span className="text-sm font-light pt-3">DAY</span>

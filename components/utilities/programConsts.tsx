@@ -11,6 +11,12 @@ export const MEME_PROGRAM_ID = new PublicKey(
   '8dw68VDX3pWPibpZH39vQtG1GK1DEY8pT6dyKeHbA5c2'
 );
 
+export const MEME_STAKE_PROGRAM_ID = new PublicKey(
+  'GEEmbitgtu2vNexxZXmPmcr1Z6yWnoDzKTQsefmkHf9y'
+);
+
+
+
 //EmQEUUDYPZqHrtSVTCvTkvPdXdS5GiRgW4srWF9kUckz
 //8SXDKYbosQzGBS5N1FUNPrFJq1v55iyBkxwShreiFPca
 

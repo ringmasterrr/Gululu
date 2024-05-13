@@ -139,7 +139,7 @@ const Section9: React.FC = () => {
                 type="range"
                 min={10}
                 max={50} // Adjust the max value to allow finer adjustments
-                step={1} // Change the step to 1
+                step={0.001} // Change the step to 1
                 value={coinPhase}
                 onChange={handlePhaseChange}
                 className="custom_slider appearance-none mt-[1px] "

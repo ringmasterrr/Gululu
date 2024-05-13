@@ -51,7 +51,7 @@ const Section5 = () => {
             <SocialIcon src="/socials/Line.svg" />
             <SocialIcon src="/socials/Messsage.svg" />
           </div>
-          <ReferralBox referralLink={"https://example.com/referral"} />
+          <ReferralBox/>
           <Image
             src={"/puppytub.svg"}
             alt="i"
