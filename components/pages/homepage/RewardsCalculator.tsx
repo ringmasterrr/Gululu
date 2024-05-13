@@ -148,7 +148,7 @@ const Section9: React.FC = () => {
           </div>
           <div className="text-[#667CC1] text-xl font-omnes flex flex-row justify-between items-center px-1 uppercase py-2">
             <h3 className="w-1/4 text-left">Your $GULULU would be worth</h3>
-            <div>
+            <div className="flex flex-col items-end justify-end">
               <h3>USD {dollarsValue}</h3>
               <h3>INR {rupeesValue}</h3>
             </div>

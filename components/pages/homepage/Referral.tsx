@@ -33,24 +33,14 @@ const Section5 = () => {
         />
       </div>
       <div className=" flex items-end justify-end lg:w-[70rem]">
-        <div className="relative flex flex-col bg-[#CFEEFF]  lg:pl-[13rem] pb-10 my-24 lg:w-[50rem] rounded-3xl md:px-[5.8rem] px-10 z-10 lg:h-[27rem] items-center justify-center py-10 lg:py-0">
+        <div className="relative gap-2 flex flex-col bg-[#CFEEFF]  lg:pl-[13rem] pb-10 my-24 lg:w-[50rem] rounded-3xl md:px-[5.8rem] px-10 z-10 lg:h-[27rem] items-center justify-center py-10 lg:py-0">
           <h3 className="text-[1.7rem] text-center font-omnes">
             Referral Generated: $123.222
           </h3>
-          <h3 className="sm:text-[1.8rem] text-lg font-semibold text-center font-omnesregular sm:pt-10 pt-2">
+          <h3 className="sm:text-[1.7rem] text-lg font-semibold text-center font-omnesregular sm:pt-6 py-2 ">
             Share Your Unique Referral Link
           </h3>
-          <div className="flex md:flex-row flex-wrap py-4 gap-2">
-            <SocialIcon src="/socials/twitter.svg" />
-            <SocialIcon src="/socials/linkedin.svg" />
-            <SocialIcon src="/socials/Messenger.svg" />
-            <SocialIcon src="/socials/Sms.svg" />
-            <SocialIcon src="/socials/Whatsapp.svg" />
-            <SocialIcon src="/socials/Telegram.svg" />
-            <SocialIcon src="/socials/Wechat.svg" />
-            <SocialIcon src="/socials/Line.svg" />
-            <SocialIcon src="/socials/Messsage.svg" />
-          </div>
+          
           <ReferralBox/>
           <Image
             src={"/puppytub.svg"}

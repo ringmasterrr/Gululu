@@ -15,7 +15,6 @@ import HeroCard from "@/components/pages/homepage/HeroCard"
 
 const Section1 = () => {
   const [mintAmount, setMintAmount] = useState(0);
-
   const { connection } = useConnection();
   const wallet = useWallet();
   const payer = wallet.publicKey;
@@ -78,13 +77,7 @@ const Section1 = () => {
     console.log(`  https://explorer.solana.com/tx/${txHash}?cluster=devnet`);
   } 
 
-  
 
-  const [isButtonClicked, setIsButtonClicked] = useState(false);
-
-  const handleBuyWithBNB = () => {
-    setIsButtonClicked(true);
-  };
 
   return (
     <div className="relative flex flex-wrap bg-[#F7E8D5] sm:px-8 px-4  pb-14 pt-10 md:pt-0 justify-center">
@@ -117,7 +110,7 @@ const Section1 = () => {
         </div>
       </div>
       <div className="relative flex flex-col xl:max-w-[48%] w-full items-center justify-center pt-16 ml-0 ">
-
+      
         <div className=" buytoken bg-[#CFEEFF] rounded-3xl md:w-[78%] w-[97%] pt-20 pb-10 z-10 ">
           <div className="flex flex-col justify-between ">
             <div>
@@ -176,9 +169,9 @@ const Section1 = () => {
                 <div className=" text-black font-bold flex flex-col items-center justify-center text-center gap-3">
                   Your Invested Amount{" "}
                   <input
-                    type="text"
+                    type="number"
                     placeholder="$100"
-                    className="text-center rounded-full w-40 p-4 placeholder-black text-base font-black font-omnes border border-black"
+                    className="text-center rounded-full w-40 p-4 placeholder-gray-800 placeholder-opacity-70 text-base font-black font-omnes border border-black"
                   ></input>
                 </div>
                 <div className="text-black font-bold flex flex-col items-center justify-center text-center gap-3">
@@ -202,11 +195,10 @@ const Section1 = () => {
                 >
                 BUY WITH BNB
               </button>
-
             </div>
           </div>
         </div>
-
+    
         <Image
           src={"/bone1.svg"}
           alt="paw"

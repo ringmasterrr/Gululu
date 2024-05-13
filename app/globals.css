@@ -83,3 +83,13 @@
   background-color: rgba(0, 0, 0);
 }
 
+.wallet-adapter-button {
+  font-weight: bold;
+  z-index: 20;
+  padding: 18px 35px 18px 35px; /* Adjust as needed */
+  font-family: 'Omnes', sans-serif; /* Assuming 'Omnes' is your custom font */
+  background-color: black;
+  color: white;
+  border-radius: 9999px; /* Large value to create a rounded shape */
+  
+}

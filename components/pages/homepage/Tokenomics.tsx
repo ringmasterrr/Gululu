@@ -31,28 +31,28 @@ const Section6 = () => {
             alt="dawg"
             height={1000}
             width={1000}
-            className="lg:w-auto w-[20rem]"
+            className="lg:w-auto w-[20rem] py-8"
           />
         </div>
 
-        <div className="flex flex-col items-start py-20 justify-between gap-10">
+        <div className="flex flex-col items-start md:py-20 py-0 justify-between gap-10">
           <Image
-            src={"/tokenomics.svg"}
+            src={"/Presale.png"}
             alt="dawg"
-            height={1200}
-            width={1200}
-            className="h-auto w-auto pb-20 xl:py-0"
+            height={1500}
+            width={1500}
+            className="h-auto w-auto md:pb-20 pb-0 xl:py-0"
           />
           <div className="flex flex-col gap-9">
             <h3 className="text-[#667CC1] font-omnes sm:text-5xl text-3xl uppercase">
               $GULULU Tokenomics
             </h3>
-            <Tokenomicslist text="Total Supply 1 billion" />
-            <Tokenomicslist text="50% Tokens to Liquidity Pool" />
-            <Tokenomicslist text="35% Tokens to Presale Contributors" />
-            <Tokenomicslist text="5% Tokens for CEX" />
-            <Tokenomicslist text="5% Tokens for Marketing" />
-            <Tokenomicslist text="5% Tokens for Team and Advisors" />
+            <Tokenomicslist text="Total Supply 5 billion" />
+            <Tokenomicslist text="25% Tokens to Pre Sale" />
+            <Tokenomicslist text="20% Tokens to Treasury Foundation" />
+            <Tokenomicslist text="25% Tokens to Partnerships & Marketing" />
+            <Tokenomicslist text="15% Tokens to Liquidity Management" />
+            <Tokenomicslist text="15% Tokens to Staking" />
           </div>
         </div>
 
