@@ -24,7 +24,7 @@ const ReferralBox = () => {
   const shareReferralLink = () => {  
     navigator.share(shareData) 
   };
-  
+
   {/* Referral address for solana */}
   console.log(referralLink)
   {/* Referral address for solana */}
@@ -33,9 +33,6 @@ const ReferralBox = () => {
     <div className=" bg-white border mt-4 p-2 border-slate-300 rounded-md lg:w-[25rem] w-[100%] ">
       <div className="text-center block mb-2 py-1 text-purple-800">
         <p>{referralLink}</p>
-
-        
-
       </div>
       <div className="flex gap-1">
         <button

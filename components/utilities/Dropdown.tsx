@@ -1,23 +1,26 @@
-"use client"
-
 import { Menu } from "@headlessui/react";
 import Image from "next/image";
 import { useState } from "react";
 
-export default function Dropp() {
+interface DroppProps {
+  onSelectCurrency: (currency: string) => void; // Specify onSelectCurrency as a function that accepts a string parameter
+}
+
+export default function Dropp({ onSelectCurrency }: DroppProps) {
   const [selectedItem, setSelectedItem] = useState({
     text: "SOL",
     image: "/sol.svg",
   });
 
-  const handleItemClick = (text: string, image: string) => {
+  const handleItemClick = (text: string, image: string) => { // Specify text and image parameters as string
     setSelectedItem({ text, image });
+    onSelectCurrency(text); // Notify parent component about selected currency
   };
 
   return (
     <Menu as="div" className="relative inline-block text-center">
       <div>
-        <Menu.Button className="inline-flex items-center gap-3 justify-center  bg-white px-4 py-4  text-black text-center rounded-full w-40 p-4 placeholder-black text-base font-black font-omnes border border-black">
+        <Menu.Button className="inline-flex items-center gap-3 justify-center bg-white px-4 py-4 text-black text-center rounded-full w-40 p-4 placeholder-black text-base font-black font-omnes border border-black">
           {selectedItem.image && (
             <Image
               src={selectedItem.image}
@@ -34,7 +37,7 @@ export default function Dropp() {
             alt="i"
             width={500}
             height={100}
-            className="w-4 h-4 "
+            className="w-4 h-4"
           />
         </Menu.Button>
       </div>

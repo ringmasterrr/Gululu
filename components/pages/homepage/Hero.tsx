@@ -11,6 +11,7 @@ import { IDL } from "@/components/utilities/idl";
 import { MEME_PROGRAM_ID } from "@/components/utilities/programConsts";
 import { PublicKey } from "@solana/web3.js";
 import HeroCard from "@/components/pages/homepage/HeroCard"
+import Calculator from "@/components/utilities/calculator";
 
 
 const Section1 = () => {
@@ -165,30 +166,12 @@ const Section1 = () => {
                   USDT: 100
                 </div>
               </div>
-              <div className="flex md:flex-row flex-wrap  gap-8  mx-4 py-8 text-black items-end justify-center">
-                <div className=" text-black font-bold flex flex-col items-center justify-center text-center gap-3">
-                  Your Invested Amount{" "}
-                  <input
-                    type="number"
-                    placeholder="$100"
-                    className="text-center rounded-full w-40 p-4 placeholder-gray-800 placeholder-opacity-70 text-base font-black font-omnes border border-black"
-                  ></input>
-                </div>
-                <div className="text-black font-bold flex flex-col items-center justify-center text-center gap-3">
-                  <h3>Choose Currency</h3>
-                  <SelectCurrency />
-                </div>
-                <div className="  text-black font-bold flex flex-col items-center justify-center text-center gap-3">
-                  You Get{" "}
-                  <input value={mintAmount} onChange={(e)=> setMintAmount(e.target.valueAsNumber)}
-                    type="number"
-                    placeholder="$100"
-                    className="text-center rounded-full w-40 p-4 bg-[#FFC67D] placeholder-black text-base font-black font-omnes border "
-                  ></input>
+              <div className="flex md:flex-row flex-wrap  gap-8  mx-4 py-8 text-black items-end justify-center"> 
+                  <Calculator/>
                 </div>
               </div>
             </div>
-            <div className="flex sm:flex-row flex-col items-center justify-center gap-7 mt-14 ">
+            <div className="flex sm:flex-row flex-col items-center justify-center gap-7 2xl:mt-14 mt-8 ">
               <button 
                 className="  font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block "
                 onClick={handleButtonClick}
@@ -221,7 +204,7 @@ const Section1 = () => {
           className=" absolute w-40 -right-4 top-16 "
         />
       </div>
-    </div>
+   
   );
 };
 
