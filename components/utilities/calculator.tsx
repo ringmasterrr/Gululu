@@ -3,8 +3,8 @@ import Image from "next/image";
 import Dropp from "./Dropdown";
 
 const gululu = {
-    value_USD: 0.0002
-}
+  value_USD: 0.0002,
+};
 
 export default function YourComponent() {
   const [investedAmount, setInvestedAmount] = useState(0);
@@ -15,7 +15,7 @@ export default function YourComponent() {
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Get the input value
     const inputValue = e.target.valueAsNumber;
-    
+
     // Check if the input value is not negative
     if (inputValue >= 0 || isNaN(inputValue)) {
       // If not negative or NaN, update the state
@@ -23,16 +23,18 @@ export default function YourComponent() {
     }
     // If negative or NaN, do nothing
   };
-  
 
-  const handleCurrencyChange = (currency: string) => { // Specify currency as string
+  const handleCurrencyChange = (currency: string) => {
+    // Specify currency as string
     setSelectedCurrency(currency);
   };
 
   useEffect(() => {
     const fetchExchangeRate = async () => {
       try {
-        const response = await fetch(`https://api.coinbase.com/v2/prices/${selectedCurrency}-USD/spot`);
+        const response = await fetch(
+          `https://api.coinbase.com/v2/prices/${selectedCurrency}-USD/spot`
+        );
         const data = await response.json();
         setExchangeRate(Number(data.data.amount)); // Convert exchange rate to number
       } catch (error) {
@@ -45,7 +47,7 @@ export default function YourComponent() {
 
   useEffect(() => {
     if (exchangeRate !== null) {
-      setResult(investedAmount * exchangeRate / gululu.value_USD);
+      setResult((investedAmount * exchangeRate) / gululu.value_USD);
     }
   }, [investedAmount, exchangeRate]);
 
@@ -67,9 +69,13 @@ export default function YourComponent() {
       </div>
       <div className="text-black font-bold flex flex-col items-center justify-center text-center gap-3">
         You Get{" "}
-        <div className="text-center rounded-full w-40 h-14 p-4 bg-[#FFC67D] placeholder-black text-base font-black font-omnes border ">
-          {(result).toFixed(2)}
-        </div>
+        <input
+          type="number"
+          readOnly
+          value={result.toFixed(2)}
+          placeholder="0"
+          className="text-center rounded-full w-40 h-14 p-4 bg-[#FFC67D] placeholder-black text-base font-black font-omnes border "
+        />
       </div>
     </div>
   );
