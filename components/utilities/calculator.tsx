@@ -71,7 +71,6 @@ export default function YourComponent() {
         You Get{" "}
         <input
           type="number"
-          readOnly
           value={result.toFixed(2)}
           placeholder="0"
           className="text-center rounded-full w-40 h-14 p-4 bg-[#FFC67D] placeholder-black text-base font-black font-omnes border "
