@@ -81,26 +81,26 @@ const Section1 = () => {
 
 
   return (
-    <div className="relative flex flex-wrap bg-[#F7E8D5] sm:px-8 px-4  pb-14 pt-10 md:pt-0 justify-center">
-      <div className=" relative flex flex-col xl:max-w-[50%] w-10/12 items-center justify-center ">
+    <div className="relative flex flex-wrap items-start bg-[#F7E8D5] px-8  pb-14 pt-10 md:pt-0 justify-center">
+      <div className=" relative flex flex-col xl:max-w-[45%] w-[95%] items-center justify-center ">
         <Image
-          src={"/sec1doge.png"}
+          src={"/sec1doge.svg"}
           alt="doge"
           height={1500}
           width={1500}
           className="w-[809px] pb-5 xl:ml-14"
         />
-        <div>
-          <div className="lg:pl-24">
+        
+          <div className="xl:pl-24">
             <div className="relative">
               <Image
                 src={"/paw.svg"}
                 alt="paw"
                 height={500}
                 width={500}
-                className=" absolute sm:w-20 w-14 2xl:right-[30rem] xl:right-[28rem] right-[30rem] sm:top-0 top-8 "
+                className=" absolute md:w-20 w-16 2xl:right-[30rem] xl:right-[28rem] md:-left-[30%] sm:-left-[25%] -left-[12%] top-8  "
               />
-              <h1 className="md:text-[3.5rem] sm:text-5xl text-[2.3rem] text-center font-omnesblack sm:pb-7 sm:leading-[4.7rem]">
+              <h1 className="md:text-[3.5rem] md:text-5xl text-[2.3rem] text-center font-omnesblack md:pb-7 md:leading-[4.7rem]">
                 HI, MY NAME IS <br /> GULULU
               </h1>
             </div>
@@ -108,12 +108,11 @@ const Section1 = () => {
               I like chess and beating everyone <br /> in the Solana Ecosystem
             </h3>
           </div>
-        </div>
+        
       </div>
-      <div className="relative flex flex-col xl:max-w-[48%] w-full items-center justify-center pt-16 ml-0 ">
+      <div className="relative flex flex-col xl:max-w-[48%] w-[100%] items-center justify-center pt-16 ml-0 ">
       
-        <div className=" buytoken bg-[#CFEEFF] rounded-3xl md:w-[78%] w-[97%] pt-20 pb-10 z-10 ">
-          <div className="flex flex-col justify-between ">
+        <div className=" buytoken bg-[#CFEEFF] rounded-3xl md:w-[85%] w-[100%] pt-20 pb-10 z-50 ">
             <div>
               <h3 className="sm:px-24 px-4 font-omnes text-center leading-7 text-2xl ">
                 GULULU launches on doge day! Last <br /> chance to buy!
@@ -166,12 +165,11 @@ const Section1 = () => {
                   USDT: 100
                 </div>
               </div>
-              <div className="flex md:flex-row flex-wrap  gap-8  mx-4 py-8 text-black items-end justify-center"> 
+              <div className="flex md:flex-row flex-wrap  gap-8  mx-4 py-2 text-black items-end justify-center"> 
                   <Calculator/>
                 </div>
               </div>
-            </div>
-            <div className="flex sm:flex-row flex-col items-center justify-center gap-7 2xl:mt-14 mt-8 ">
+              <div className="flex sm:flex-row flex-col items-center justify-center gap-7 2xl:mt-6 mt-2 ">
               <button 
                 className="  font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block "
                 onClick={handleButtonClick}
@@ -179,30 +177,30 @@ const Section1 = () => {
                 BUY GULULU
               </button>
             </div>
-          </div>
-        </div>
-    
-        <Image
+          </div> 
+          
+          <Image
           src={"/bone1.svg"}
           alt="paw"
           height={500}
           width={500}
-          className=" absolute w-40 bottom-24  -left-4 "
+          className=" absolute w-40 bottom-[9%] -left-[3%] z-0 md:block hidden "
         />
         <Image
           src={"/bone2.svg"}
           alt="paw"
           height={500}
           width={500}
-          className=" absolute w-40 bottom-2 -left-[2.6rem] "
+          className=" absolute w-40 bottom-[1%] -left-[5%] z-0 md:block hidden"
         />
         <Image
           src={"/bone3.svg"}
           alt="paw"
           height={500}
           width={500}
-          className=" absolute w-40 -right-4 top-16 "
-        />
+          className=" absolute w-40 -right-[4%] top-[8%] z-0 md:block hidden"
+        /> 
+        </div>
       </div>
    
   );

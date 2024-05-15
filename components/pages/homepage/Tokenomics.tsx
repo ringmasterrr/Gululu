@@ -27,7 +27,7 @@ const Section6 = () => {
       <div className="relative flex flex-wrap-reverse bg-[#FFCBBF] mt-14 rounded-[1.25rem] w-[80%] items-center justify-center py-10 px-10 ">
         <div className="flex items-center justify-center w-1/2">
           <Image
-            src={"/dawg.png"}
+            src={"/dawg.svg"}
             alt="dawg"
             height={1000}
             width={1000}

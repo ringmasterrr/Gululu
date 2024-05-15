@@ -14,7 +14,7 @@ const StalkingCard: React.FC<StalkingCardProps> = ({ imageSrc, title, descriptio
     <div className={outerClassName}>
       <div className={innerClassName}>
         <div className="flex items-center justify-center">
-          <Image src={imageSrc} alt="i" width={1000} height={1000} className="md:w-[45%] w-[70%] object-cover transform md:scale-[2.2]" />
+          <Image src={imageSrc} alt="i" width={1000} height={1000} className="md:w-[45%] w-[70%] object-cover transform md:scale-[1.7]" />
         </div>
         <div className="flex flex-col items-start justify-center gap-5 md:w-[600px]">
           <h3 className="xl:text-5xl lg:text-4xl text-3xl font-omnesblack uppercase">{title}</h3>

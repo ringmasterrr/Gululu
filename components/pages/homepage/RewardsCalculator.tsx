@@ -70,7 +70,7 @@ const Section9: React.FC = () => {
   return (
     <div className="relative bg-[#FFC67D] flex flex-col items-center justify-center py-12">
       <Image
-        src={"/smolshiba2.svg"}
+        src={""}
         alt="auction"
         height={500}
         width={500}

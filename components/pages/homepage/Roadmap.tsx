@@ -1,18 +1,17 @@
 import React from "react";
-import RoadmapData  from "./RoadmapStages";
+import RoadmapData from "./RoadmapStages";
 import Decorations from "@/components/ui/Decorations";
 import Heading from "@/components/ui/Heading";
-
 
 const Roadmap = () => {
   return (
     <div className="bg-theme-peach">
       <div className="py-20 max-w-[1920px] mx-auto">
-      <Heading text="Roadmap" />
-        <div className="flex flex-col sm:gap-32 gap-48 py-20 mt-16 ">
+        <Heading text="Roadmap" />
+        <div className="flex flex-col sm:gap-72 gap-48 md:py-20 py-32 mt-16 ">
           {/* Section 1 */}
           <div className="relative flex items-end justify-center xl:justify-start xl:ml-[15%] 2xl:ml-[20rem] sm:ml-12 mx-4 md:h-[30rem]">
-            <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] sm:p-16 p-8 z-10">
+            <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] sm:p-16 p-12 z-10">
               <RoadmapData
                 stage={1}
                 description="Utilising smart contracts powered by Ethereum, GULULU is much
@@ -22,12 +21,12 @@ const Roadmap = () => {
               />
 
               <Decorations
-                src="/smoldog.svg"
-                css="absolute md:w-[26rem] w-[14rem] md:-left-[15rem] -left-[14%] md:-bottom-[6rem] -bottom-[10rem] "
+                src="/catdab.svg"
+                css="absolute md:w-[20rem] w-[14rem] md:-left-[13rem] -left-[10%] md:-bottom-[0rem] -bottom-[11rem] "
               />
               <Decorations
-                src="/smolshiba.svg"
-                css="absolute md:w-[18rem] w-[10rem] -right-[1.3rem] md:-top-[12.8rem] -top-[7rem] "
+                src="/dogflip.svg"
+                css="absolute md:w-[14rem] w-[10rem] right-[1rem] md:-top-[12.3rem] -top-[8.8rem] "
               />
               <Decorations
                 src="/smolpaw1.svg"
@@ -54,7 +53,7 @@ const Roadmap = () => {
 
           {/* Section 2 */}
           <div className="relative flex items-end justify-center xl:justify-end xl:mr-[6%] 2xl:mr-[14rem] sm:mr-12 mx-4 md:h-[30rem]">
-            <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] sm:p-16 p-8 z-10">
+            <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] sm:p-16 p-12 z-10">
               <RoadmapData
                 stage={2}
                 description="Utilising smart contracts powered by Ethereum, GULULU is much
@@ -64,12 +63,12 @@ const Roadmap = () => {
               />
 
               <Decorations
-                src="/smoldog.svg"
-                css="absolute md:w-[26rem] w-[14rem] md:-left-[15rem] -left-[14%] md:-bottom-[6rem] -bottom-[10rem]"
+                src="/dogdab.svg"
+                css="absolute md:w-[20rem] w-[14rem] md:-left-[13.5rem] -left-[14%] md:-bottom-[6rem] -bottom-[15rem] "
               />
               <Decorations
-                src="/smolshiba.svg"
-                css="absolute md:w-[18rem] w-[10rem] -right-[1.3rem] md:-top-[12.8rem] -top-[7rem]"
+                src="/catflip.svg"
+                css="absolute md:w-[14rem] w-[10rem] right-[0rem] md:-top-[11.4rem] -top-[8.2rem] "
               />
               <Decorations
                 src="/smolpaw3.svg"
@@ -96,7 +95,7 @@ const Roadmap = () => {
 
           {/* Section 3 */}
           <div className="relative flex items-end justify-center xl:justify-start xl:ml-[15%] 2xl:ml-[20rem] mx-4 md:h-[30rem]">
-            <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] sm:p-16 p-8 z-10">
+            <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] sm:p-16 p-12 z-10">
               <RoadmapData
                 stage={3}
                 description="Utilising smart contracts powered by Ethereum, GULULU is much
@@ -106,12 +105,12 @@ const Roadmap = () => {
               />
 
               <Decorations
-                src="/smoldog.svg"
-                css="absolute md:w-[26rem] w-[14rem] md:-left-[15rem] -left-[14%] md:-bottom-[6rem] -bottom-[10rem]"
+                src="/catdab.svg"
+                css="absolute md:w-[20rem] w-[14rem] md:-left-[13rem] -left-[10%] md:-bottom-[0rem] -bottom-[11rem]"
               />
               <Decorations
-                src="/smolshiba.svg"
-                css="absolute md:w-[18rem] w-[10rem] -right-[1.3rem] md:-top-[12.8rem] -top-[7rem]"
+                src="/dogflip.svg"
+                css="absolute md:w-[14rem] w-[10rem] right-[1rem] md:-top-[12.3rem] -top-[8.8rem]"
               />
               <Decorations
                 src="/smolpaw4.svg"
@@ -134,7 +133,7 @@ const Roadmap = () => {
 
           {/* Section 4 */}
           <div className="relative flex items-end justify-center xl:justify-end xl:mr-[6%] 2xl:mr-[14rem] sm:mr-12 mx-4 md:h-[30rem]">
-            <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] sm:p-16 p-8 z-10">
+            <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] sm:p-16 p-12 z-10">
               <RoadmapData
                 stage={4}
                 description="Utilising smart contracts powered by Ethereum, GULULU is much
@@ -144,12 +143,12 @@ const Roadmap = () => {
               />
 
               <Decorations
-                src="/smoldog.svg"
-                css="absolute md:w-[26rem] w-[14rem] md:-left-[15rem] -left-[14%] md:-bottom-[6rem] -bottom-[10rem]"
+                src="/dogdab.svg"
+                css="absolute md:w-[20rem] w-[14rem] md:-left-[13.5rem] -left-[14%] md:-bottom-[6rem] -bottom-[15rem]"
               />
               <Decorations
-                src="/smolshiba.svg"
-                css="absolute md:w-[18rem] w-[10rem] -right-[1.3rem] md:-top-[12.8rem] -top-[7rem]"
+                src="/catflip.svg"
+                css="absolute md:w-[14rem] w-[10rem] right-[0rem] md:-top-[11.4rem] -top-[8.2rem] "
               />
               <Decorations
                 src="/smolpaw5.svg"
