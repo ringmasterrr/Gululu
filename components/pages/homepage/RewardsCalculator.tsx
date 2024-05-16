@@ -106,10 +106,10 @@ const Section9: React.FC = () => {
           would be worth at different prices.
         </h3>
         <div className=" lg:w-[75%] w-[90%] flex flex-col  justify-center">
-          <div className="font-omnes flex flex-row justify-between items-center px-8 py-4  uppercase">
+          <div className="font-omnes flex flex-row justify-between items-start px-8 py-4  uppercase">
             <h3>If I buy</h3>
 
-            <div>
+            <div className="flex flex-col items-end">
               <select value={currency} onChange={handleCurrencyChange}>
                 <option value="INR">INR</option>
                 <option value="USD">USD</option>
