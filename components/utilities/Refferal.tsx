@@ -35,11 +35,11 @@ const ReferralBox = () => {
   };
 
   return (
-    <div className="bg-white border mt-4 p-2 border-slate-300 rounded-md lg:w-[25rem] w-[100%]">
+    <div className="bg-white border mt-4 p-2 border-slate-300 rounded-md lg:w-[80%]">
       <div className="text-center block mb-2 py-1 text-purple-800">
         <p>{referralLink}</p>
       </div>
-      <div className="flex gap-1">
+      <div className="flex md:flex-row flex-col gap-1">
         <button
           onClick={copyReferralLink}
           className="w-full bg-black text-white px-4 py-2 rounded-lg hover:bg-slate-700 focus:outline-none"
