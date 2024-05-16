@@ -46,7 +46,7 @@ const Section6 = () => {
               width={1500}
               className="h-auto w-[30rem] pb-0"
             />
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 px-8 ">
               <h3 className="text-[#667CC1] font-omnes sm:text-4xl text-3xl uppercase">
                 $GULULU Tokenomics
               </h3>
