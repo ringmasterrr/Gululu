@@ -6,15 +6,18 @@ import Countdown from "../../utilities/Countdown";
 import SelectCurrency from "../../utilities/Dropdown";
 import { AnchorProvider, BN, Program, web3 } from "@coral-xyz/anchor";
 import { ASSOCIATED_TOKEN_PROGRAM_ID, TOKEN_PROGRAM_ID, getAssociatedTokenAddress } from '@solana/spl-token';
-import { AnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
+import { AnchorWallet, useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { IDL } from "@/components/utilities/idl";
 import { MEME_PROGRAM_ID } from "@/components/utilities/programConsts";
 import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
 import { useSearchParams } from "next/navigation";
+import { PythSolanaReceiver } from "@pythnetwork/pyth-solana-receiver";
+import NodeWallet from "@coral-xyz/anchor/dist/cjs/nodewallet";
 
 const Section1 = () => {
   const [mintAmount, setMintAmount] = useState(0);
   const [balance, setBalance] = useState<number>(0);
+  const [usdBalance, setUsdBalance] = useState<number>(0);
 
   const search = useSearchParams();
   const publicKey = search.get('ref');
@@ -22,19 +25,32 @@ const Section1 = () => {
   const { connection } = useConnection();
   const wallet = useWallet();
   const payer = wallet.publicKey;
+  const priceFeed = new PublicKey("J83w4HKfqxwcq3BEMMkPFSppX3gqekLyLJBexebFVkix");
+
+  const AnchorWallet = useAnchorWallet();
+  const Wallet = AnchorWallet as NodeWallet;
+  const pythSolanaReceiver = new PythSolanaReceiver({ connection, wallet: Wallet });
+
+  const SOL_PRICE_FEED_ID =
+  "0xef0d8b6fda2ceba41da15d4095d1da392a0d2f8ed0c6c7bc0f4cfac8c280b56d";
+
 
   useEffect(() => {
     if (wallet.publicKey) {
       (async function getBalanceEvery10Seconds() {
         //@ts-ignore
         const newBalance = await connection.getBalance(wallet.publicKey);
-        console.log("NEW BALANCEEEE:", newBalance);
+        console.log("NEW BALANCEEEE:", newBalance/ LAMPORTS_PER_SOL);
+        const priceFeedAccount =
+        await pythSolanaReceiver.fetchPriceFeedAccount(0,SOL_PRICE_FEED_ID);
+        const newUSDPrice = priceFeedAccount?.priceMessage.price / 100000000;
+        console.log("NEW USD BALANCE:", newUSDPrice * balance);
         setBalance(newBalance / LAMPORTS_PER_SOL);
+        setUsdBalance(newUSDPrice * balance); // NOTE: This is approximate value, Verify
         setTimeout(getBalanceEvery10Seconds, 10000);
       })();
     }
   }, [publicKey, connection, balance]);
-
 
   const provider = new AnchorProvider(connection, wallet as AnchorWallet, {
     commitment: 'confirmed',
@@ -44,7 +60,6 @@ const Section1 = () => {
 
   const TOKEN_SEED = "token";
   const MINT_SEED = "mint";
-  const priceFeed = new PublicKey("J83w4HKfqxwcq3BEMMkPFSppX3gqekLyLJBexebFVkix");
 
 
   //@ts-ignore
@@ -82,8 +97,6 @@ const Section1 = () => {
     console.log("PROGRAM BALANCE _ AMT RAISED:", programBalance/LAMPORTS_PER_SOL +" SOL");
     console.log("WALLET BALANCE:", walletBalance/LAMPORTS_PER_SOL +" SOL");
 
-
-    console.log("BALANACEEEEEEEEEEEE:", balance);
 
     const context = {
       mint,
@@ -192,7 +205,7 @@ const Section1 = () => {
                     height={100}
                     className="w-6 h-6 "
                   />
-                  USDT: 100
+                  USDT: {usdBalance}
                 </div>
               </div>
               <div className="flex md:flex-row flex-wrap  gap-8  mx-4 py-8 text-black items-end justify-center">
