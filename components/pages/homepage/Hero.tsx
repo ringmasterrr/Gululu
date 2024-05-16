@@ -10,16 +10,13 @@ import { AnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-r
 import { IDL } from "@/components/utilities/idl";
 import { MEME_PROGRAM_ID } from "@/components/utilities/programConsts";
 import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
-import { useSearchParams } from "next/navigation";
 import HeroCard from "@/components/pages/homepage/HeroCard"
 import Calculator from "@/components/utilities/calculator";
 
 
-const Section1 = () => {
+const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
   const [mintAmount, setMintAmount] = useState(0);
   const [balance, setBalance] = useState<number>(0);
-  const search = useSearchParams();
-  const publicKey = search.get('ref');
   console.log("PUBLICKEY:", publicKey)
   const { connection } = useConnection();
   const wallet = useWallet();
