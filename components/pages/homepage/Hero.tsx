@@ -25,7 +25,8 @@ const Section1 = () => {
   const { connection } = useConnection();
   const wallet = useWallet();
   const payer = wallet.publicKey;
-  const priceFeed = new PublicKey("J83w4HKfqxwcq3BEMMkPFSppX3gqekLyLJBexebFVkix");
+  const priceFeed = new PublicKey("J83w4HKfqxwcq3BEMMkPFSppX3gqekLyLJBexebFVkix"); 
+  const usdt = new PublicKey("Gh9ZwEmdLJ8DscKNTkTqPbNwLNNBjuSzaG9Vp2KGtKJr");
 
   const AnchorWallet = useAnchorWallet();
   const Wallet = AnchorWallet as NodeWallet;
@@ -34,6 +35,11 @@ const Section1 = () => {
   const SOL_PRICE_FEED_ID =
   "0xef0d8b6fda2ceba41da15d4095d1da392a0d2f8ed0c6c7bc0f4cfac8c280b56d";
 
+  // const priceFeedAccount = await pythSolanaReceiver.fetchPriceFeedAccount(0,SOL_PRICE_FEED_ID);
+  // const newUSDPrice = priceFeedAccount?.priceMessage.price / 100000000;
+  // console.log("NEW USD BALANCE:", newUSDPrice * balance);
+  // setUsdBalance(newUSDPrice * balance); // NOTE: This is approximate value, Verify
+
 
   useEffect(() => {
     if (wallet.publicKey) {
@@ -41,12 +47,21 @@ const Section1 = () => {
         //@ts-ignore
         const newBalance = await connection.getBalance(wallet.publicKey);
         console.log("NEW BALANCEEEE:", newBalance/ LAMPORTS_PER_SOL);
-        const priceFeedAccount =
-        await pythSolanaReceiver.fetchPriceFeedAccount(0,SOL_PRICE_FEED_ID);
-        const newUSDPrice = priceFeedAccount?.priceMessage.price / 100000000;
-        console.log("NEW USD BALANCE:", newUSDPrice * balance);
+
+        const userUsdtWallet = await getAssociatedTokenAddress(
+          usdt,
+          //@ts-ignore
+          payer
+        );
+
+        const USER_USDC_BALANCE = (await connection.getTokenAccountBalance(userUsdtWallet)).value.uiAmount;
+        
         setBalance(newBalance / LAMPORTS_PER_SOL);
-        setUsdBalance(newUSDPrice * balance); // NOTE: This is approximate value, Verify
+
+        if (USER_USDC_BALANCE != null) {
+          setUsdBalance(USER_USDC_BALANCE)
+        }
+         
         setTimeout(getBalanceEvery10Seconds, 10000);
       })();
     }
@@ -60,6 +75,7 @@ const Section1 = () => {
 
   const TOKEN_SEED = "token";
   const MINT_SEED = "mint";
+  const BUYER_SEED = "buyer";
 
 
   //@ts-ignore
@@ -86,16 +102,87 @@ const Section1 = () => {
       payer
     );
 
+    const adminUsdtWallet = await getAssociatedTokenAddress(
+      usdt,
+      tokenPda,
+      true,
+    );
+
+    const [userDetails] = await web3.PublicKey.findProgramAddressSync(
+        [
+          Buffer.from(BUYER_SEED),
+          //@ts-ignore
+          wallet.publicKey.toBuffer()
+        ],
+        MEME_PROGRAM_ID
+      );
+
     //@ts-ignore
     const walletBalance = await connection.getBalance(wallet.publicKey);
-
-    const programBalance = await connection.getBalance(tokenPda);
 
     const pgTokenBalance = (await connection.getTokenAccountBalance(fromAta)).value.uiAmount;
 
     console.log("Number of tokens available:", pgTokenBalance);
-    console.log("PROGRAM BALANCE _ AMT RAISED:", programBalance/LAMPORTS_PER_SOL +" SOL");
     console.log("WALLET BALANCE:", walletBalance/LAMPORTS_PER_SOL +" SOL");
+
+
+
+
+
+
+
+
+    //NUMBER OF GULLULU TOKEN OWNED BY THE CONNECTED USER
+    const userGULLULUTokens = (await connection.getTokenAccountBalance(destination)).value.uiAmount;
+    console.log("Number of GULLULU tokens owned by connected user:", userGULLULUTokens);
+
+    //TOTAL SOLANA BALANCE OF TREASURY
+    const programBalance = await connection.getBalance(tokenPda);
+    console.log("PROGRAM BALANCE _ AMT RAISED:", programBalance/LAMPORTS_PER_SOL +" SOL");
+
+    //TOTAL USDT BALANCE OF TREASURY
+    // const programUSDBalance = (await connection.getTokenAccountBalance(adminUsdtWallet)).value.uiAmount;
+    // console.log("PROGRAM BALANCE _ AMT RAISED:", programUSDBalance +" USDT");
+
+    // const info = await connection.getAccountInfo(userDetails).catch((e) => {console.log("error fetching user detail account:", e)});
+    // if (info) {
+    //   //TOTAL USDT REFERRAL COMMISSION FOR THIS USER 
+    //   const userUSDTCommission = (await program.account.UserDetails.fetch(userDetails)).referralUsd.toNumber();
+    //   console.log("USER REFERAL AMOUNT EARNED IN USDT:", userUSDTCommission)
+
+    //   //TOTAL SOL REFERRAL COMMISSION FOR THIS USER 
+    //   const userSOLCommission = (await program.account.UserDetails.fetch(userDetails)).referralSol.toNumber();
+    //   console.log("USER REFERAL AMOUNT EARNED IN SOL:", userSOLCommission)
+    // } 
+
+    // console.log("User details is not yet updated");
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    let userUsdtWallet;
+    let USDT = null; // TURN THIS TO TRUE WHEN USING USDT TO BUY TOKENS
+
+    if(USDT) {
+      userUsdtWallet = await getAssociatedTokenAddress(
+        usdt,
+        //@ts-ignore
+        payer
+      );
+    } else {
+      userUsdtWallet = null;
+    }
 
 
     const context = {
@@ -103,6 +190,9 @@ const Section1 = () => {
       tokenPda,
       fromAta,
       referrer: publicKey? publicKey: null,  // pass the referrer address publickey like: new PublicKey("PUBLICKEY OF THE REFERRER")
+      userUsdtWallet,
+      adminUsdtWallet,
+      usdt,
       priceFeed: priceFeed,
       destination,
       payer,
