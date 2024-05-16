@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Countdown from "../../utilities/Countdown";
 import SelectCurrency from "../../utilities/Dropdown";
 import { AnchorProvider, BN, Program, web3 } from "@coral-xyz/anchor";
@@ -14,6 +14,7 @@ import { useSearchParams } from "next/navigation";
 
 const Section1 = () => {
   const [mintAmount, setMintAmount] = useState(0);
+  const [balance, setBalance] = useState<number>(0);
 
   const search = useSearchParams();
   const publicKey = search.get('ref');
@@ -21,6 +22,19 @@ const Section1 = () => {
   const { connection } = useConnection();
   const wallet = useWallet();
   const payer = wallet.publicKey;
+
+  useEffect(() => {
+    if (wallet.publicKey) {
+      (async function getBalanceEvery10Seconds() {
+        //@ts-ignore
+        const newBalance = await connection.getBalance(wallet.publicKey);
+        console.log("NEW BALANCEEEE:", newBalance);
+        setBalance(newBalance / LAMPORTS_PER_SOL);
+        setTimeout(getBalanceEvery10Seconds, 10000);
+      })();
+    }
+  }, [publicKey, connection, balance]);
+
 
   const provider = new AnchorProvider(connection, wallet as AnchorWallet, {
     commitment: 'confirmed',
@@ -31,10 +45,6 @@ const Section1 = () => {
   const TOKEN_SEED = "token";
   const MINT_SEED = "mint";
   const priceFeed = new PublicKey("J83w4HKfqxwcq3BEMMkPFSppX3gqekLyLJBexebFVkix");
-
-
-
-  console.log("")
 
 
   //@ts-ignore
@@ -68,12 +78,12 @@ const Section1 = () => {
 
     const pgTokenBalance = (await connection.getTokenAccountBalance(fromAta)).value.uiAmount;
 
-    console.log("PROGRAM BALANCE _ AMT RAISED:", programBalance/LAMPORTS_PER_SOL +" SOL");
     console.log("Number of tokens available:", pgTokenBalance);
+    console.log("PROGRAM BALANCE _ AMT RAISED:", programBalance/LAMPORTS_PER_SOL +" SOL");
     console.log("WALLET BALANCE:", walletBalance/LAMPORTS_PER_SOL +" SOL");
 
 
-
+    console.log("BALANACEEEEEEEEEEEE:", balance);
 
     const context = {
       mint,
@@ -172,7 +182,7 @@ const Section1 = () => {
                     height={100}
                     className="w-6 h-6 "
                   />
-                  SOL: 100
+                  SOL: {balance}
                 </div>
                 <div className="flex gap-2 sm:text-sm text-base font-bold">
                   <Image
