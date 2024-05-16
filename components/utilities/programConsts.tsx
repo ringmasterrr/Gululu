@@ -11,9 +11,6 @@ export const MEME_PROGRAM_ID = new PublicKey(
   '8dw68VDX3pWPibpZH39vQtG1GK1DEY8pT6dyKeHbA5c2'
 );
 
-//EmQEUUDYPZqHrtSVTCvTkvPdXdS5GiRgW4srWF9kUckz
-//8SXDKYbosQzGBS5N1FUNPrFJq1v55iyBkxwShreiFPca
-
 // export function useAnchorProvider() {
 //   const { connection } = useConnection();
 //   const wallet = useWallet();

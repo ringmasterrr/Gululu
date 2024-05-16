@@ -1,20 +1,18 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import copy from "copy-to-clipboard";
+import copy from 'copy-to-clipboard';
+import { useWallet } from "@solana/wallet-adapter-react";
 
 const ReferralBox = () => {
+  const wallet = useWallet();
   const [copied, setCopied] = useState(false);
-  const [referralLink, setReferralLink] = useState("dsfadsfasdfads");
+  const [referralLink, setReferralLink] = useState('');
 
-  const shareData = {
-    title: "Gululu",
-    url:referralLink ,
-  };
-
-  useEffect(() => {
-    setReferralLink(`${window.location.origin}?ref=${referralLink}`);
-  }, []);
+  useEffect(() => { 
+    if (!wallet) return
+    setReferralLink(`${window.location.origin}?ref=${wallet.publicKey}`);
+  }, [wallet]); 
 
   const copyReferralLink = () => {
     copy(referralLink);

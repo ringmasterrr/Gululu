@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Countdown from "../../utilities/Countdown";
 import SelectCurrency from "../../utilities/Dropdown";
 import { AnchorProvider, BN, Program, web3 } from "@coral-xyz/anchor";
@@ -9,16 +9,34 @@ import { ASSOCIATED_TOKEN_PROGRAM_ID, TOKEN_PROGRAM_ID, getAssociatedTokenAddres
 import { AnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { IDL } from "@/components/utilities/idl";
 import { MEME_PROGRAM_ID } from "@/components/utilities/programConsts";
-import { PublicKey } from "@solana/web3.js";
+import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
+import { useSearchParams } from "next/navigation";
 import HeroCard from "@/components/pages/homepage/HeroCard"
 import Calculator from "@/components/utilities/calculator";
 
 
 const Section1 = () => {
   const [mintAmount, setMintAmount] = useState(0);
+  const [balance, setBalance] = useState<number>(0);
+  const search = useSearchParams();
+  const publicKey = search.get('ref');
+  console.log("PUBLICKEY:", publicKey)
   const { connection } = useConnection();
   const wallet = useWallet();
   const payer = wallet.publicKey;
+
+  useEffect(() => {
+    if (wallet.publicKey) {
+      (async function getBalanceEvery10Seconds() {
+        //@ts-ignore
+        const newBalance = await connection.getBalance(wallet.publicKey);
+        console.log("NEW BALANCEEEE:", newBalance);
+        setBalance(newBalance / LAMPORTS_PER_SOL);
+        setTimeout(getBalanceEvery10Seconds, 10000);
+      })();
+    }
+  }, [publicKey, connection, balance]);
+
 
   const provider = new AnchorProvider(connection, wallet as AnchorWallet, {
     commitment: 'confirmed',
@@ -55,11 +73,25 @@ const Section1 = () => {
       payer
     );
 
+    //@ts-ignore
+    const walletBalance = await connection.getBalance(wallet.publicKey);
+
+    const programBalance = await connection.getBalance(tokenPda);
+
+    const pgTokenBalance = (await connection.getTokenAccountBalance(fromAta)).value.uiAmount;
+
+    console.log("Number of tokens available:", pgTokenBalance);
+    console.log("PROGRAM BALANCE _ AMT RAISED:", programBalance/LAMPORTS_PER_SOL +" SOL");
+    console.log("WALLET BALANCE:", walletBalance/LAMPORTS_PER_SOL +" SOL");
+
+
+    console.log("BALANACEEEEEEEEEEEE:", balance);
+
     const context = {
       mint,
       tokenPda,
       fromAta,
-      referrer: null,  // pass the referrer address publickey like: new PublicKey("PUBLICKEY OF THE REFERRER")
+      referrer: publicKey? publicKey: null,  // pass the referrer address publickey like: new PublicKey("PUBLICKEY OF THE REFERRER")
       priceFeed: priceFeed,
       destination,
       payer,
@@ -78,8 +110,7 @@ const Section1 = () => {
     console.log(`  https://explorer.solana.com/tx/${txHash}?cluster=devnet`);
   } 
 
-
-
+  
   return (
     <div className="relative flex flex-wrap items-start bg-[#F7E8D5] px-8  pb-14 pt-10 md:pt-0 justify-center">
       <div className=" relative flex flex-col xl:max-w-[45%] w-[95%] items-center justify-center ">
@@ -110,9 +141,14 @@ const Section1 = () => {
           </div>
         
       </div>
-      <div className="relative flex flex-col xl:max-w-[48%] w-[100%] items-center justify-center pt-16 ml-0 ">
-      
-        <div className=" buytoken bg-[#CFEEFF] rounded-3xl md:w-[85%] w-[100%] pt-20 pb-10 z-50 ">
+      <div className="relative flex flex-col xl:max-w-[48%] w-full items-center justify-center pt-16 ml-0 ">
+
+      {isButtonClicked ? (
+        <HeroCard /> // Render replacement component if button is clicked
+      ) : (
+
+        <div className=" buytoken bg-[#CFEEFF] rounded-3xl md:w-[78%] w-[97%] pt-20 pb-10 z-10 ">
+          <div className="flex flex-col justify-between ">
             <div>
               <h3 className="sm:px-24 px-4 font-omnes text-center leading-7 text-2xl ">
                 GULULU launches on doge day! Last <br /> chance to buy!
@@ -152,7 +188,7 @@ const Section1 = () => {
                     height={100}
                     className="w-6 h-6 "
                   />
-                  SOL: 100
+                  SOL: {balance}
                 </div>
                 <div className="flex gap-2 sm:text-sm text-base font-bold">
                   <Image
@@ -165,21 +201,53 @@ const Section1 = () => {
                   USDT: 100
                 </div>
               </div>
-              <div className="flex md:flex-row flex-wrap  gap-8  mx-4 py-2 text-black items-end justify-center"> 
-                  <Calculator/>
+              <div className="flex md:flex-row flex-wrap  gap-8  mx-4 py-8 text-black items-end justify-center">
+                <div className=" text-black font-bold flex flex-col items-center justify-center text-center gap-3">
+                  Your Invested Amount{" "}
+                  <input
+                    type="text"
+                    placeholder="$100"
+                    className="text-center rounded-full w-40 p-4 placeholder-black text-base font-black font-omnes border border-black"
+                  ></input>
+                </div>
+                <div className="text-black font-bold flex flex-col items-center justify-center text-center gap-3">
+                  <h3>Choose Currency</h3>
+                  <SelectCurrency />
+                </div>
+<<<<<<<<< Temporary merge branch 1
+                <div className="  text-black font-bold flex flex-col items-center justify-center text-center gap-3">
+                  You Get{" "}
+                  <input
+                    type="text"
+                    placeholder="$100"
+                    className="text-center rounded-full w-40 p-4 bg-[#FFC67D] placeholder-black text-base font-black font-omnes border "
+                  ></input>
                 </div>
               </div>
-              <div className="flex sm:flex-row flex-col items-center justify-center gap-7 2xl:mt-6 mt-2 ">
+            </div>
+            <div className="flex sm:flex-row flex-col items-center justify-center gap-7 mt-14 ">
+              <button className="  font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block " onClick={handleBuyWithBNB} > 
+                BUY GULULU
+=========
+
+                <div className="  text-black font-bold flex flex-col items-center justify-center text-center gap-3">You Get <input value={mintAmount} onChange={(e)=> setMintAmount(e.target.valueAsNumber)} type="number" placeholder="$100" className="text-center rounded-full w-40 p-4 bg-[#FFC67D] placeholder-black text-base font-black font-omnes border "></input></div>
+              </div>
+            </div>
+            <div className="flex sm:flex-row flex-col items-center justify-center gap-7 mt-14 ">
               <button 
                 className="  font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block "
                 onClick={handleButtonClick}
                 >
-                BUY GULULU
+                BUY WITH BNB
+>>>>>>>>> Temporary merge branch 2
               </button>
             </div>
-          </div> 
-          
-          <Image
+          </div>
+        </div>
+
+      )}
+
+        <Image
           src={"/bone1.svg"}
           alt="paw"
           height={500}

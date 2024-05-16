@@ -52,6 +52,68 @@ export type Meme = {
         { "name": "associatedTokenProgram", "isMut": false, "isSigner": false }
       ],
       "args": [{ "name": "quantity", "type": "u64" }]
+    },
+    {
+      "name": "initialize",
+      "accounts": [
+        { "name": "admin", "isMut": true, "isSigner": true },
+        { "name": "poolInfo", "isMut": true, "isSigner": false },
+        { "name": "stakingToken", "isMut": true, "isSigner": false },
+        { "name": "adminStakingWallet", "isMut": true, "isSigner": false },
+        { "name": "rent", "isMut": false, "isSigner": false },
+        { "name": "systemProgram", "isMut": false, "isSigner": false },
+        { "name": "tokenProgram", "isMut": false, "isSigner": false },
+        { "name": "associatedTokenProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": []
+    },
+    {
+      "name": "stake",
+      "accounts": [
+        { "name": "user", "isMut": true, "isSigner": true },
+        { "name": "userInfo", "isMut": true, "isSigner": false },
+        { "name": "userStakingWallet", "isMut": true, "isSigner": false },
+        { "name": "poolInfo", "isMut": true, "isSigner": false },
+        { "name": "adminStakingWallet", "isMut": true, "isSigner": false },
+        { "name": "stakingToken", "isMut": true, "isSigner": false },
+        { "name": "tokenProgram", "isMut": false, "isSigner": false },
+        { "name": "associatedTokenProgram", "isMut": false, "isSigner": false },
+        { "name": "rent", "isMut": false, "isSigner": false },
+        { "name": "systemProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": [{ "name": "amount", "type": "u64" }]
+    },
+    {
+      "name": "unstake",
+      "accounts": [
+        { "name": "user", "isMut": true, "isSigner": true },
+        { "name": "userInfo", "isMut": true, "isSigner": false },
+        { "name": "userStakingWallet", "isMut": true, "isSigner": false },
+        { "name": "poolInfo", "isMut": true, "isSigner": false },
+        { "name": "adminStakingWallet", "isMut": true, "isSigner": false },
+        { "name": "stakingToken", "isMut": true, "isSigner": false },
+        { "name": "tokenPda", "isMut": true, "isSigner": false },
+        { "name": "fromAta", "isMut": true, "isSigner": false },
+        { "name": "tokenProgram", "isMut": false, "isSigner": false },
+        { "name": "associatedTokenProgram", "isMut": false, "isSigner": false },
+        { "name": "systemProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": []
+    },
+    {
+      "name": "claimReward",
+      "accounts": [
+        { "name": "user", "isMut": true, "isSigner": true },
+        { "name": "userInfo", "isMut": true, "isSigner": false },
+        { "name": "userStakingWallet", "isMut": true, "isSigner": false },
+        { "name": "tokenPda", "isMut": true, "isSigner": false },
+        { "name": "fromAta", "isMut": true, "isSigner": false },
+        { "name": "stakingToken", "isMut": true, "isSigner": false },
+        { "name": "tokenProgram", "isMut": false, "isSigner": false },
+        { "name": "associatedTokenProgram", "isMut": false, "isSigner": false },
+        { "name": "systemProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": []
     }
   ],
   "accounts": [
@@ -74,6 +136,30 @@ export type Meme = {
           { "name": "phaseThreeMint", "type": "u64" },
           { "name": "phaseFourMint", "type": "u64" },
           { "name": "phaseFiveMint", "type": "u64" }
+        ]
+      }
+    },
+    {
+      "name": "PoolInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "admin", "type": "publicKey" },
+          { "name": "startSlot", "type": "u64" },
+          { "name": "endSlot", "type": "u64" },
+          { "name": "token", "type": "publicKey" }
+        ]
+      }
+    },
+    {
+      "name": "UserInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "amount", "type": "u64" },
+          { "name": "rewardDebt", "type": "u64" },
+          { "name": "depositTime", "type": "u64" },
+          { "name": "reward", "type": "u64" }
         ]
       }
     }
@@ -153,6 +239,11 @@ export type Meme = {
       "code": 6010,
       "name": "PriceFeedDown",
       "msg": "SOL/USD price feed is down, try again later"
+    },
+    {
+      "code": 6011,
+      "name": "Uneligible",
+      "msg": "Not eligible to claim rewards, Need to stake atleast 30 days"
     }
   ]
 }
@@ -230,6 +321,68 @@ export type Meme = {
           { "name": "associatedTokenProgram", "isMut": false, "isSigner": false }
         ],
         "args": [{ "name": "quantity", "type": "u64" }]
+      },
+      {
+        "name": "initialize",
+        "accounts": [
+          { "name": "admin", "isMut": true, "isSigner": true },
+          { "name": "poolInfo", "isMut": true, "isSigner": false },
+          { "name": "stakingToken", "isMut": true, "isSigner": false },
+          { "name": "adminStakingWallet", "isMut": true, "isSigner": false },
+          { "name": "rent", "isMut": false, "isSigner": false },
+          { "name": "systemProgram", "isMut": false, "isSigner": false },
+          { "name": "tokenProgram", "isMut": false, "isSigner": false },
+          { "name": "associatedTokenProgram", "isMut": false, "isSigner": false }
+        ],
+        "args": []
+      },
+      {
+        "name": "stake",
+        "accounts": [
+          { "name": "user", "isMut": true, "isSigner": true },
+          { "name": "userInfo", "isMut": true, "isSigner": false },
+          { "name": "userStakingWallet", "isMut": true, "isSigner": false },
+          { "name": "poolInfo", "isMut": true, "isSigner": false },
+          { "name": "adminStakingWallet", "isMut": true, "isSigner": false },
+          { "name": "stakingToken", "isMut": true, "isSigner": false },
+          { "name": "tokenProgram", "isMut": false, "isSigner": false },
+          { "name": "associatedTokenProgram", "isMut": false, "isSigner": false },
+          { "name": "rent", "isMut": false, "isSigner": false },
+          { "name": "systemProgram", "isMut": false, "isSigner": false }
+        ],
+        "args": [{ "name": "amount", "type": "u64" }]
+      },
+      {
+        "name": "unstake",
+        "accounts": [
+          { "name": "user", "isMut": true, "isSigner": true },
+          { "name": "userInfo", "isMut": true, "isSigner": false },
+          { "name": "userStakingWallet", "isMut": true, "isSigner": false },
+          { "name": "poolInfo", "isMut": true, "isSigner": false },
+          { "name": "adminStakingWallet", "isMut": true, "isSigner": false },
+          { "name": "stakingToken", "isMut": true, "isSigner": false },
+          { "name": "tokenPda", "isMut": true, "isSigner": false },
+          { "name": "fromAta", "isMut": true, "isSigner": false },
+          { "name": "tokenProgram", "isMut": false, "isSigner": false },
+          { "name": "associatedTokenProgram", "isMut": false, "isSigner": false },
+          { "name": "systemProgram", "isMut": false, "isSigner": false }
+        ],
+        "args": []
+      },
+      {
+        "name": "claimReward",
+        "accounts": [
+          { "name": "user", "isMut": true, "isSigner": true },
+          { "name": "userInfo", "isMut": true, "isSigner": false },
+          { "name": "userStakingWallet", "isMut": true, "isSigner": false },
+          { "name": "tokenPda", "isMut": true, "isSigner": false },
+          { "name": "fromAta", "isMut": true, "isSigner": false },
+          { "name": "stakingToken", "isMut": true, "isSigner": false },
+          { "name": "tokenProgram", "isMut": false, "isSigner": false },
+          { "name": "associatedTokenProgram", "isMut": false, "isSigner": false },
+          { "name": "systemProgram", "isMut": false, "isSigner": false }
+        ],
+        "args": []
       }
     ],
     "accounts": [
@@ -252,6 +405,30 @@ export type Meme = {
             { "name": "phaseThreeMint", "type": "u64" },
             { "name": "phaseFourMint", "type": "u64" },
             { "name": "phaseFiveMint", "type": "u64" }
+          ]
+        }
+      },
+      {
+        "name": "PoolInfo",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            { "name": "admin", "type": "publicKey" },
+            { "name": "startSlot", "type": "u64" },
+            { "name": "endSlot", "type": "u64" },
+            { "name": "token", "type": "publicKey" }
+          ]
+        }
+      },
+      {
+        "name": "UserInfo",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            { "name": "amount", "type": "u64" },
+            { "name": "rewardDebt", "type": "u64" },
+            { "name": "depositTime", "type": "u64" },
+            { "name": "reward", "type": "u64" }
           ]
         }
       }
@@ -331,6 +508,11 @@ export type Meme = {
         "code": 6010,
         "name": "PriceFeedDown",
         "msg": "SOL/USD price feed is down, try again later"
+      },
+      {
+        "code": 6011,
+        "name": "Uneligible",
+        "msg": "Not eligible to claim rewards, Need to stake atleast 30 days"
       }
     ]
   }
