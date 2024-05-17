@@ -26,7 +26,7 @@ const Section6 = () => {
           0x2541A36BE4cD39286ED61a3E6AFC2307609d6
         </p>
       </div>
-      <div className="relative flex flex-col bg-[#FFCBBF] mt-14 rounded-[1.25rem] w-[80%] px-2 ">
+      <div className="relative flex flex-col bg-[#FFCBBF] mt-14 rounded-[1.25rem] lg:w-[80%] w-[90%] px-2 ">
         <div className="flex flex-wrap-reverse xl:flex-row items-center  justify-center w-full gap-11">
           <div>
             <Image

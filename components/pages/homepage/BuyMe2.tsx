@@ -80,7 +80,7 @@ const Section8 = () => {
         alt="auction"
         height={500}
         width={500}
-        className=" absolute h-auto w-auto -bottom-[1.3rem] right-0 z-50"
+        className=" absolute h-auto md:w-[14rem] w-[10rem] -bottom-[1rem] right-0 z-50"
       />
 
       <Image
