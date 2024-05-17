@@ -53,14 +53,20 @@ const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
           //@ts-ignore
           payer
         );
+         try{
+          const USER_USDC_BALANCE = (await connection.getTokenAccountBalance(userUsdtWallet)).value.uiAmount;
 
-        const USER_USDC_BALANCE = (await connection.getTokenAccountBalance(userUsdtWallet)).value.uiAmount;
+          if (USER_USDC_BALANCE != null) {
+            setUsdBalance(USER_USDC_BALANCE)
+          }
+         } catch(e) {
+          console.log("ERROR:", e);
+         }
+        
         
         setBalance(newBalance / LAMPORTS_PER_SOL);
 
-        if (USER_USDC_BALANCE != null) {
-          setUsdBalance(USER_USDC_BALANCE)
-        }
+        
          
         setTimeout(getBalanceEvery10Seconds, 10000);
       })();
