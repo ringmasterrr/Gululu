@@ -21,6 +21,7 @@ const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
   const [mintAmount, setMintAmount] = useState(0);
   const [balance, setBalance] = useState<number>(0);
   const [usdBalance, setUsdBalance] = useState<number>(0);
+  const [selectedCurrency, setSelectedCurrency] = useState("SOL");
   const [userGULLULUTokens, setUserGULLULUTokens] = useState<number | null>(0);
   console.log("PUBLICKEY:", publicKey)
   const { connection } = useConnection();
@@ -174,7 +175,7 @@ const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
 
 
     let userUsdtWallet;
-    let USDT = true; // TURN THIS TO TRUE WHEN USING USDT TO BUY TOKENS
+    let USDT = selectedCurrency === "USDT"; // TURN THIS TO TRUE WHEN USING USDT TO BUY TOKENS
 
     if(USDT) {
       userUsdtWallet = await getAssociatedTokenAddress(
@@ -305,7 +306,7 @@ const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
               </div>
             </div>
             <div className="flex md:flex-row flex-wrap  gap-8  mx-4 py-2 text-black items-end justify-center"> 
-                <Calculator result={mintAmount} setResult={setMintAmount}/>
+                <Calculator result={mintAmount} setResult={setMintAmount} selectedCurrency={selectedCurrency} setSelectedCurrency={setSelectedCurrency} />
               </div>
             </div>
             <div className="flex sm:flex-row flex-col items-center justify-center gap-7 2xl:mt-6 mt-2 ">
