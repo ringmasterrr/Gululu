@@ -45,6 +45,14 @@ export type Meme = {
           "isSigner": false,
           "isOptional": true
         },
+        {
+          "name": "userUsdtWallet",
+          "isMut": true,
+          "isSigner": false,
+          "isOptional": true
+        },
+        { "name": "adminUsdtWallet", "isMut": true, "isSigner": false },
+        { "name": "usdt", "isMut": true, "isSigner": false },
         { "name": "priceFeed", "isMut": false, "isSigner": false },
         { "name": "rent", "isMut": false, "isSigner": false },
         { "name": "systemProgram", "isMut": false, "isSigner": false },
@@ -249,7 +257,6 @@ export type Meme = {
 }
 
 
-  
 
 
 
@@ -314,6 +321,14 @@ export type Meme = {
             "isSigner": false,
             "isOptional": true
           },
+          {
+            "name": "userUsdtWallet",
+            "isMut": true,
+            "isSigner": false,
+            "isOptional": true
+          },
+          { "name": "adminUsdtWallet", "isMut": true, "isSigner": false },
+          { "name": "usdt", "isMut": true, "isSigner": false },
           { "name": "priceFeed", "isMut": false, "isSigner": false },
           { "name": "rent", "isMut": false, "isSigner": false },
           { "name": "systemProgram", "isMut": false, "isSigner": false },
