@@ -26,9 +26,9 @@ const Section7 = () => {
           className="absolute bottom-[7rem] left-[5rem] w-28 xl:block hidden"
         />
       </div>
-      <div className="xl:w-1/2">
+      <div className="xl:w-1/2 bg-[#FFC67D]">
         <Image
-          src={"/buymeme.png"}
+          src={"/buymeme.svg"}
           alt="buy"
           height={2000}
           width={2000}

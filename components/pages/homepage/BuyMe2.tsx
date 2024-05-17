@@ -11,7 +11,7 @@ const Section8 = () => {
           <div className="flex flex-col items-start justify-start md:h-[34rem] bg-white rounded-md p-5">
             <div className="md:h-[25rem] md:w-[25rem] bg-[#FF933B] rounded-md rounded-br-[3rem] flex items-center justify-center ">
               <Image
-                src={"/dab.svg"}
+                src={"/catdab.svg"}
                 alt="dab"
                 width={500}
                 height={500}
@@ -26,7 +26,7 @@ const Section8 = () => {
           <div className="flex flex-col items-start justify-start md:h-[34rem] bg-white rounded-md p-5">
             <div className="md:h-[25rem] md:w-[25rem] bg-[#F49F8A] rounded-md rounded-br-[3rem] flex items-center justify-center ">
               <Image
-                src={"/dab.svg"}
+                src={"/catdab.svg"}
                 alt="dab"
                 width={500}
                 height={500}
@@ -41,7 +41,7 @@ const Section8 = () => {
           <div className="flex flex-col items-start justify-start md:h-[34rem] bg-white rounded-md p-5">
             <div className="md:h-[25rem] md:w-[25rem] bg-[#CFEEFF] rounded-md rounded-br-[3rem] flex items-center justify-center ">
               <Image
-                src={"/dab.svg"}
+                src={"/catdab.svg"}
                 alt="dab"
                 width={500}
                 height={500}
@@ -76,11 +76,11 @@ const Section8 = () => {
       </div>
 
       <Image
-        src={"/smolshiba2.svg"}
+        src={"/catflip.svg"}
         alt="auction"
         height={500}
         width={500}
-        className=" absolute h-auto w-auto -bottom-[6rem] right-0 z-0"
+        className=" absolute h-auto md:w-[14rem] w-[10rem] -bottom-[1rem] right-0 z-50"
       />
 
       <Image

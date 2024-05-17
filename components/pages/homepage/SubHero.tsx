@@ -28,7 +28,7 @@ const Section2 = () => {
       </div>
       <div className="md:py-20 py-16 md:gap-20 flex flex-col xl:self-start w-[85%] xl:ml-32">
         <StalkingCard
-          imageSrc={"/dog_left.png"}
+          imageSrc={"/stalking1.svg"}
           title="Good Boy Staking!"
           description="Utilising smart contracts powered by Ethereum, GULULU is much more than a meme coin and brings passive earning potential to the community. Harness the power of your GULULU tokens by staking and earning rewards, making your tokens work for you."
           outerClassName={"flex flex-col items-center justify-start mb-5 mt-8"}
@@ -37,7 +37,7 @@ const Section2 = () => {
           }
         />
         <StalkingCard
-          imageSrc={"/dog_right.png"}
+          imageSrc={"/stalking2.svg"}
           title="Good Boy Staking!"
           description="Utilising smart contracts powered by Ethereum, GULULU is much more than a meme coin and brings passive earning potential to the community. Harness the power of your GULULU tokens by staking and earning rewards, making your tokens work for you."
           outerClassName={
@@ -48,7 +48,7 @@ const Section2 = () => {
           }
         />
         <StalkingCard
-          imageSrc={"/dog_left.png"}
+          imageSrc={"/stalking3.svg"}
           title="Good Boy Staking!"
           description="Utilising smart contracts powered by Ethereum, GULULU is much more than a meme coin and brings passive earning potential to the community. Harness the power of your GULULU tokens by staking and earning rewards, making your tokens work for you."
           outerClassName={"flex flex-col items-center justify-start"}

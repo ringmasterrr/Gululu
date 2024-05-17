@@ -8,7 +8,7 @@ const Section10 = () => {
         <Image src={"/bone14.svg"} alt="left" height={800} width={800} className="absolute -top-[5rem] right-[5%]  w-[10rem] 2xl:block hidden"/>
     
       <FAQ />
-      <div className="relative bg-[#CFEEFF] lg:w-[60rem] w-[90%] rounded-2xl flex flex-col justify-between p-14 gap-10">
+      <div className="relative bg-[#CFEEFF] lg:w-[60rem] w-[90%] rounded-2xl flex flex-col justify-between p-14 pb-32 gap-10">
         <div className="text-5xl text-center font-omnesblack  py-5 uppercase">
           JOIN OUR SOCIALS
         </div>
@@ -26,8 +26,8 @@ const Section10 = () => {
         <Image src={"/pawleft.svg"} alt="left" height={800} width={800} className="absolute -left-[15%] -top-[7%] w-[6rem] xl:block hidden"/>
         <Image src={"/pawright.svg"} alt="left" height={800} width={800} className="absolute -right-[15%] -top-[2%] w-[6rem] xl:block hidden"/>
         
-        <Image src={"/left.png"} alt="left" height={800} width={800} className="absolute lg:-bottom-[22rem] -bottom-[15rem] md:right-[35rem] right-20  xl:w-[40rem] lg:w-[25rem] md:w-[20rem] md:block hidden"/>
-        <Image src={"/right.png"} alt="left" height={800} width={800} className="absolute lg:-bottom-[22rem] -bottom-[15rem] md:left-[35rem] left-20 xl:w-[40rem] lg:w-[25rem] md:w-[20rem] md:block hidden"/>
+        <Image src={"/left.svg"} alt="left" height={800} width={800} className="absolute lg:-bottom-[10rem] -bottom-[15rem] md:right-[35rem] right-20  xl:w-[40rem] lg:w-[25rem] md:w-[20rem] md:block hidden"/>
+        <Image src={"/right.svg"} alt="left" height={800} width={800} className="absolute lg:-bottom-[10rem] -bottom-[15rem] md:left-[35rem] left-20 xl:w-[40rem] lg:w-[25rem] md:w-[20rem] md:block hidden"/>
       </div>
     </div>
   );

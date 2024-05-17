@@ -70,7 +70,7 @@ const Section9: React.FC = () => {
   return (
     <div className="relative bg-[#FFC67D] flex flex-col items-center justify-center py-12">
       <Image
-        src={"/smolshiba2.svg"}
+        src={""}
         alt="auction"
         height={500}
         width={500}
@@ -106,10 +106,10 @@ const Section9: React.FC = () => {
           would be worth at different prices.
         </h3>
         <div className=" lg:w-[75%] w-[90%] flex flex-col  justify-center">
-          <div className="font-omnes flex flex-row justify-between items-center px-8 py-4  uppercase">
+          <div className="font-omnes flex flex-row justify-between items-start px-8 py-4  uppercase">
             <h3>If I buy</h3>
 
-            <div>
+            <div className="flex flex-col items-end">
               <select value={currency} onChange={handleCurrencyChange}>
                 <option value="INR">INR</option>
                 <option value="USD">USD</option>
@@ -148,7 +148,7 @@ const Section9: React.FC = () => {
           </div>
           <div className="text-[#667CC1] text-xl font-omnes flex flex-row justify-between items-center px-1 uppercase py-2">
             <h3 className="w-1/4 text-left">Your $GULULU would be worth</h3>
-            <div>
+            <div className="flex flex-col items-end justify-end">
               <h3>USD {dollarsValue}</h3>
               <h3>INR {rupeesValue}</h3>
             </div>
