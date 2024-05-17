@@ -22,7 +22,7 @@ const Section6 = () => {
          GULULU tokenomics include smart staking rewards, meaning you can earn right away."
         />
         <p>GULULU Token Address:</p>
-        <p className="font-omnes pt-1">
+        <p className="font-omnes pt-1 break-all">
           0x2541A36BE4cD39286ED61a3E6AFC2307609d6
         </p>
       </div>

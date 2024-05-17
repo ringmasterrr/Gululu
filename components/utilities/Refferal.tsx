@@ -33,11 +33,13 @@ const ReferralBox = () => {
       alert('Share not supported on this browser');
     }
   };
-
+  if(!wallet.publicKey) return <div className="bg-white border text-center mt-4 p-4 font-semibold border-slate-300 rounded-md lg:w-4/5 w-full">
+    Please Connect wallet to generate Referral Link
+  </div>
   return (
-    <div className="bg-white border mt-4 p-2 border-slate-300 rounded-md lg:w-[80%]">
-      <div className="text-center block mb-2 py-1 text-purple-800">
-        <p>{referralLink}</p>
+    <div className="bg-white border mt-4 p-2 border-slate-300 rounded-md lg:w-4/5 w-full">
+      <div className="text-center block mb-2 py-1 text-purple-800 w-full">
+        <p className=" break-all">{referralLink}</p>
       </div>
       <div className="flex md:flex-row flex-col gap-1">
         <button
