@@ -48,23 +48,25 @@ const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
         const newBalance = await connection.getBalance(wallet.publicKey);
         console.log("NEW BALANCEEEE:", newBalance/ LAMPORTS_PER_SOL);
 
-         try{
           const userUsdtWallet = await getAssociatedTokenAddress(
             usdt,
             //@ts-ignore
             payer
           );
-          
-          const USER_USDC_BALANCE = (await connection.getTokenAccountBalance(userUsdtWallet)).value.uiAmount;
 
-          if (USER_USDC_BALANCE != null) {
-            setUsdBalance(USER_USDC_BALANCE)
-          }
-         } catch(e) {
-          console.log("ERROR:", e);
-         }
-        
-        
+          const info = await connection.getAccountInfo(userUsdtWallet);
+
+          console.log("INFO:", info)
+
+          if (info) {
+            const USER_USDC_BALANCE = (await connection.getTokenAccountBalance(userUsdtWallet)).value.uiAmount;
+
+            if (USER_USDC_BALANCE != null) {
+              setUsdBalance(USER_USDC_BALANCE)
+            }
+          } 
+
+          
         setBalance(newBalance / LAMPORTS_PER_SOL);
 
         
