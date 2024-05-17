@@ -6,9 +6,8 @@ const gululu = {
   value_USD: 0.0002,
 };
 
-export default function YourComponent({result, setResult}: {result: number, setResult: Dispatch<number>}) {
+export default function YourComponent({result, setResult, selectedCurrency, setSelectedCurrency}: {result: number, setResult: Dispatch<number>, selectedCurrency: string, setSelectedCurrency: Dispatch<string> }) {
   const [investedAmount, setInvestedAmount] = useState(0);
-  const [selectedCurrency, setSelectedCurrency] = useState("SOL");
   const [exchangeRate, setExchangeRate] = useState<number | null>(null); // Specify exchangeRate as number or null
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
