@@ -140,18 +140,18 @@ const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
 
 
 
-    //NUMBER OF GULLULU TOKEN OWNED BY THE CONNECTED USER
-    const userGULLULUTokens = (await connection.getTokenAccountBalance(destination)).value.uiAmount;
-    console.log("Number of GULLULU tokens owned by connected user:", userGULLULUTokens);
-    setUserGULLULUTokens(userGULLULUTokens);
+    // //NUMBER OF GULLULU TOKEN OWNED BY THE CONNECTED USER
+    // const userGULLULUTokens = (await connection.getTokenAccountBalance(destination)).value.uiAmount;
+    // console.log("Number of GULLULU tokens owned by connected user:", userGULLULUTokens);
+    // setUserGULLULUTokens(userGULLULUTokens);
 
-    //TOTAL SOLANA BALANCE OF TREASURY
-    const programBalance = await connection.getBalance(tokenPda);
-    console.log("PROGRAM BALANCE _ AMT RAISED:", programBalance/LAMPORTS_PER_SOL +" SOL");
+    // //TOTAL SOLANA BALANCE OF TREASURY
+    // const programBalance = await connection.getBalance(tokenPda);
+    // console.log("PROGRAM BALANCE _ AMT RAISED:", programBalance/LAMPORTS_PER_SOL +" SOL");
 
-    //TOTAL USDT BALANCE OF TREASURY
-    const programUSDBalance = (await connection.getTokenAccountBalance(adminUsdtWallet)).value.uiAmount;
-    console.log("PROGRAM BALANCE _ AMT RAISED:", programUSDBalance +" USDT");
+    // //TOTAL USDT BALANCE OF TREASURY
+    // const programUSDBalance = (await connection.getTokenAccountBalance(adminUsdtWallet)).value.uiAmount;
+    // console.log("PROGRAM BALANCE _ AMT RAISED:", programUSDBalance +" USDT");
 
     // const info = await connection.getAccountInfo(userDetails).catch((e) => {console.log("error fetching user detail account:", e)});
     // if (info) {
