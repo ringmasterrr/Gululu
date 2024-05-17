@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Dispatch } from "react";
 import Image from "next/image";
 import Dropp from "./Dropdown";
 
@@ -6,11 +6,10 @@ const gululu = {
   value_USD: 0.0002,
 };
 
-export default function YourComponent() {
+export default function YourComponent({result, setResult}: {result: number, setResult: Dispatch<number>}) {
   const [investedAmount, setInvestedAmount] = useState(0);
   const [selectedCurrency, setSelectedCurrency] = useState("SOL");
   const [exchangeRate, setExchangeRate] = useState<number | null>(null); // Specify exchangeRate as number or null
-  const [result, setResult] = useState(0);
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Get the input value

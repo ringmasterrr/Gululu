@@ -48,12 +48,13 @@ const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
         const newBalance = await connection.getBalance(wallet.publicKey);
         console.log("NEW BALANCEEEE:", newBalance/ LAMPORTS_PER_SOL);
 
-        const userUsdtWallet = await getAssociatedTokenAddress(
-          usdt,
-          //@ts-ignore
-          payer
-        );
          try{
+          const userUsdtWallet = await getAssociatedTokenAddress(
+            usdt,
+            //@ts-ignore
+            payer
+          );
+          
           const USER_USDC_BALANCE = (await connection.getTokenAccountBalance(userUsdtWallet)).value.uiAmount;
 
           if (USER_USDC_BALANCE != null) {
@@ -306,7 +307,7 @@ const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
               </div>
             </div>
             <div className="flex md:flex-row flex-wrap  gap-8  mx-4 py-2 text-black items-end justify-center"> 
-                <Calculator/>
+                <Calculator result={mintAmount} setResult={setMintAmount}/>
               </div>
             </div>
             <div className="flex sm:flex-row flex-col items-center justify-center gap-7 2xl:mt-6 mt-2 ">
