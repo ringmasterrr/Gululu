@@ -22,6 +22,7 @@ const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
   const [balance, setBalance] = useState<number>(0);
   const [usdBalance, setUsdBalance] = useState<number>(0);
   const [selectedCurrency, setSelectedCurrency] = useState("SOL");
+  const [userGULLULUTokens, setUserGULLULUTokens] = useState<number | null>(0);
   console.log("PUBLICKEY:", publicKey)
   const { connection } = useConnection();
   const wallet = useWallet();
@@ -48,6 +49,7 @@ const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
         //@ts-ignore
         const newBalance = await connection.getBalance(wallet.publicKey);
         console.log("NEW BALANCEEEE:", newBalance/ LAMPORTS_PER_SOL);
+
 
           const userUsdtWallet = await getAssociatedTokenAddress(
             usdt,
@@ -142,17 +144,18 @@ const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
 
 
 
-    //NUMBER OF GULLULU TOKEN OWNED BY THE CONNECTED USER
-    const userGULLULUTokens = (await connection.getTokenAccountBalance(destination)).value.uiAmount;
-    console.log("Number of GULLULU tokens owned by connected user:", userGULLULUTokens);
+    // //NUMBER OF GULLULU TOKEN OWNED BY THE CONNECTED USER
+    // const userGULLULUTokens = (await connection.getTokenAccountBalance(destination)).value.uiAmount;
+    // console.log("Number of GULLULU tokens owned by connected user:", userGULLULUTokens);
+    // setUserGULLULUTokens(userGULLULUTokens);
 
-    //TOTAL SOLANA BALANCE OF TREASURY
-    const programBalance = await connection.getBalance(tokenPda);
-    console.log("PROGRAM BALANCE _ AMT RAISED:", programBalance/LAMPORTS_PER_SOL +" SOL");
+    // //TOTAL SOLANA BALANCE OF TREASURY
+    // const programBalance = await connection.getBalance(tokenPda);
+    // console.log("PROGRAM BALANCE _ AMT RAISED:", programBalance/LAMPORTS_PER_SOL +" SOL");
 
-    //TOTAL USDT BALANCE OF TREASURY
-    const programUSDBalance = (await connection.getTokenAccountBalance(adminUsdtWallet)).value.uiAmount;
-    console.log("PROGRAM BALANCE _ AMT RAISED:", programUSDBalance +" USDT");
+    // //TOTAL USDT BALANCE OF TREASURY
+    // const programUSDBalance = (await connection.getTokenAccountBalance(adminUsdtWallet)).value.uiAmount;
+    // console.log("PROGRAM BALANCE _ AMT RAISED:", programUSDBalance +" USDT");
 
     // const info = await connection.getAccountInfo(userDetails).catch((e) => {console.log("error fetching user detail account:", e)});
     // if (info) {
@@ -171,16 +174,6 @@ const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
     let userUsdtWallet;
     let USDT = selectedCurrency === "USDT"; // TURN THIS TO TRUE WHEN USING USDT TO BUY TOKENS
 
@@ -193,6 +186,7 @@ const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
     } else {
       userUsdtWallet = null;
     }
+    
 
 
     const context = {
@@ -212,6 +206,7 @@ const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
       associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
     };
 
+ 
   
     const decimals = 9;
     console.log("Mint amount:", mintAmount);
@@ -222,7 +217,8 @@ const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
     console.log(`  https://explorer.solana.com/tx/${txHash}?cluster=devnet`);
     
   } 
-
+  
+  
   
   return (
     <div className="relative flex flex-wrap items-start bg-[#F7E8D5] px-8  pb-14 pt-10 md:pt-0 justify-center">
@@ -270,12 +266,12 @@ const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
               <span className=" font-omnesreg font-bold ">raised!</span>
             </h3>
             <div className="flex items-center justify-center sm:gap-6 gap-2  ml-2 my-2 ">
-              <h3 className="text-center text-xl font-omnes my-3 font-bold ">
+              <div className="text-center text-xl font-omnes my-3 font-bold ">
                 <span className="text-xl font-omnesreg font-bold ">
                   Your purchased
                 </span>{" "}
-                GULULU = 0
-              </h3>
+                GULULU = {userGULLULUTokens}
+              </div>
             </div>
             <div className="flex items-center justify-between 2xl:gap-5 gap-2 px-4">
               <div className="border-b-4 border-black 2xl:w-40 xl:w-32 w-52 "></div>
