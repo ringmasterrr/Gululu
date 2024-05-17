@@ -65,7 +65,7 @@ const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
         setTimeout(getBalanceEvery10Seconds, 10000);
       })();
     }
-  }, [publicKey, connection, balance]);
+  }, [publicKey, connection, balance, wallet]);
 
   const provider = new AnchorProvider(connection, wallet as AnchorWallet, {
     commitment: 'confirmed',
@@ -190,7 +190,6 @@ const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
       tokenPda,
       fromAta,
       referrer: publicKey? publicKey: null,  // pass the referrer address publickey like: new PublicKey("PUBLICKEY OF THE REFERRER")
-      userDetails,
       userUsdtWallet,
       adminUsdtWallet,
       usdt,
@@ -297,7 +296,7 @@ const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
                   height={100}
                   className="w-6 h-6 "
                 />
-                USDT: 100
+                USDT: {usdBalance}
               </div>
             </div>
             <div className="flex md:flex-row flex-wrap  gap-8  mx-4 py-2 text-black items-end justify-center"> 
