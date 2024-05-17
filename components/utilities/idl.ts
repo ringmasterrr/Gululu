@@ -160,6 +160,16 @@ export type Meme = {
       }
     },
     {
+      "name": "UserDetails",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "referralSol", "type": "u64" },
+          { "name": "referralUsd", "type": "u64" }
+        ]
+      }
+    },
+    {
       "name": "UserInfo",
       "type": {
         "kind": "struct",
@@ -255,7 +265,6 @@ export type Meme = {
     }
   ]
 }
-
 
 
 
@@ -432,6 +441,16 @@ export type Meme = {
             { "name": "startSlot", "type": "u64" },
             { "name": "endSlot", "type": "u64" },
             { "name": "token", "type": "publicKey" }
+          ]
+        }
+      },
+      {
+        "name": "UserDetails",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            { "name": "referralSol", "type": "u64" },
+            { "name": "referralUsd", "type": "u64" }
           ]
         }
       },

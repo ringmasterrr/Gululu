@@ -13,6 +13,7 @@ import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
 import { useSearchParams } from "next/navigation";
 import { PythSolanaReceiver } from "@pythnetwork/pyth-solana-receiver";
 import NodeWallet from "@coral-xyz/anchor/dist/cjs/nodewallet";
+import { token } from "@coral-xyz/anchor/dist/cjs/utils";
 
 const Section1 = () => {
   const [mintAmount, setMintAmount] = useState(0);
@@ -141,8 +142,8 @@ const Section1 = () => {
     console.log("PROGRAM BALANCE _ AMT RAISED:", programBalance/LAMPORTS_PER_SOL +" SOL");
 
     //TOTAL USDT BALANCE OF TREASURY
-    // const programUSDBalance = (await connection.getTokenAccountBalance(adminUsdtWallet)).value.uiAmount;
-    // console.log("PROGRAM BALANCE _ AMT RAISED:", programUSDBalance +" USDT");
+    const programUSDBalance = (await connection.getTokenAccountBalance(adminUsdtWallet)).value.uiAmount;
+    console.log("PROGRAM BALANCE _ AMT RAISED:", programUSDBalance +" USDT");
 
     // const info = await connection.getAccountInfo(userDetails).catch((e) => {console.log("error fetching user detail account:", e)});
     // if (info) {
@@ -172,7 +173,7 @@ const Section1 = () => {
 
 
     let userUsdtWallet;
-    let USDT = null; // TURN THIS TO TRUE WHEN USING USDT TO BUY TOKENS
+    let USDT = true; // TURN THIS TO TRUE WHEN USING USDT TO BUY TOKENS
 
     if(USDT) {
       userUsdtWallet = await getAssociatedTokenAddress(
@@ -190,6 +191,7 @@ const Section1 = () => {
       tokenPda,
       fromAta,
       referrer: publicKey? publicKey: null,  // pass the referrer address publickey like: new PublicKey("PUBLICKEY OF THE REFERRER")
+      userDetails,
       userUsdtWallet,
       adminUsdtWallet,
       usdt,
@@ -202,6 +204,7 @@ const Section1 = () => {
       associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
     };
 
+  
     const decimals = 9;
     console.log("Mint amount:", mintAmount);
     //@ts-ignore
@@ -209,6 +212,7 @@ const Section1 = () => {
 
     await connection.confirmTransaction(txHash);
     console.log(`  https://explorer.solana.com/tx/${txHash}?cluster=devnet`);
+    
   } 
 
   
