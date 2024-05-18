@@ -30,8 +30,24 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
   const [balance, setBalance] = useState<number>(0);
   const [usdBalance, setUsdBalance] = useState<number>(0);
   const [selectedCurrency, setSelectedCurrency] = useState("SOL");
+  const [showStakingButton, setShowStakingButton] = useState(false);
+  const [showStakingCard, setShowStakingCard] = useState(false);
 
   const [userGULLULUTokens, setUserGULLULUTokens] = useState<number | null>(0);
+
+  useEffect(() => {
+    if (userGULLULUTokens !== null && userGULLULUTokens > 0) {
+      setShowStakingButton(true);
+    } else {
+      setShowStakingButton(false);
+    }
+  }, [userGULLULUTokens]);
+
+
+  const handleStakeClick = () => {
+    setShowStakingCard(true);
+  };
+
 
   console.log("PUBLICKEY:", publicKey);
   const { connection } = useConnection();
@@ -40,6 +56,7 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
   const priceFeed = new PublicKey(
     "J83w4HKfqxwcq3BEMMkPFSppX3gqekLyLJBexebFVkix"
   );
+
   const usdt = new PublicKey("Gh9ZwEmdLJ8DscKNTkTqPbNwLNNBjuSzaG9Vp2KGtKJr");
 
   const AnchorWallet = useAnchorWallet();
@@ -172,14 +189,14 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
     console.log("WALLET BALANCE:", walletBalance / LAMPORTS_PER_SOL + " SOL");
 
     //NUMBER OF GULLULU TOKEN OWNED BY THE CONNECTED USER
-    const userGULLULUTokens = (
-      await connection.getTokenAccountBalance(destination)
-    ).value.uiAmount;
-    console.log(
-      "Number of GULLULU tokens owned by connected user:",
-      userGULLULUTokens
-    );
-    setUserGULLULUTokens(userGULLULUTokens);
+    // const userGULLULUTokens = (
+    //   await connection.getTokenAccountBalance(destination)
+    // ).value.uiAmount;
+    // console.log(
+    //   "Number of GULLULU tokens owned by connected user:",
+    //   userGULLULUTokens
+    // );
+    // setUserGULLULUTokens(userGULLULUTokens);
 
     // //TOTAL SOLANA BALANCE OF TREASURY
     // const programBalance = await connection.getBalance(tokenPda);
@@ -237,7 +254,7 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
     //@ts-ignore
     const txHash = await program.methods
       .buyTokens(new BN(mintAmount * 10 ** decimals))
-    //@ts-ignore
+      //@ts-ignore
 
       .accounts(context)
       .rpc();
@@ -276,6 +293,11 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
         </div>
       </div>
       <div className="relative flex flex-col xl:max-w-[48%] w-[100%] items-center justify-center pt-16 ml-0 ">
+
+      {showStakingCard ? (
+        <HeroCard />
+      ) : (
+
         <div className=" buytoken bg-[#CFEEFF] rounded-3xl md:w-[85%] w-[100%] pt-20 pb-10 z-50 ">
           <div>
             <h3 className="sm:px-24 px-4 font-omnes text-center leading-7 text-2xl ">
@@ -338,6 +360,7 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
               />
             </div>
           </div>
+
           <div className="flex sm:flex-row flex-col items-center justify-center gap-7 2xl:mt-6 mt-2 ">
             <button
               className="  font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block "
@@ -346,7 +369,22 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
               BUY GULULU
             </button>
           </div>
+
+          {showStakingButton && (
+            <div className="flex sm:flex-row flex-col items-center justify-center gap-7 2xl:mt-6 mt-2 ">
+              <button
+                className="  font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block "
+               onClick={handleStakeClick}
+              >
+                STAKE
+              </button>
+            </div>
+          )}
+
+
         </div>
+
+      )}
 
         <Image
           src={"/bone1.svg"}
