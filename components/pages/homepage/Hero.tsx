@@ -5,82 +5,117 @@ import React, { useEffect, useState } from "react";
 import Countdown from "../../utilities/Countdown";
 import SelectCurrency from "../../utilities/Dropdown";
 import { AnchorProvider, BN, Program, web3 } from "@coral-xyz/anchor";
-import { ASSOCIATED_TOKEN_PROGRAM_ID, TOKEN_PROGRAM_ID, getAssociatedTokenAddress } from '@solana/spl-token';
-import { AnchorWallet, useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
+import {
+  ASSOCIATED_TOKEN_PROGRAM_ID,
+  TOKEN_PROGRAM_ID,
+  getAssociatedTokenAddress,
+} from "@solana/spl-token";
+import {
+  AnchorWallet,
+  useAnchorWallet,
+  useConnection,
+  useWallet,
+} from "@solana/wallet-adapter-react";
 import { IDL } from "@/components/utilities/idl";
 import { MEME_PROGRAM_ID } from "@/components/utilities/programConsts";
 import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
-import HeroCard from "@/components/pages/homepage/HeroCard"
+import HeroCard from "@/components/pages/homepage/HeroCard";
 import Calculator from "@/components/utilities/calculator";
 import { PythSolanaReceiver } from "@pythnetwork/pyth-solana-receiver";
 import NodeWallet from "@coral-xyz/anchor/dist/cjs/nodewallet";
 import { token } from "@coral-xyz/anchor/dist/cjs/utils";
 
-
-const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
+const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
   const [mintAmount, setMintAmount] = useState(0);
   const [balance, setBalance] = useState<number>(0);
   const [usdBalance, setUsdBalance] = useState<number>(0);
   const [selectedCurrency, setSelectedCurrency] = useState("SOL");
+
   const [userGULLULUTokens, setUserGULLULUTokens] = useState<number | null>(0);
-  console.log("PUBLICKEY:", publicKey)
+
+  console.log("PUBLICKEY:", publicKey);
   const { connection } = useConnection();
   const wallet = useWallet();
   const payer = wallet.publicKey;
-  const priceFeed = new PublicKey("J83w4HKfqxwcq3BEMMkPFSppX3gqekLyLJBexebFVkix"); 
+  const priceFeed = new PublicKey(
+    "J83w4HKfqxwcq3BEMMkPFSppX3gqekLyLJBexebFVkix"
+  );
   const usdt = new PublicKey("Gh9ZwEmdLJ8DscKNTkTqPbNwLNNBjuSzaG9Vp2KGtKJr");
 
   const AnchorWallet = useAnchorWallet();
   const Wallet = AnchorWallet as NodeWallet;
-  const pythSolanaReceiver = new PythSolanaReceiver({ connection, wallet: Wallet });
+  const pythSolanaReceiver = new PythSolanaReceiver({
+    connection,
+    wallet: Wallet,
+  });
 
   const SOL_PRICE_FEED_ID =
-  "0xef0d8b6fda2ceba41da15d4095d1da392a0d2f8ed0c6c7bc0f4cfac8c280b56d";
+    "0xef0d8b6fda2ceba41da15d4095d1da392a0d2f8ed0c6c7bc0f4cfac8c280b56d";
 
   // const priceFeedAccount = await pythSolanaReceiver.fetchPriceFeedAccount(0,SOL_PRICE_FEED_ID);
   // const newUSDPrice = priceFeedAccount?.priceMessage.price / 100000000;
   // console.log("NEW USD BALANCE:", newUSDPrice * balance);
   // setUsdBalance(newUSDPrice * balance); // NOTE: This is approximate value, Verify
 
+  const getGululuBalance = async () => {
+    const [mint] = await web3.PublicKey.findProgramAddressSync(
+      [Buffer.from(MINT_SEED)],
+      MEME_PROGRAM_ID
+    );
+
+    const destination = await getAssociatedTokenAddress(
+      mint,
+      //@ts-ignore
+      payer
+    );
+
+    const userGULLULUTokens = (
+      await connection.getTokenAccountBalance(destination)
+    ).value.uiAmount;
+    console.log(
+      "Number of GULLULU tokens owned by connected user:",
+      userGULLULUTokens
+    );
+    setUserGULLULUTokens(userGULLULUTokens);
+  };
 
   useEffect(() => {
     if (wallet.publicKey) {
+      getGululuBalance();
       (async function getBalanceEvery10Seconds() {
         //@ts-ignore
         const newBalance = await connection.getBalance(wallet.publicKey);
-        console.log("NEW BALANCEEEE:", newBalance/ LAMPORTS_PER_SOL);
+        console.log("NEW BALANCEEEE:", newBalance / LAMPORTS_PER_SOL);
 
+        const userUsdtWallet = await getAssociatedTokenAddress(
+          usdt,
+          //@ts-ignore
+          payer
+        );
 
-          const userUsdtWallet = await getAssociatedTokenAddress(
-            usdt,
-            //@ts-ignore
-            payer
-          );
+        const info = await connection.getAccountInfo(userUsdtWallet);
 
-          const info = await connection.getAccountInfo(userUsdtWallet);
+        console.log("INFO:", info);
 
-          console.log("INFO:", info)
+        if (info) {
+          const USER_USDC_BALANCE = (
+            await connection.getTokenAccountBalance(userUsdtWallet)
+          ).value.uiAmount;
 
-          if (info) {
-            const USER_USDC_BALANCE = (await connection.getTokenAccountBalance(userUsdtWallet)).value.uiAmount;
+          if (USER_USDC_BALANCE != null) {
+            setUsdBalance(USER_USDC_BALANCE);
+          }
+        }
 
-            if (USER_USDC_BALANCE != null) {
-              setUsdBalance(USER_USDC_BALANCE)
-            }
-          } 
-
-          
         setBalance(newBalance / LAMPORTS_PER_SOL);
 
-        
-         
         setTimeout(getBalanceEvery10Seconds, 10000);
       })();
     }
   }, [publicKey, connection, balance, wallet]);
 
   const provider = new AnchorProvider(connection, wallet as AnchorWallet, {
-    commitment: 'confirmed',
+    commitment: "confirmed",
   });
 
   const program = new Program(IDL, MEME_PROGRAM_ID, provider);
@@ -89,25 +124,23 @@ const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
   const MINT_SEED = "mint";
   const BUYER_SEED = "buyer";
 
-
   //@ts-ignore
-  const handleButtonClick: MouseEventHandler<HTMLButtonElement> = async(event) => {
+  const handleButtonClick: MouseEventHandler<HTMLButtonElement> = async (
+    //@ts-ignore
+    event
+  ) => {
     const [mint] = await web3.PublicKey.findProgramAddressSync(
       [Buffer.from(MINT_SEED)],
       MEME_PROGRAM_ID
     );
-  
+
     const [tokenPda] = await web3.PublicKey.findProgramAddressSync(
       [Buffer.from(TOKEN_SEED)],
       MEME_PROGRAM_ID
     );
-  
-    const fromAta = await getAssociatedTokenAddress(
-      mint,
-      tokenPda,
-      true,
-    );
-  
+
+    const fromAta = await getAssociatedTokenAddress(mint, tokenPda, true);
+
     const destination = await getAssociatedTokenAddress(
       mint,
       //@ts-ignore
@@ -117,37 +150,36 @@ const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
     const adminUsdtWallet = await getAssociatedTokenAddress(
       usdt,
       tokenPda,
-      true,
+      true
     );
 
     const [userDetails] = await web3.PublicKey.findProgramAddressSync(
-        [
-          Buffer.from(BUYER_SEED),
-          //@ts-ignore
-          wallet.publicKey.toBuffer()
-        ],
-        MEME_PROGRAM_ID
-      );
+      [
+        Buffer.from(BUYER_SEED),
+        //@ts-ignore
+        wallet.publicKey.toBuffer(),
+      ],
+      MEME_PROGRAM_ID
+    );
 
     //@ts-ignore
     const walletBalance = await connection.getBalance(wallet.publicKey);
 
-    const pgTokenBalance = (await connection.getTokenAccountBalance(fromAta)).value.uiAmount;
+    const pgTokenBalance = (await connection.getTokenAccountBalance(fromAta))
+      .value.uiAmount;
 
     console.log("Number of tokens available:", pgTokenBalance);
-    console.log("WALLET BALANCE:", walletBalance/LAMPORTS_PER_SOL +" SOL");
+    console.log("WALLET BALANCE:", walletBalance / LAMPORTS_PER_SOL + " SOL");
 
-
-
-
-
-
-
-
-    // //NUMBER OF GULLULU TOKEN OWNED BY THE CONNECTED USER
-    // const userGULLULUTokens = (await connection.getTokenAccountBalance(destination)).value.uiAmount;
-    // console.log("Number of GULLULU tokens owned by connected user:", userGULLULUTokens);
-    // setUserGULLULUTokens(userGULLULUTokens);
+    //NUMBER OF GULLULU TOKEN OWNED BY THE CONNECTED USER
+    const userGULLULUTokens = (
+      await connection.getTokenAccountBalance(destination)
+    ).value.uiAmount;
+    console.log(
+      "Number of GULLULU tokens owned by connected user:",
+      userGULLULUTokens
+    );
+    setUserGULLULUTokens(userGULLULUTokens);
 
     // //TOTAL SOLANA BALANCE OF TREASURY
     // const programBalance = await connection.getBalance(tokenPda);
@@ -159,25 +191,21 @@ const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
 
     // const info = await connection.getAccountInfo(userDetails).catch((e) => {console.log("error fetching user detail account:", e)});
     // if (info) {
-    //   //TOTAL USDT REFERRAL COMMISSION FOR THIS USER 
+    //   //TOTAL USDT REFERRAL COMMISSION FOR THIS USER
     //   const userUSDTCommission = (await program.account.UserDetails.fetch(userDetails)).referralUsd.toNumber();
     //   console.log("USER REFERAL AMOUNT EARNED IN USDT:", userUSDTCommission)
 
-    //   //TOTAL SOL REFERRAL COMMISSION FOR THIS USER 
+    //   //TOTAL SOL REFERRAL COMMISSION FOR THIS USER
     //   const userSOLCommission = (await program.account.UserDetails.fetch(userDetails)).referralSol.toNumber();
     //   console.log("USER REFERAL AMOUNT EARNED IN SOL:", userSOLCommission)
-    // } 
+    // }
 
     // console.log("User details is not yet updated");
-    
-
-
-
 
     let userUsdtWallet;
     let USDT = selectedCurrency === "USDT"; // TURN THIS TO TRUE WHEN USING USDT TO BUY TOKENS
 
-    if(USDT) {
+    if (USDT) {
       userUsdtWallet = await getAssociatedTokenAddress(
         usdt,
         //@ts-ignore
@@ -186,14 +214,12 @@ const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
     } else {
       userUsdtWallet = null;
     }
-    
-
 
     const context = {
       mint,
       tokenPda,
       fromAta,
-      referrer: publicKey? publicKey: null,  // pass the referrer address publickey like: new PublicKey("PUBLICKEY OF THE REFERRER")
+      referrer: publicKey ? publicKey : null, // pass the referrer address publickey like: new PublicKey("PUBLICKEY OF THE REFERRER")
       userUsdtWallet,
       adminUsdtWallet,
       usdt,
@@ -206,31 +232,31 @@ const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
       associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
     };
 
- 
-  
     const decimals = 9;
     console.log("Mint amount:", mintAmount);
     //@ts-ignore
-    const txHash = await program.methods.buyTokens(new BN(mintAmount * 10 ** decimals)).accounts(context).rpc();
+    const txHash = await program.methods
+      .buyTokens(new BN(mintAmount * 10 ** decimals))
+    //@ts-ignore
+
+      .accounts(context)
+      .rpc();
 
     await connection.confirmTransaction(txHash);
     console.log(`  https://explorer.solana.com/tx/${txHash}?cluster=devnet`);
-    
-  } 
-  
-  
-  
+  };
+
   return (
     <div className="relative flex flex-wrap items-start bg-[#F7E8D5] px-8  pb-14 pt-10 md:pt-0 justify-center">
-    <div className=" relative flex flex-col xl:max-w-[45%] w-[95%] items-center justify-center ">
-      <Image
-        src={"/sec1doge.svg"}
-        alt="doge"
-        height={1500}
-        width={1500}
-        className="w-[809px] pb-5 xl:ml-14"
-      />
-      
+      <div className=" relative flex flex-col xl:max-w-[45%] w-[95%] items-center justify-center ">
+        <Image
+          src={"/sec1doge.svg"}
+          alt="doge"
+          height={1500}
+          width={1500}
+          className="w-[809px] pb-5 xl:ml-14"
+        />
+
         <div className="xl:pl-24">
           <div className="relative">
             <Image
@@ -248,16 +274,14 @@ const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
             I like chess and beating everyone <br /> in the Solana Ecosystem
           </h3>
         </div>
-      
-    </div>
-    <div className="relative flex flex-col xl:max-w-[48%] w-[100%] items-center justify-center pt-16 ml-0 ">
-    
-      <div className=" buytoken bg-[#CFEEFF] rounded-3xl md:w-[85%] w-[100%] pt-20 pb-10 z-50 ">
+      </div>
+      <div className="relative flex flex-col xl:max-w-[48%] w-[100%] items-center justify-center pt-16 ml-0 ">
+        <div className=" buytoken bg-[#CFEEFF] rounded-3xl md:w-[85%] w-[100%] pt-20 pb-10 z-50 ">
           <div>
             <h3 className="sm:px-24 px-4 font-omnes text-center leading-7 text-2xl ">
               GULULU launches on doge day! Last <br /> chance to buy!
             </h3>
-            <Countdown css={''} />
+            <Countdown css={""} />
             <h3 className="text-center text-xl font-omnes font-bold my-6 ">
               Till GULULU claim and launch
             </h3>
@@ -305,41 +329,46 @@ const Section1 = ({publicKey} : {publicKey:string | undefined }) => {
                 USDT: {usdBalance}
               </div>
             </div>
-            <div className="flex md:flex-row flex-wrap  gap-8  mx-4 py-2 text-black items-end justify-center"> 
-                <Calculator result={mintAmount} setResult={setMintAmount} selectedCurrency={selectedCurrency} setSelectedCurrency={setSelectedCurrency} />
-              </div>
+            <div className="flex md:flex-row flex-wrap  gap-8  mx-4 py-2 text-black items-end justify-center">
+              <Calculator
+                result={mintAmount}
+                setResult={setMintAmount}
+                selectedCurrency={selectedCurrency}
+                setSelectedCurrency={setSelectedCurrency}
+              />
             </div>
-            <div className="flex sm:flex-row flex-col items-center justify-center gap-7 2xl:mt-6 mt-2 ">
-            <button 
+          </div>
+          <div className="flex sm:flex-row flex-col items-center justify-center gap-7 2xl:mt-6 mt-2 ">
+            <button
               className="  font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block "
               onClick={handleButtonClick}
-              >
+            >
               BUY GULULU
             </button>
           </div>
-        </div> 
-        
+        </div>
+
         <Image
-        src={"/bone1.svg"}
-        alt="paw"
-        height={500}
-        width={500}
-        className=" absolute w-40 bottom-[9%] -left-[3%] z-0 md:block hidden "
-      />
-      <Image
-        src={"/bone2.svg"}
-        alt="paw"
-        height={500}
-        width={500}
-        className=" absolute w-40 bottom-[1%] -left-[5%] z-0 md:block hidden"
-      />
-      <Image
-        src={"/bone3.svg"}
-        alt="paw"
-        height={500}
-        width={500}
-        className=" absolute w-40 -right-[4%] top-[8%] z-0 md:block hidden"
-      /> 
+          src={"/bone1.svg"}
+          alt="paw"
+          height={500}
+          width={500}
+          className=" absolute w-40 bottom-[9%] -left-[3%] z-0 md:block hidden "
+        />
+        <Image
+          src={"/bone2.svg"}
+          alt="paw"
+          height={500}
+          width={500}
+          className=" absolute w-40 bottom-[1%] -left-[5%] z-0 md:block hidden"
+        />
+        <Image
+          src={"/bone3.svg"}
+          alt="paw"
+          height={500}
+          width={500}
+          className=" absolute w-40 -right-[4%] top-[8%] z-0 md:block hidden"
+        />
       </div>
     </div>
   );
