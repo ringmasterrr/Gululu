@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { MouseEventHandler, useEffect, useState } from "react";
 import Countdown from "../../utilities/Countdown";
 import { AnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
-import { PublicKey } from "@solana/web3.js";
+import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
 import { AnchorProvider, BN, Program, web3 } from "@coral-xyz/anchor";
 import { MEME_PROGRAM_ID } from "@/components/utilities/programConsts";
 import { ASSOCIATED_TOKEN_PROGRAM_ID, TOKEN_PROGRAM_ID, getAssociatedTokenAddress } from '@solana/spl-token';
@@ -70,12 +70,6 @@ const Section1 = () => {
   useEffect(() => {
     if (wallet.publicKey) {
       (async function getBalanceEvery10Seconds() {
-       
-
-        const [mint] = await web3.PublicKey.findProgramAddressSync(
-          [Buffer.from(MINT_SEED)],
-          MEME_PROGRAM_ID
-        );
     
         const destination = await getAssociatedTokenAddress(
           mint,
@@ -95,21 +89,24 @@ const Section1 = () => {
           }
         }
 
-        setTimeout(getBalanceEvery10Seconds, 10000);
-
 
         //@ts-ignore
-        const userStake = await program.account.userInfo.fetch(userInfo);
-        console.log("user Stake balance:", userStake.amount.toNumber());
+        const userStake = await program.account.userInfo.fetch(userInfo).catch((e) => {
+          console.log("user info account does not exist");
+        });
 
         if (userStake) {
           const userStakeAmount = userStake.amount.toNumber();
           const userStakeReward = userStake.reward;
+          console.log("USER CLAIMED REWARD:", userStakeReward.toNumber() / LAMPORTS_PER_SOL)
           if (userStakeAmount != null) {
             setUserStakeAmount(userStakeAmount);
-            setReward(userStakeReward);
+      
+            setReward(userStakeReward.toNumber() / LAMPORTS_PER_SOL);
           }
         }
+
+        setTimeout(getBalanceEvery10Seconds, 10000);
       })();
     }
   }, [connection, wallet]);
@@ -117,6 +114,10 @@ const Section1 = () => {
 
   //@ts-ignore
   const handleStake: MouseEventHandler<HTMLButtonElement> = async(event) => {
+
+    // console.log("Stake deposit time:", userStake.depositTime.toNumber())
+    
+
     const userStakingWallet = await getAssociatedTokenAddress(
       mint,
       //@ts-ignore
@@ -161,6 +162,9 @@ const Section1 = () => {
 
       await connection.confirmTransaction(txHash, "finalized");
       console.log(`  https://explorer.solana.com/tx/${txHash}?cluster=devnet`); 
+      //@ts-ignore
+      const userStake = await program.account.userInfo.fetch(userInfo);
+      console.log("Stake deposit time:", userStake.depositTime.toNumber())
     } catch(e) {
       console.log("Error staking:", e);
     }
@@ -330,7 +334,7 @@ const Section1 = () => {
             <div className=" flex 2xl:flex-row flex-col items-center justify-between  mt-6 px-10 ">
               <div className="flex flex-col items-center justify-center gap-2">
                 <div className="font-medium">
-                  Staked Amount: <span className="font-bold">{userStakeAmount}</span>
+                  Staked Amount: <span className="font-bold">{userStakeAmount} GULULU</span>
                 </div>
                 <button 
                 className=" text-base font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block "
@@ -341,7 +345,7 @@ const Section1 = () => {
               </div>
               <div className="flex flex-col items-center justify-center gap-2">
                 <div className="font-medium">
-                  Reward collected: <span className="font-bold">{typeof reward === 'number' ? reward : 0}</span>
+                  Reward collected: <span className="font-bold">{typeof reward === 'number' ? reward : 0} GULULU</span>
                 </div>
                 <button 
                 className=" text-base font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block "
