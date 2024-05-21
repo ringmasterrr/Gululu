@@ -14,6 +14,8 @@ const Section1 = () => {
   const {connection} = useConnection()
   const wallet = useWallet();
   const [userGULLULUTokens, setUserGULLULUTokens] = useState<number | null>(0);
+  const [userStakeAmount, setUserStakeAmount] = useState<number | null>(0);
+  const [reward, setReward] = useState<number | null>(0);
   const [investedAmount, setInvestedAmount] = useState(0);
 
   const provider = new AnchorProvider(connection, wallet as AnchorWallet, {
@@ -39,6 +41,30 @@ const Section1 = () => {
     }
     // If negative or NaN, do nothing
   };
+
+  const [userInfo] = web3.PublicKey.findProgramAddressSync(
+    [
+      Buffer.from(USER_SEED),
+      //@ts-ignore
+      wallet.publicKey.toBuffer()
+      ],
+    MEME_PROGRAM_ID
+  );
+
+  const [mint] = web3.PublicKey.findProgramAddressSync(
+    [Buffer.from(MINT_SEED)],
+    MEME_PROGRAM_ID
+  );
+
+  const [poolInfo] = web3.PublicKey.findProgramAddressSync(
+    [Buffer.from(STAKE_SEED)],
+    MEME_PROGRAM_ID
+  );
+
+  const [tokenPda] = web3.PublicKey.findProgramAddressSync(
+    [Buffer.from(TOKEN_SEED)],
+    MEME_PROGRAM_ID
+  );
 
 
   useEffect(() => {
@@ -70,38 +96,27 @@ const Section1 = () => {
         }
 
         setTimeout(getBalanceEvery10Seconds, 10000);
+
+
+        //@ts-ignore
+        const userStake = await program.account.userInfo.fetch(userInfo);
+        console.log("user Stake balance:", userStake.amount.toNumber());
+
+        if (userStake) {
+          const userStakeAmount = userStake.amount.toNumber();
+          const userStakeReward = userStake.reward;
+          if (userStakeAmount != null) {
+            setUserStakeAmount(userStakeAmount);
+            setReward(userStakeReward);
+          }
+        }
       })();
     }
   }, [connection, wallet]);
 
-  const [poolInfo] = web3.PublicKey.findProgramAddressSync(
-    [Buffer.from(STAKE_SEED)],
-    MEME_PROGRAM_ID
-  );
-
-  const [userInfo] = web3.PublicKey.findProgramAddressSync(
-    [
-      Buffer.from(USER_SEED),
-      //@ts-ignore
-      wallet.publicKey.toBuffer()
-      ],
-    MEME_PROGRAM_ID
-  );
-
-  const [mint] = web3.PublicKey.findProgramAddressSync(
-    [Buffer.from(MINT_SEED)],
-    MEME_PROGRAM_ID
-  );
-
-  const [tokenPda] = web3.PublicKey.findProgramAddressSync(
-    [Buffer.from(TOKEN_SEED)],
-    MEME_PROGRAM_ID
-  );
-
 
   //@ts-ignore
   const handleStake: MouseEventHandler<HTMLButtonElement> = async(event) => {
-
     const userStakingWallet = await getAssociatedTokenAddress(
       mint,
       //@ts-ignore
@@ -240,7 +255,8 @@ const Section1 = () => {
       console.log("ERROR:", e);
     }
 
-    const userINF = await program.account.UserInfo.fetch(userInfo);
+    //@ts-ignore
+    const userINF = await program.account.userInfo.fetch(userInfo);
 
     console.log("Reward collected:", userINF.reward.toNumber());
 
@@ -278,7 +294,7 @@ const Section1 = () => {
             <div className="flex flex-col items-center">
               <div className="flex flex-col gap-6 my-6 items-center justify-between w-full px-10">
                 <div className="font-medium lg:text-xl text-lg ">
-                  Available Balance: <span className="font-bold">$100,000</span>
+                  Available Balance: <span className="font-bold">{userGULLULUTokens}</span>
                 </div>
                 <div className=" text-black font-bold flex gap-4 2xl:flex-row flex-col items-center justify-between text-center w-full ">
                   <input
@@ -314,7 +330,7 @@ const Section1 = () => {
             <div className=" flex 2xl:flex-row flex-col items-center justify-between  mt-6 px-10 ">
               <div className="flex flex-col items-center justify-center gap-2">
                 <div className="font-medium">
-                  Staked Amount: <span className="font-bold">$100,000</span>
+                  Staked Amount: <span className="font-bold">{userStakeAmount}</span>
                 </div>
                 <button 
                 className=" text-base font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block "
@@ -325,7 +341,7 @@ const Section1 = () => {
               </div>
               <div className="flex flex-col items-center justify-center gap-2">
                 <div className="font-medium">
-                  Reward collected: <span className="font-bold">$100,000</span>
+                  Reward collected: <span className="font-bold">{typeof reward === 'number' ? reward : 0}</span>
                 </div>
                 <button 
                 className=" text-base font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block "
