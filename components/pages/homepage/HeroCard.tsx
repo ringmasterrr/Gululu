@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { MouseEventHandler } from "react";
+import React, { MouseEventHandler, useEffect, useState } from "react";
 import Countdown from "../../utilities/Countdown";
 import { AnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { PublicKey } from "@solana/web3.js";
@@ -13,6 +13,8 @@ import { IDL } from "@/components/utilities/idl";
 const Section1 = () => {
   const {connection} = useConnection()
   const wallet = useWallet();
+  const [userGULLULUTokens, setUserGULLULUTokens] = useState<number | null>(0);
+  const [investedAmount, setInvestedAmount] = useState(0);
 
   const provider = new AnchorProvider(connection, wallet as AnchorWallet, {
     commitment: 'confirmed',
@@ -24,6 +26,53 @@ const Section1 = () => {
   const TOKEN_SEED = "token";
 
   const program = new Program(IDL, MEME_PROGRAM_ID, provider);
+
+
+  const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Get the input value
+    const inputValue = e.target.valueAsNumber;
+
+    // Check if the input value is not negative
+    if (inputValue >= 0 || isNaN(inputValue)) {
+      // If not negative or NaN, update the state
+      setInvestedAmount(inputValue);
+    }
+    // If negative or NaN, do nothing
+  };
+
+
+  useEffect(() => {
+    if (wallet.publicKey) {
+      (async function getBalanceEvery10Seconds() {
+       
+
+        const [mint] = await web3.PublicKey.findProgramAddressSync(
+          [Buffer.from(MINT_SEED)],
+          MEME_PROGRAM_ID
+        );
+    
+        const destination = await getAssociatedTokenAddress(
+          mint,
+          //@ts-ignore
+          wallet.publicKey
+        );
+
+        const info = await connection.getAccountInfo(destination);
+
+        if (info) {
+          const userGULLULUTokens = (
+            await connection.getTokenAccountBalance(destination)
+          ).value.uiAmount;
+
+          if (userGULLULUTokens != null) {
+            setUserGULLULUTokens(userGULLULUTokens);
+          }
+        }
+
+        setTimeout(getBalanceEvery10Seconds, 10000);
+      })();
+    }
+  }, [connection, wallet]);
 
   const [poolInfo] = web3.PublicKey.findProgramAddressSync(
     [Buffer.from(STAKE_SEED)],
@@ -52,10 +101,6 @@ const Section1 = () => {
 
   //@ts-ignore
   const handleStake: MouseEventHandler<HTMLButtonElement> = async(event) => {
-
-    const userINF = await program.account.UserInfo.fetch(userInfo);
-
-    console.log("Staked Amount:", userINF.amount);
 
     const userStakingWallet = await getAssociatedTokenAddress(
       mint,
@@ -97,7 +142,7 @@ const Section1 = () => {
 
     try{
       //@ts-ignore
-      const txHash = await program.methods.stake(new BN(amount * 10 ** 9)).accounts(context).rpc();
+      const txHash = await program.methods.stake(new BN(investedAmount * 10 ** 9)).accounts(context).rpc();
 
       await connection.confirmTransaction(txHash, "finalized");
       console.log(`  https://explorer.solana.com/tx/${txHash}?cluster=devnet`); 
@@ -109,10 +154,6 @@ const Section1 = () => {
 
 
   const handleUnstake: MouseEventHandler<HTMLButtonElement> = async(event) => {
-  
-      const userInf = await program.account.UserInfo.fetch(userInfo);
-  
-      console.log("USER INF NO:", userInf.amount.toNumber());
   
       const userStakingWallet = await getAssociatedTokenAddress(
         mint,
@@ -225,7 +266,7 @@ const Section1 = () => {
                   height={100}
                   className="w-6 h-6 "
                 />
-                GULULU: 100
+                GULULU: {userGULLULUTokens}
               </div>
               <button className=" text-base font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block ">
                   CLAIM REWARD
@@ -241,7 +282,9 @@ const Section1 = () => {
                 </div>
                 <div className=" text-black font-bold flex gap-4 2xl:flex-row flex-col items-center justify-between text-center w-full ">
                   <input
-                    type="text"
+                    type="number"
+                    value={investedAmount}
+                    onChange={handleAmountChange}
                     placeholder="$100"
                     className="text-center rounded-full w-64 p-[0.9rem] placeholder-black text-base font-black font-omnes border border-black"
                   >
