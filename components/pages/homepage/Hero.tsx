@@ -188,6 +188,9 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
     console.log("Number of tokens available:", pgTokenBalance);
     console.log("WALLET BALANCE:", walletBalance / LAMPORTS_PER_SOL + " SOL");
 
+
+    console.log("SOLANA WALLET:", window.solana);
+
     //NUMBER OF GULLULU TOKEN OWNED BY THE CONNECTED USER
     // const userGULLULUTokens = (
     //   await connection.getTokenAccountBalance(destination)
@@ -259,7 +262,7 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
       .accounts(context)
       .rpc();
 
-    await connection.confirmTransaction(txHash);
+    await provider.connection.confirmTransaction(txHash);
     console.log(`  https://explorer.solana.com/tx/${txHash}?cluster=devnet`);
   };
 

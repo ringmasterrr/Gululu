@@ -160,7 +160,7 @@ const Section1 = () => {
       //@ts-ignore
       const txHash = await program.methods.stake(new BN(investedAmount * 10 ** 9)).accounts(context).rpc();
 
-      await connection.confirmTransaction(txHash, "finalized");
+      await provider.connection.confirmTransaction(txHash, "finalized");
       console.log(`  https://explorer.solana.com/tx/${txHash}?cluster=devnet`); 
       //@ts-ignore
       const userStake = await program.account.userInfo.fetch(userInfo);
@@ -210,8 +210,9 @@ const Section1 = () => {
       try {
         //@ts-ignore
         const txHash = await program.methods.unstake().accounts(context).rpc();
-  
-        await connection.confirmTransaction(txHash, "finalized");
+        
+        await provider.connection.confirmTransaction(txHash, "finalized");
+        //await connection.confirmTransaction(txHash, "finalized");
         console.log(`  https://explorer.solana.com/tx/${txHash}?cluster=devnet`);
       } catch (e) {
         console.log("ERROR:", e);
@@ -253,7 +254,8 @@ const Section1 = () => {
       //@ts-ignore
       const txHash = await program.methods.claimReward().accounts(context).rpc();
 
-      await connection.confirmTransaction(txHash, "finalized");
+      await provider.connection.confirmTransaction(txHash, "finalized");
+      //await connection.confirmTransaction(txHash, "finalized");
       console.log(`  https://explorer.solana.com/tx/${txHash}?cluster=devnet`);
     } catch (e) {
       console.log("ERROR:", e);
