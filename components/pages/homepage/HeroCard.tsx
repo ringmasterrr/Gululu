@@ -10,7 +10,11 @@ import { MEME_PROGRAM_ID } from "@/components/utilities/programConsts";
 import { ASSOCIATED_TOKEN_PROGRAM_ID, TOKEN_PROGRAM_ID, getAssociatedTokenAddress } from '@solana/spl-token';
 import { IDL } from "@/components/utilities/idl";
 
-const Section1 = () => {
+interface OtherComponentProps {
+  hideStakingCard: () => void;
+}
+
+const Section1: React.FC<OtherComponentProps> = ({ hideStakingCard }) => {
   const {connection} = useConnection()
   const wallet = useWallet();
 
@@ -205,6 +209,10 @@ const Section1 = () => {
 
    }
 
+   const handleClick = () => {
+    hideStakingCard();
+  };
+
   return (
     <div className="bg-[#CFEEFF] rounded-3xl md:w-[78%] w-[97%] pt-20 pb-10 z-10 ">
           <div className="flex flex-col justify-between 2xl:gap-4  ">
@@ -227,8 +235,8 @@ const Section1 = () => {
                 />
                 GULULU: 100
               </div>
-              <button className=" text-base font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block ">
-                  CLAIM REWARD
+              <button onClick={handleClick} className=" text-base font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block ">
+                  BUY GULULU
                 </button>
 
             </div>
@@ -284,11 +292,8 @@ const Section1 = () => {
                 <div className="font-medium">
                   Reward collected: <span className="font-bold">$100,000</span>
                 </div>
-                <button 
-                className=" text-base font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block "
-                onClick={handleClaimReward}
-                >
-                  CLAIM REWARD
+                <button onClick={handleClick} className=" text-base font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block ">
+                  BUY GULULU
                 </button>
               </div>
             </div>

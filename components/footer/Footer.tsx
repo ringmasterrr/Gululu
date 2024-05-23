@@ -1,6 +1,7 @@
 import React from "react";
 import FAQ from "../utilities/FAQ";
 import Image from "next/image";
+import BuyGululu from "../ui/BuyGululu";
 
 const Section10 = () => {
   return (
@@ -19,9 +20,7 @@ const Section10 = () => {
         </div>
 
         <div className="w-full flex items-center justify-center">
-          <button className="  text-2xl font-bold h-[4.4rem] w-[21.25rem] font-omnes bg-black text-white rounded-full inline-block  ">
-            BUY GULULU
-          </button>
+          <BuyGululu/>
         </div>
         <Image src={"/pawleft.svg"} alt="left" height={800} width={800} className="absolute -left-[15%] -top-[7%] w-[6rem] xl:block hidden"/>
         <Image src={"/pawright.svg"} alt="left" height={800} width={800} className="absolute -right-[15%] -top-[2%] w-[6rem] xl:block hidden"/>

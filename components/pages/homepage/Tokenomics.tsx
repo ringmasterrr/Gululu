@@ -28,19 +28,21 @@ const Section6 = () => {
       </div>
       <div className="relative flex flex-col bg-[#FFCBBF] mt-14 rounded-[1.25rem] lg:w-[80%] w-[90%] px-2 ">
         <div className="flex flex-wrap-reverse xl:flex-row items-center  justify-center w-full gap-11">
-          <div>
+          <div className="relative z-50">
             <Image
               src={"/dawg.svg"}
               alt="dawg"
               height={1000}
               width={1000}
-              className="w-[30rem] py-8 transform scale-125 translate-y-16   "
+              className="w-[30rem] py-8 transform scale-125 translate-y-16 
+              
+              "
             />
           </div>
 
-          <div className="flex flex-col h-full items-center justify-between py-8 ">
+          <div className="flex flex-col h-full items-center justify-between py-8 gap-8 ">
             <Image
-              src={"/Presale.png"}
+              src={"/tokenomics.svg"}
               alt="dawg"
               height={1500}
               width={1500}
@@ -65,7 +67,7 @@ const Section6 = () => {
         />
         <Decorations
           src="/minipaw.svg"
-          css="absolute w-[4rem] left-[1rem] top-[4rem] xl:block hidden z-0"
+          css="absolute w-[4rem] left-[1rem] top-[4rem] xl:block hidden "
         />
         <Decorations
           src="/smolerpaw.svg"

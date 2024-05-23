@@ -55,10 +55,20 @@ const Section9: React.FC = () => {
   const phasePrices: PhasePrices = {
     0: 0.0,
     10: 0.005,
-    20: 0.006,
-    30: 0.0072,
-    40: 0.0085,
-    50: 0.01,
+    20: 0.010,
+    30: 0.015,
+    40: 0.020,
+    50: 0.025,
+    60: 0.030,
+    70: 0.035,
+    80: 0.040,
+    90: 0.045,
+    100: 0.050,
+    110: 0.055,
+    120: 0.060,
+    130: 0.065,
+    140: 0.070,
+    150: 0.075
   };
 
   const handleCurrencyChange = (
@@ -138,7 +148,7 @@ const Section9: React.FC = () => {
               <input
                 type="range"
                 min={10}
-                max={50} // Adjust the max value to allow finer adjustments
+                max={150} // Adjust the max value to allow finer adjustments
                 step={0.001} // Change the step to 1
                 value={coinPhase}
                 onChange={handlePhaseChange}

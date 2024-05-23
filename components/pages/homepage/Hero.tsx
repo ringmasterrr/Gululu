@@ -19,11 +19,12 @@ import {
 import { IDL } from "@/components/utilities/idl";
 import { MEME_PROGRAM_ID } from "@/components/utilities/programConsts";
 import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
-import HeroCard from "@/components/pages/homepage/HeroCard";
+import StakingCard from "@/components/pages/homepage/HeroCard";
 import Calculator from "@/components/utilities/calculator";
 import { PythSolanaReceiver } from "@pythnetwork/pyth-solana-receiver";
 import NodeWallet from "@coral-xyz/anchor/dist/cjs/nodewallet";
 import { token } from "@coral-xyz/anchor/dist/cjs/utils";
+import BuyGululu from "@/components/ui/BuyGululu";
 
 const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
   const [mintAmount, setMintAmount] = useState(0);
@@ -32,7 +33,6 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
   const [selectedCurrency, setSelectedCurrency] = useState("SOL");
   const [showStakingButton, setShowStakingButton] = useState(false);
   const [showStakingCard, setShowStakingCard] = useState(false);
-
   const [userGULLULUTokens, setUserGULLULUTokens] = useState<number | null>(0);
 
   useEffect(() => {
@@ -43,11 +43,14 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
     }
   }, [userGULLULUTokens]);
 
-
   const handleStakeClick = () => {
     setShowStakingCard(true);
   };
 
+  const hideStakingCard = () => {
+    setShowStakingCard(false);
+  };
+  
 
   console.log("PUBLICKEY:", publicKey);
   const { connection } = useConnection();
@@ -263,6 +266,8 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
     console.log(`  https://explorer.solana.com/tx/${txHash}?cluster=devnet`);
   };
 
+  const Gululu_value_USD = 0.00022;
+
   return (
     <div className="relative flex flex-wrap items-start bg-[#F7E8D5] px-8  pb-14 pt-10 md:pt-0 justify-center">
       <div className=" relative flex flex-col xl:max-w-[45%] w-[95%] items-center justify-center ">
@@ -293,98 +298,94 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
         </div>
       </div>
       <div className="relative flex flex-col xl:max-w-[48%] w-[100%] items-center justify-center pt-16 ml-0 ">
-
-      {showStakingCard ? (
-        <HeroCard />
-      ) : (
-
-        <div className=" buytoken bg-[#CFEEFF] rounded-3xl md:w-[85%] w-[100%] pt-20 pb-10 z-50 ">
-          <div>
-            <h3 className="sm:px-24 px-4 font-omnes text-center leading-7 text-2xl ">
-              GULULU launches on doge day! Last <br /> chance to buy!
-            </h3>
-            <Countdown css={""} />
-            <h3 className="text-center text-xl font-omnes font-bold my-6 ">
-              Till GULULU claim and launch
-            </h3>
-            <h3 className="text-center text-3xl font-omnesblack leading-3 my-3">
-              <span className=" font-omnesreg font-bold ">Over</span> $10M{" "}
-              <span className=" font-omnesreg font-bold ">raised!</span>
-            </h3>
-            <div className="flex items-center justify-center sm:gap-6 gap-2  ml-2 my-2 ">
-              <div className="text-center text-xl font-omnes my-3 font-bold ">
-                <span className="text-xl font-omnesreg font-bold ">
-                  Your purchased
-                </span>{" "}
-                GULULU = {userGULLULUTokens}
-              </div>
-            </div>
-            <div className="flex items-center justify-between 2xl:gap-5 gap-2 px-4">
-              <div className="border-b-4 border-black 2xl:w-40 xl:w-32 w-52 "></div>
-              <h3 className="text-center 2xl:text-lg  font-omnes my-4">
-                1 GULULU = $0.00022
+        {showStakingCard ? (
+          <StakingCard  hideStakingCard={hideStakingCard}/>
+        ) : (
+          <div className=" buytoken bg-[#CFEEFF] rounded-3xl md:w-[85%] w-[100%] pt-20 pb-10 z-50 ">
+            <div>
+              <h3 className="sm:px-24 px-4 font-omnes text-center leading-7 text-2xl ">
+                GULULU launches on doge day! Last <br /> chance to buy!
               </h3>
-              <div className="border-b-4 border-black 2xl:w-40 xl:w-32 w-52 "></div>
-            </div>
-            <div className="text-center pb-6 text-xl font-extrabold">
-              Wallet Balance
-            </div>
-            <div className="flex md:flex-row flex-wrap md:gap-32 gap-8 items-center justify-center mx-4">
-              <div className="flex gap-2 sm:text-sm text-base font-bold">
-                <Image
-                  src={"/sol.svg"}
-                  alt="i"
-                  width={500}
-                  height={100}
-                  className="w-6 h-6 "
-                />
-                SOL: {balance}
+              <Countdown css={""} />
+              <h3 className="text-center text-xl font-omnes font-bold my-6 ">
+                Till GULULU claim and launch
+              </h3>
+              <h3 className="text-center text-3xl font-omnesblack leading-3 my-3">
+                <span className=" font-omnesreg font-bold ">Over</span> $10M{" "}
+                <span className=" font-omnesreg font-bold ">raised!</span>
+              </h3>
+              <div className="flex items-center justify-center sm:gap-6 gap-2  ml-2 my-2 ">
+                <div className="text-center text-xl font-omnes my-3 font-bold ">
+                  <span className="text-xl font-omnesreg font-bold ">
+                    Your purchased
+                  </span>{" "}
+                  GULULU = {userGULLULUTokens}
+                </div>
               </div>
-              <div className="flex gap-2 sm:text-sm text-base font-bold">
-                <Image
-                  src={"/usdt.svg"}
-                  alt="i"
-                  width={500}
-                  height={100}
-                  className="w-6 h-6 "
+              <div className="flex items-center justify-between 2xl:gap-5 gap-2 px-4">
+                <div className="border-b-4 border-black 2xl:w-40 xl:w-32 w-52 "></div>
+                <h3 className="text-center 2xl:text-lg  font-omnes my-4">
+                  1 GULULU = {Gululu_value_USD}
+                </h3>
+                <div className="border-b-4 border-black 2xl:w-40 xl:w-32 w-52 "></div>
+              </div>
+              <div className="text-center pb-6 text-xl font-extrabold">
+                Wallet Balance
+              </div>
+              <div className="flex md:flex-row flex-wrap md:gap-32 gap-8 items-center justify-center mx-4">
+                <div className="flex gap-2 sm:text-sm text-base font-bold">
+                  <Image
+                    src={"/sol.svg"}
+                    alt="i"
+                    width={500}
+                    height={100}
+                    className="w-6 h-6 "
+                  />
+                  SOL: {balance}
+                </div>
+                <div className="flex gap-2 sm:text-sm text-base font-bold">
+                  <Image
+                    src={"/usdt.svg"}
+                    alt="i"
+                    width={500}
+                    height={100}
+                    className="w-6 h-6 "
+                  />
+                  USDT: {usdBalance}
+                </div>
+              </div>
+              <div className="flex md:flex-row flex-wrap  gap-8  mx-4 py-2 text-black items-end justify-center">
+                <Calculator
+                  result={mintAmount}
+                  setResult={setMintAmount}
+                  selectedCurrency={selectedCurrency}
+                  setSelectedCurrency={setSelectedCurrency}
+                  // Gululu_value_USD={Gululu_value_USD}
                 />
-                USDT: {usdBalance}
               </div>
             </div>
-            <div className="flex md:flex-row flex-wrap  gap-8  mx-4 py-2 text-black items-end justify-center">
-              <Calculator
-                result={mintAmount}
-                setResult={setMintAmount}
-                selectedCurrency={selectedCurrency}
-                setSelectedCurrency={setSelectedCurrency}
-              />
-            </div>
-          </div>
 
-          <div className="flex sm:flex-row flex-col items-center justify-center gap-7 2xl:mt-6 mt-2 ">
-            <button
-              className="  font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block "
-              onClick={handleButtonClick}
-            >
-              BUY GULULU
-            </button>
-          </div>
-
-          {showStakingButton && (
             <div className="flex sm:flex-row flex-col items-center justify-center gap-7 2xl:mt-6 mt-2 ">
               <button
-                className="  font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block "
-               onClick={handleStakeClick}
+                onClick={handleButtonClick}
+                className="font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block"
               >
-                STAKE
+                BUY GULULU
               </button>
             </div>
-          )}
 
-
-        </div>
-
-      )}
+            {showStakingButton && (
+              <div className="flex sm:flex-row flex-col items-center justify-center gap-7 2xl:mt-6 mt-2 ">
+                <button
+                  className="  font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block "
+                  onClick={handleStakeClick}
+                >
+                  STAKE
+                </button>
+              </div>
+            )}
+          </div>
+        )}
 
         <Image
           src={"/bone1.svg"}

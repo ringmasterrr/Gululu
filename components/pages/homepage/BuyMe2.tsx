@@ -1,3 +1,4 @@
+import BuyGululu from "@/components/ui/BuyGululu";
 import Heading from "@/components/ui/Heading";
 import Image from "next/image";
 import React from "react";
@@ -70,9 +71,7 @@ const Section8 = () => {
         className=" absolute h-auto w-auto top-[30.0rem] left-0 z-0"
       />
       <div className="w-full flex items-center justify-center py-20">
-        <button className="  font-bold z-20 h-[4.4rem] w-[21.25rem] font-omnes bg-black text-white rounded-full inline-block  ">
-          BUY GULULU
-        </button>
+        <BuyGululu/>
       </div>
 
       <Image
