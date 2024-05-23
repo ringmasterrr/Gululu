@@ -71,37 +71,28 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
 
   const SOL_PRICE_FEED_ID =
     "0xef0d8b6fda2ceba41da15d4095d1da392a0d2f8ed0c6c7bc0f4cfac8c280b56d";
+  const TOKEN_SEED = "token";
+  const MINT_SEED = "mint";
+  const BUYER_SEED = "buyer";
 
   // const priceFeedAccount = await pythSolanaReceiver.fetchPriceFeedAccount(0,SOL_PRICE_FEED_ID);
   // const newUSDPrice = priceFeedAccount?.priceMessage.price / 100000000;
   // console.log("NEW USD BALANCE:", newUSDPrice * balance);
   // setUsdBalance(newUSDPrice * balance); // NOTE: This is approximate value, Verify
 
-  const getGululuBalance = async () => {
-    const [mint] = await web3.PublicKey.findProgramAddressSync(
-      [Buffer.from(MINT_SEED)],
-      MEME_PROGRAM_ID
-    );
 
-    const destination = await getAssociatedTokenAddress(
-      mint,
-      //@ts-ignore
-      payer
-    );
+  const [mint] = web3.PublicKey.findProgramAddressSync(
+    [Buffer.from(MINT_SEED)],
+    MEME_PROGRAM_ID
+  );
 
-    const userGULLULUTokens = (
-      await connection.getTokenAccountBalance(destination)
-    ).value.uiAmount;
-    console.log(
-      "Number of GULLULU tokens owned by connected user:",
-      userGULLULUTokens
-    );
-    setUserGULLULUTokens(userGULLULUTokens);
-  };
+  const [tokenPda] = web3.PublicKey.findProgramAddressSync(
+    [Buffer.from(TOKEN_SEED)],
+    MEME_PROGRAM_ID
+  );
 
   useEffect(() => {
     if (wallet.publicKey) {
-      getGululuBalance();
       (async function getBalanceEvery10Seconds() {
         //@ts-ignore
         const newBalance = await connection.getBalance(wallet.publicKey);
@@ -129,6 +120,25 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
 
         setBalance(newBalance / LAMPORTS_PER_SOL);
 
+
+        const destination = await getAssociatedTokenAddress(
+          mint,
+          //@ts-ignore
+          wallet.publicKey
+        );
+
+        const gululuInfo = await connection.getAccountInfo(destination);
+
+        if (gululuInfo) {
+          const userGULLULUTokens = (
+            await connection.getTokenAccountBalance(destination)
+          ).value.uiAmount;
+
+          if (userGULLULUTokens != null) {
+            setUserGULLULUTokens(userGULLULUTokens);
+          }
+        }
+
         setTimeout(getBalanceEvery10Seconds, 10000);
       })();
     }
@@ -140,24 +150,14 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
 
   const program = new Program(IDL, MEME_PROGRAM_ID, provider);
 
-  const TOKEN_SEED = "token";
-  const MINT_SEED = "mint";
-  const BUYER_SEED = "buyer";
 
   //@ts-ignore
   const handleButtonClick: MouseEventHandler<HTMLButtonElement> = async (
     //@ts-ignore
     event
   ) => {
-    const [mint] = await web3.PublicKey.findProgramAddressSync(
-      [Buffer.from(MINT_SEED)],
-      MEME_PROGRAM_ID
-    );
 
-    const [tokenPda] = await web3.PublicKey.findProgramAddressSync(
-      [Buffer.from(TOKEN_SEED)],
-      MEME_PROGRAM_ID
-    );
+    console.log("PAYER:", payer)
 
     const fromAta = await getAssociatedTokenAddress(mint, tokenPda, true);
 
@@ -190,6 +190,9 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
 
     console.log("Number of tokens available:", pgTokenBalance);
     console.log("WALLET BALANCE:", walletBalance / LAMPORTS_PER_SOL + " SOL");
+
+
+    console.log("SOLANA WALLET:", window.solana);
 
     //NUMBER OF GULLULU TOKEN OWNED BY THE CONNECTED USER
     // const userGULLULUTokens = (
@@ -262,7 +265,7 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
       .accounts(context)
       .rpc();
 
-    await connection.confirmTransaction(txHash);
+    await provider.connection.confirmTransaction(txHash);
     console.log(`  https://explorer.solana.com/tx/${txHash}?cluster=devnet`);
   };
 

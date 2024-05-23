@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import React, { MouseEventHandler } from "react";
+import React, { MouseEventHandler, useEffect, useState } from "react";
 import Countdown from "../../utilities/Countdown";
 import { AnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
-import { PublicKey } from "@solana/web3.js";
+import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
 import { AnchorProvider, BN, Program, web3 } from "@coral-xyz/anchor";
 import { MEME_PROGRAM_ID } from "@/components/utilities/programConsts";
 import { ASSOCIATED_TOKEN_PROGRAM_ID, TOKEN_PROGRAM_ID, getAssociatedTokenAddress } from '@solana/spl-token';
@@ -17,6 +17,10 @@ interface OtherComponentProps {
 const Section1: React.FC<OtherComponentProps> = ({ hideStakingCard }) => {
   const {connection} = useConnection()
   const wallet = useWallet();
+  const [userGULLULUTokens, setUserGULLULUTokens] = useState<number | null>(0);
+  const [userStakeAmount, setUserStakeAmount] = useState<number | null>(0);
+  const [reward, setReward] = useState<number | null>(0);
+  const [investedAmount, setInvestedAmount] = useState(0);
 
   const provider = new AnchorProvider(connection, wallet as AnchorWallet, {
     commitment: 'confirmed',
@@ -29,10 +33,18 @@ const Section1: React.FC<OtherComponentProps> = ({ hideStakingCard }) => {
 
   const program = new Program(IDL, MEME_PROGRAM_ID, provider);
 
-  const [poolInfo] = web3.PublicKey.findProgramAddressSync(
-    [Buffer.from(STAKE_SEED)],
-    MEME_PROGRAM_ID
-  );
+
+  const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Get the input value
+    const inputValue = e.target.valueAsNumber;
+
+    // Check if the input value is not negative
+    if (inputValue >= 0 || isNaN(inputValue)) {
+      // If not negative or NaN, update the state
+      setInvestedAmount(inputValue);
+    }
+    // If negative or NaN, do nothing
+  };
 
   const [userInfo] = web3.PublicKey.findProgramAddressSync(
     [
@@ -48,18 +60,67 @@ const Section1: React.FC<OtherComponentProps> = ({ hideStakingCard }) => {
     MEME_PROGRAM_ID
   );
 
+  const [poolInfo] = web3.PublicKey.findProgramAddressSync(
+    [Buffer.from(STAKE_SEED)],
+    MEME_PROGRAM_ID
+  );
+
   const [tokenPda] = web3.PublicKey.findProgramAddressSync(
     [Buffer.from(TOKEN_SEED)],
     MEME_PROGRAM_ID
   );
 
 
+  useEffect(() => {
+    if (wallet.publicKey) {
+      (async function getBalanceEvery10Seconds() {
+    
+        const destination = await getAssociatedTokenAddress(
+          mint,
+          //@ts-ignore
+          wallet.publicKey
+        );
+
+        const info = await connection.getAccountInfo(destination);
+
+        if (info) {
+          const userGULLULUTokens = (
+            await connection.getTokenAccountBalance(destination)
+          ).value.uiAmount;
+
+          if (userGULLULUTokens != null) {
+            setUserGULLULUTokens(userGULLULUTokens);
+          }
+        }
+
+
+        //@ts-ignore
+        const userStake = await program.account.userInfo.fetch(userInfo).catch((e) => {
+          console.log("user info account does not exist");
+        });
+
+        if (userStake) {
+          const userStakeAmount = userStake.amount.toNumber();
+          const userStakeReward = userStake.reward;
+          console.log("USER CLAIMED REWARD:", userStakeReward.toNumber() / LAMPORTS_PER_SOL)
+          if (userStakeAmount != null) {
+            setUserStakeAmount(userStakeAmount);
+      
+            setReward(userStakeReward.toNumber() / LAMPORTS_PER_SOL);
+          }
+        }
+
+        setTimeout(getBalanceEvery10Seconds, 10000);
+      })();
+    }
+  }, [connection, wallet]);
+
+
   //@ts-ignore
   const handleStake: MouseEventHandler<HTMLButtonElement> = async(event) => {
 
-    const userINF = await program.account.UserInfo.fetch(userInfo);
-
-    console.log("Staked Amount:", userINF.amount);
+    // console.log("Stake deposit time:", userStake.depositTime.toNumber())
+    
 
     const userStakingWallet = await getAssociatedTokenAddress(
       mint,
@@ -101,10 +162,13 @@ const Section1: React.FC<OtherComponentProps> = ({ hideStakingCard }) => {
 
     try{
       //@ts-ignore
-      const txHash = await program.methods.stake(new BN(amount * 10 ** 9)).accounts(context).rpc();
+      const txHash = await program.methods.stake(new BN(investedAmount * 10 ** 9)).accounts(context).rpc();
 
-      await connection.confirmTransaction(txHash, "finalized");
+      await provider.connection.confirmTransaction(txHash, "finalized");
       console.log(`  https://explorer.solana.com/tx/${txHash}?cluster=devnet`); 
+      //@ts-ignore
+      const userStake = await program.account.userInfo.fetch(userInfo);
+      console.log("Stake deposit time:", userStake.depositTime.toNumber())
     } catch(e) {
       console.log("Error staking:", e);
     }
@@ -113,10 +177,6 @@ const Section1: React.FC<OtherComponentProps> = ({ hideStakingCard }) => {
 
 
   const handleUnstake: MouseEventHandler<HTMLButtonElement> = async(event) => {
-  
-      const userInf = await program.account.UserInfo.fetch(userInfo);
-  
-      console.log("USER INF NO:", userInf.amount.toNumber());
   
       const userStakingWallet = await getAssociatedTokenAddress(
         mint,
@@ -154,8 +214,9 @@ const Section1: React.FC<OtherComponentProps> = ({ hideStakingCard }) => {
       try {
         //@ts-ignore
         const txHash = await program.methods.unstake().accounts(context).rpc();
-  
-        await connection.confirmTransaction(txHash, "finalized");
+        
+        await provider.connection.confirmTransaction(txHash, "finalized");
+        //await connection.confirmTransaction(txHash, "finalized");
         console.log(`  https://explorer.solana.com/tx/${txHash}?cluster=devnet`);
       } catch (e) {
         console.log("ERROR:", e);
@@ -197,13 +258,15 @@ const Section1: React.FC<OtherComponentProps> = ({ hideStakingCard }) => {
       //@ts-ignore
       const txHash = await program.methods.claimReward().accounts(context).rpc();
 
-      await connection.confirmTransaction(txHash, "finalized");
+      await provider.connection.confirmTransaction(txHash, "finalized");
+      //await connection.confirmTransaction(txHash, "finalized");
       console.log(`  https://explorer.solana.com/tx/${txHash}?cluster=devnet`);
     } catch (e) {
       console.log("ERROR:", e);
     }
 
-    const userINF = await program.account.UserInfo.fetch(userInfo);
+    //@ts-ignore
+    const userINF = await program.account.userInfo.fetch(userInfo);
 
     console.log("Reward collected:", userINF.reward.toNumber());
 
@@ -233,7 +296,7 @@ const Section1: React.FC<OtherComponentProps> = ({ hideStakingCard }) => {
                   height={100}
                   className="w-6 h-6 "
                 />
-                GULULU: 100
+                GULULU: {userGULLULUTokens}
               </div>
               <button onClick={handleClick} className=" text-base font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block ">
                   BUY GULULU
@@ -245,11 +308,13 @@ const Section1: React.FC<OtherComponentProps> = ({ hideStakingCard }) => {
             <div className="flex flex-col items-center">
               <div className="flex flex-col gap-6 my-6 items-center justify-between w-full px-10">
                 <div className="font-medium lg:text-xl text-lg ">
-                  Available Balance: <span className="font-bold">$100,000</span>
+                  Available Balance: <span className="font-bold">{userGULLULUTokens}</span>
                 </div>
                 <div className=" text-black font-bold flex gap-4 2xl:flex-row flex-col items-center justify-between text-center w-full ">
                   <input
-                    type="text"
+                    type="number"
+                    value={investedAmount}
+                    onChange={handleAmountChange}
                     placeholder="$100"
                     className="text-center rounded-full w-64 p-[0.9rem] placeholder-black text-base font-black font-omnes border border-black"
                   >
@@ -279,7 +344,7 @@ const Section1: React.FC<OtherComponentProps> = ({ hideStakingCard }) => {
             <div className=" flex 2xl:flex-row flex-col items-center justify-between  mt-6 px-10 ">
               <div className="flex flex-col items-center justify-center gap-2">
                 <div className="font-medium">
-                  Staked Amount: <span className="font-bold">$100,000</span>
+                  Staked Amount: <span className="font-bold">{userStakeAmount} GULULU</span>
                 </div>
                 <button 
                 className=" text-base font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block "
@@ -290,7 +355,7 @@ const Section1: React.FC<OtherComponentProps> = ({ hideStakingCard }) => {
               </div>
               <div className="flex flex-col items-center justify-center gap-2">
                 <div className="font-medium">
-                  Reward collected: <span className="font-bold">$100,000</span>
+                  Reward collected: <span className="font-bold">{typeof reward === 'number' ? reward : 0} GULULU</span>
                 </div>
                 <button onClick={handleClick} className=" text-base font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block ">
                   BUY GULULU

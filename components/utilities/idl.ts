@@ -176,8 +176,9 @@ export type Meme = {
         "fields": [
           { "name": "amount", "type": "u64" },
           { "name": "rewardDebt", "type": "u64" },
-          { "name": "depositTime", "type": "u64" },
-          { "name": "reward", "type": "u64" }
+          { "name": "depositTime", "type": "i64" },
+          { "name": "reward", "type": "u64" },
+          { "name": "rewardCarry", "type": "u64" }
         ]
       }
     }
@@ -257,14 +258,10 @@ export type Meme = {
       "code": 6010,
       "name": "PriceFeedDown",
       "msg": "SOL/USD price feed is down, try again later"
-    },
-    {
-      "code": 6011,
-      "name": "Uneligible",
-      "msg": "Not eligible to claim rewards, Need to stake atleast 30 days"
     }
   ]
 }
+
 
 
 
@@ -461,8 +458,9 @@ export type Meme = {
           "fields": [
             { "name": "amount", "type": "u64" },
             { "name": "rewardDebt", "type": "u64" },
-            { "name": "depositTime", "type": "u64" },
-            { "name": "reward", "type": "u64" }
+            { "name": "depositTime", "type": "i64" },
+            { "name": "reward", "type": "u64" },
+            { "name": "rewardCarry", "type": "u64" }
           ]
         }
       }
@@ -542,11 +540,6 @@ export type Meme = {
         "code": 6010,
         "name": "PriceFeedDown",
         "msg": "SOL/USD price feed is down, try again later"
-      },
-      {
-        "code": 6011,
-        "name": "Uneligible",
-        "msg": "Not eligible to claim rewards, Need to stake atleast 30 days"
       }
     ]
   }
