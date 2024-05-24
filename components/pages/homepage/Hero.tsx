@@ -292,6 +292,9 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
 
   const Gululu_value_USD = 0.00022;
 
+  const formattedTokens = userGULLULUTokens !== null ? userGULLULUTokens.toFixed(2) : "0.00";
+
+
   return (
     <div className="relative flex flex-wrap items-start bg-[#F7E8D5] px-8  pb-14 pt-10 md:pt-0 justify-center" >
       <div className=" relative flex flex-col xl:max-w-[45%] w-[95%] items-center justify-center ">
@@ -343,7 +346,7 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
                   <span className="text-xl font-omnesreg font-bold ">
                     Your purchased
                   </span>{" "}
-                  GULULU = {userGULLULUTokens}
+                  GULULU = {formattedTokens}
                 </div>
               </div>
               <div className="flex items-center justify-between 2xl:gap-5 gap-2 px-4">

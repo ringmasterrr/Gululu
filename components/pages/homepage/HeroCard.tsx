@@ -276,6 +276,9 @@ const Section1: React.FC<OtherComponentProps> = ({ hideStakingCard }) => {
     hideStakingCard();
   };
 
+  const formattedTokens = userGULLULUTokens !== null ? userGULLULUTokens.toFixed(2) : "0.00";
+
+
   return (
     <div className="bg-[#CFEEFF] rounded-3xl md:w-[78%] w-[97%] pt-20 pb-10 z-10 ">
           <div className="flex flex-col justify-between 2xl:gap-4  ">
@@ -296,7 +299,7 @@ const Section1: React.FC<OtherComponentProps> = ({ hideStakingCard }) => {
                   height={100}
                   className="w-6 h-6 "
                 />
-                GULULU: {userGULLULUTokens}
+                GULULU: {formattedTokens}
               </div>
               <button onClick={handleClick} className=" text-base font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block ">
                   BUY GULULU
@@ -308,7 +311,7 @@ const Section1: React.FC<OtherComponentProps> = ({ hideStakingCard }) => {
             <div className="flex flex-col items-center">
               <div className="flex flex-col gap-6 my-6 items-center justify-between w-full px-10">
                 <div className="font-medium lg:text-xl text-lg ">
-                  Available Balance: <span className="font-bold">{userGULLULUTokens}</span>
+                  Available Balance: <span className="font-bold">{formattedTokens}</span>
                 </div>
                 <div className=" text-black font-bold flex gap-4 2xl:flex-row flex-col items-center justify-between text-center w-full ">
                   <input
@@ -355,7 +358,7 @@ const Section1: React.FC<OtherComponentProps> = ({ hideStakingCard }) => {
               </div>
               <div className="flex flex-col items-center justify-center gap-2">
                 <div className="font-medium">
-                  Reward collected: <span className="font-bold">{typeof reward === 'number' ? reward : 0} GULULU</span>
+                  Reward collected: <span className="font-bold">{typeof reward === 'number' ? reward.toLocaleString('en-US', { minimumFractionDigits: 9, maximumFractionDigits: 9 }) : '0.000000000'} GULULU</span>
                 </div>
                 <button 
                 className=" text-base font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block "
