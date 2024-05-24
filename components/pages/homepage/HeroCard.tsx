@@ -357,8 +357,11 @@ const Section1: React.FC<OtherComponentProps> = ({ hideStakingCard }) => {
                 <div className="font-medium">
                   Reward collected: <span className="font-bold">{typeof reward === 'number' ? reward : 0} GULULU</span>
                 </div>
-                <button onClick={handleClick} className=" text-base font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block ">
-                  BUY GULULU
+                <button 
+                className=" text-base font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block "
+                onClick={handleClaimReward}
+                >
+                  CLAIM REWARD
                 </button>
               </div>
             </div>

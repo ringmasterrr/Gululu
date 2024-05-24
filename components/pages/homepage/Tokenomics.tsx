@@ -1,12 +1,11 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import React, { useState } from "react";
 import Decorations from "../../ui/Decorations";
 import Heading from "@/components/ui/Heading";
 import Paragraph from "@/components/ui/Para";
-import copy from 'copy-to-clipboard';
-
+import copy from "copy-to-clipboard";
 
 const Tokenomicslist = ({ text }: { text: string }) => {
   return (
@@ -16,26 +15,16 @@ const Tokenomicslist = ({ text }: { text: string }) => {
   );
 };
 
-
-
-
 const Section6 = () => {
-
-  const TokenAddress = " 0x2541A36BE4cD39286ED61a3E6AFC2307609d6"
-          
+  const TokenAddress = " 0x2541A36BE4cD39286ED61a3E6AFC2307609d6";
 
   const [copied, setCopied] = useState(false);
 
-
   const CopyTokenAddress = () => {
-
-  
     copy(TokenAddress);
     setCopied(true);
     setTimeout(() => setCopied(false), 1000);
   };
-  
-
 
   return (
     <div className="relative flex flex-col items-center bg-[#CFEEFF] h-full pt-14 pb-40 ">
@@ -46,9 +35,15 @@ const Section6 = () => {
          GULULU tokenomics include smart staking rewards, meaning you can earn right away."
         />
         <p>GULULU Token Address:</p>
-        <p onClick={CopyTokenAddress} className="font-omnes pt-1 break-all cursor-pointer">
-          {TokenAddress}
-        </p>
+        <div className="flex md:flex-row flex-col items-center gap-4">
+          <p className="font-omnes pt-1 break-all">{TokenAddress}</p>
+          <button
+            onClick={CopyTokenAddress}
+            className="w-fit bg-black text-white px-4 py-2 text-base font-semibold rounded-lg hover:bg-slate-700 focus:outline-none"
+          >
+            {copied ? "Copied!" : "Copy Address"}
+          </button>
+        </div>
       </div>
       <div className="relative flex flex-col bg-[#FFCBBF] mt-14 rounded-[1.25rem] lg:w-[80%] w-[90%] px-2 ">
         <div className="flex flex-wrap-reverse xl:flex-row items-center  justify-center w-full gap-11">
