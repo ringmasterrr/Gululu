@@ -292,7 +292,7 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
 
   const Gululu_value_USD = 0.00022;
 
-  const formattedTokens = userGULLULUTokens !== null ? userGULLULUTokens.toFixed(2) : "0.00";
+  const formattedTokens = userGULLULUTokens !== null ? userGULLULUTokens.toFixed(4) : "0.00";
 
 
   return (

@@ -276,7 +276,7 @@ const Section1: React.FC<OtherComponentProps> = ({ hideStakingCard }) => {
     hideStakingCard();
   };
 
-  const formattedTokens = userGULLULUTokens !== null ? userGULLULUTokens.toFixed(2) : "0.00";
+  const formattedTokens = userGULLULUTokens !== null ? userGULLULUTokens.toFixed(4) : "0.00";
 
 
   return (
