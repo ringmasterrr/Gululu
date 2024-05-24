@@ -25,6 +25,8 @@ import { PythSolanaReceiver } from "@pythnetwork/pyth-solana-receiver";
 import NodeWallet from "@coral-xyz/anchor/dist/cjs/nodewallet";
 import { token } from "@coral-xyz/anchor/dist/cjs/utils";
 import BuyGululu from "@/components/ui/BuyGululu";
+import { useWalletModal } from "@solana/wallet-adapter-react-ui";
+import { useWalletMultiButton } from "@solana/wallet-adapter-base-ui";
 
 const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
   const [mintAmount, setMintAmount] = useState(0);
@@ -150,6 +152,23 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
 
   const program = new Program(IDL, MEME_PROGRAM_ID, provider);
 
+  const { buttonState } = useWalletMultiButton({
+    onSelectWallet() {
+      setModalVisible(false);
+    },
+  });
+
+  const { setVisible: setModalVisible } = useWalletModal();
+
+  const onClick = () => {
+
+    if (buttonState === "no-wallet") {
+      setModalVisible(true);
+    }
+    else {
+      handleButtonClick()
+    }
+  };
 
   //@ts-ignore
   const handleButtonClick: MouseEventHandler<HTMLButtonElement> = async (
@@ -372,7 +391,7 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
 
             <div className="flex sm:flex-row flex-col items-center justify-center gap-7 2xl:mt-6 mt-2 ">
               <button
-                onClick={handleButtonClick}
+                onClick={onClick}
                 className="font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block"
               >
                 BUY GULULU

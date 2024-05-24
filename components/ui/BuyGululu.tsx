@@ -3,7 +3,8 @@ import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 import { useWalletMultiButton } from "@solana/wallet-adapter-base-ui";
 
 const BuyGululu = () => {
-  const { buttonState, onConnect } = useWalletMultiButton({
+
+  const { buttonState } = useWalletMultiButton({
     onSelectWallet() {
       setModalVisible(false);
     },
@@ -19,7 +20,6 @@ const BuyGululu = () => {
     else {
       const ele = document.getElementById("buytoken")
       ele?.scrollIntoView({ behavior: "smooth" })
-      // window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
