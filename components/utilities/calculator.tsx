@@ -6,7 +6,7 @@ const gululu = {
   value_USD: 0.0002,
 };
 
-export default function YourComponent({result, setResult, selectedCurrency, setSelectedCurrency}: {result: number, setResult: Dispatch<number>, selectedCurrency: string, setSelectedCurrency: Dispatch<string> }) {
+export default function YourComponent({ result, setResult, selectedCurrency, setSelectedCurrency }: { result: number, setResult: Dispatch<number>, selectedCurrency: string, setSelectedCurrency: Dispatch<string> }) {
   const [investedAmount, setInvestedAmount] = useState(0);
   const [exchangeRate, setExchangeRate] = useState<number | null>(null); // Specify exchangeRate as number or null
 
@@ -50,7 +50,7 @@ export default function YourComponent({result, setResult, selectedCurrency, setS
   }, [investedAmount, exchangeRate]);
 
   return (
-    <div className="flex md:flex-row flex-wrap gap-8 mx-4 py-8 text-black items-end justify-center">
+    <div className="flex md:flex-row flex-wrap gap-8 mx-4 py-8 text-black items-end justify-center" >
       <div className="text-black font-bold flex flex-col items-center justify-center text-center gap-3">
         Your Invested Amount{" "}
         <input

@@ -7,7 +7,7 @@ const Section8 = () => {
   return (
     <div className="relative bg-[#F7E8D5] py-24 ">
       <div className="relative z-10">
-        <Heading text="BUY ME $GULULU"/>
+        <Heading text="BUY ME $GULULU" />
         <div className="flex flex-row flex-wrap items-center justify-center gap-9 pt-2">
           <div className="flex flex-col items-start justify-start md:h-[34rem] bg-white rounded-md p-5">
             <div className="md:h-[25rem] md:w-[25rem] bg-[#FF933B] rounded-md rounded-br-[3rem] flex items-center justify-center ">
@@ -71,7 +71,7 @@ const Section8 = () => {
         className=" absolute h-auto w-auto top-[30.0rem] left-0 z-0"
       />
       <div className="w-full flex items-center justify-center py-20">
-        <BuyGululu/>
+        <BuyGululu />
       </div>
 
       <Image

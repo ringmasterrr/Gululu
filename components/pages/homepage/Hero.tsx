@@ -50,7 +50,7 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
   const hideStakingCard = () => {
     setShowStakingCard(false);
   };
-  
+
 
   console.log("PUBLICKEY:", publicKey);
   const { connection } = useConnection();
@@ -156,6 +156,8 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
     //@ts-ignore
     event
   ) => {
+
+
 
     console.log("PAYER:", payer)
 
@@ -272,7 +274,7 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
   const Gululu_value_USD = 0.00022;
 
   return (
-    <div className="relative flex flex-wrap items-start bg-[#F7E8D5] px-8  pb-14 pt-10 md:pt-0 justify-center">
+    <div className="relative flex flex-wrap items-start bg-[#F7E8D5] px-8  pb-14 pt-10 md:pt-0 justify-center" >
       <div className=" relative flex flex-col xl:max-w-[45%] w-[95%] items-center justify-center ">
         <Image
           src={"/sec1doge.svg"}
@@ -302,9 +304,9 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
       </div>
       <div className="relative flex flex-col xl:max-w-[48%] w-[100%] items-center justify-center pt-16 ml-0 ">
         {showStakingCard ? (
-          <StakingCard  hideStakingCard={hideStakingCard}/>
+          <StakingCard hideStakingCard={hideStakingCard} />
         ) : (
-          <div className=" buytoken bg-[#CFEEFF] rounded-3xl md:w-[85%] w-[100%] pt-20 pb-10 z-50 ">
+          <div className=" buytoken bg-[#CFEEFF] rounded-3xl md:w-[85%] w-[100%] pt-20 pb-10 z-50 " id="buytoken">
             <div>
               <h3 className="sm:px-24 px-4 font-omnes text-center leading-7 text-2xl ">
                 GULULU launches on doge day! Last <br /> chance to buy!
@@ -363,7 +365,7 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
                   setResult={setMintAmount}
                   selectedCurrency={selectedCurrency}
                   setSelectedCurrency={setSelectedCurrency}
-                  // Gululu_value_USD={Gululu_value_USD}
+                // Gululu_value_USD={Gululu_value_USD}
                 />
               </div>
             </div>

@@ -1,13 +1,29 @@
-"use client"
+"use client";
+import { useWalletModal } from "@solana/wallet-adapter-react-ui";
+import { useWalletMultiButton } from "@solana/wallet-adapter-base-ui";
 
 const BuyGululu = () => {
-  
+  const { buttonState, onConnect } = useWalletMultiButton({
+    onSelectWallet() {
+      setModalVisible(false);
+    },
+  });
 
+  const { setVisible: setModalVisible } = useWalletModal();
 
   const onClick = () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+
+    if (buttonState === "no-wallet") {
+      setModalVisible(true);
     }
-  
+    else {
+      const ele = document.getElementById("buytoken")
+      ele?.scrollIntoView({ behavior: "smooth" })
+      // window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+
 
   return (
     <button
