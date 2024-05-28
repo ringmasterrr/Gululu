@@ -27,6 +27,7 @@ import { token } from "@coral-xyz/anchor/dist/cjs/utils";
 import BuyGululu from "@/components/ui/BuyGululu";
 import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 import { useWalletMultiButton } from "@solana/wallet-adapter-base-ui";
+import { TransactionStatusPopup } from "@/components/ui/StatusAlert";
 
 const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
   const [mintAmount, setMintAmount] = useState(0);
@@ -36,6 +37,9 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
   const [showStakingButton, setShowStakingButton] = useState(false);
   const [showStakingCard, setShowStakingCard] = useState(false);
   const [userGULLULUTokens, setUserGULLULUTokens] = useState<number | null>(0);
+  const [transactionStatus, setTransactionStatus] = useState<boolean | null>(null);
+const [hashlinkaddress, setHashLinkAddress] = useState<string | null>(null);
+
 
   useEffect(() => {
     if (userGULLULUTokens !== null && userGULLULUTokens > 0) {
@@ -278,6 +282,9 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
 
     const decimals = 9;
     console.log("Mint amount:", mintAmount);
+
+
+    
     //@ts-ignore
     const txHash = await program.methods
       .buyTokens(new BN(mintAmount * 10 ** decimals))
@@ -288,15 +295,49 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
 
     await provider.connection.confirmTransaction(txHash);
     console.log(`  https://explorer.solana.com/tx/${txHash}?cluster=devnet`);
+
+    const hashlinkaddress = (`  https://explorer.solana.com/tx/${txHash}?cluster=devnet`);
+    setHashLinkAddress(hashlinkaddress);
+
+    const confirmation = await provider.connection.confirmTransaction(txHash);
+    if (confirmation.value.err) {
+      console.log("Transaction failed", confirmation.value.err);
+      setTransactionStatus(null);
+    } else {
+      console.log("Transaction successful", confirmation);
+      setTransactionStatus(true);
+    }
+
+    console.log(selectedCurrency)
+
+    let selectedCurrencyBalance = 0;
+    if (selectedCurrency === "SOL") {
+      selectedCurrencyBalance = balance; 
+    } else if (selectedCurrency === "USDT") {
+      selectedCurrencyBalance = usdBalance; 
+    } 
+  
+    if (selectedCurrencyBalance === 0) {
+      setTransactionStatus(null);
+    }
+ 
+  };
+
+  const handlePopupClose = () => {
+    setTransactionStatus(null);
   };
 
   const Gululu_value_USD = 0.00022;
 
   const formattedTokens = userGULLULUTokens !== null ? userGULLULUTokens.toFixed(4) : "0.00";
 
-
   return (
     <div className="relative flex flex-wrap items-start bg-[#F7E8D5] px-8  pb-14 pt-10 md:pt-0 justify-center" >
+      
+      {transactionStatus !== null && (
+        <TransactionStatusPopup status={transactionStatus} onClose={handlePopupClose} hashlinkaddress={hashlinkaddress || ''}/>
+      )}
+
       <div className=" relative flex flex-col xl:max-w-[45%] w-[95%] items-center justify-center ">
         <Image
           src={"/sec1doge.svg"}
