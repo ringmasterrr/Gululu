@@ -251,6 +251,7 @@ const [hashlinkaddress, setHashLinkAddress] = useState<string | null>(null);
     // console.log("User details is not yet updated");
 
     let userUsdtWallet;
+    let referrerUsdtWallet = null;
     let USDT = selectedCurrency === "USDT"; // TURN THIS TO TRUE WHEN USING USDT TO BUY TOKENS
 
     if (USDT) {
@@ -259,15 +260,26 @@ const [hashlinkaddress, setHashLinkAddress] = useState<string | null>(null);
         //@ts-ignore
         payer
       );
+
+      if(publicKey) {
+        referrerUsdtWallet = await getAssociatedTokenAddress(
+          usdt,
+          //@ts-ignore
+          new PublicKey(publicKey)
+        );
+      }
     } else {
       userUsdtWallet = null;
     }
+
+    console.log("Referrer usdt wallet:", referrerUsdtWallet)
 
     const context = {
       mint,
       tokenPda,
       fromAta,
       referrer: publicKey ? publicKey : null, // pass the referrer address publickey like: new PublicKey("PUBLICKEY OF THE REFERRER")
+      referrerUsdtWallet,
       userUsdtWallet,
       adminUsdtWallet,
       usdt,

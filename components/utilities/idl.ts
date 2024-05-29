@@ -46,6 +46,12 @@ export type Meme = {
           "isOptional": true
         },
         {
+          "name": "referrerUsdtWallet",
+          "isMut": true,
+          "isSigner": false,
+          "isOptional": true
+        },
+        {
           "name": "userUsdtWallet",
           "isMut": true,
           "isSigner": false,
@@ -283,7 +289,6 @@ export type Meme = {
 
 
 
-
   export const IDL: Meme = {
     "version": "0.1.0",
     "name": "meme",
@@ -327,6 +332,12 @@ export type Meme = {
           { "name": "payer", "isMut": true, "isSigner": true },
           {
             "name": "referrer",
+            "isMut": true,
+            "isSigner": false,
+            "isOptional": true
+          },
+          {
+            "name": "referrerUsdtWallet",
             "isMut": true,
             "isSigner": false,
             "isOptional": true
