@@ -61,7 +61,7 @@ export function TransactionStatusPopup({
               <p className="text-base font-medium">
                 {isSuccess
                   ? "Your transaction has been successful. Click on the below link to view your transaction."
-                  : "Oops! Something went wrong with your transaction."}
+                  : "Your transaction has failed. Click on the ok to return back to home"}
               </p>
             </div>
             <div>
@@ -79,7 +79,7 @@ export function TransactionStatusPopup({
                 onClick={handleClose}
                 className="w-full rounded-full bg-black font-omnes"
               >
-                TRY AGAIN
+                OK
               </AlertDialogAction>
             )}
             {isSuccess && (
@@ -129,3 +129,4 @@ export function TransactionStatusPopup({
     </div>
   );
 }
+

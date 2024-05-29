@@ -36,10 +36,12 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
   const [selectedCurrency, setSelectedCurrency] = useState("SOL");
   const [showStakingButton, setShowStakingButton] = useState(false);
   const [showStakingCard, setShowStakingCard] = useState(false);
+  const [inputAmount, setInputAmount] = useState()
   const [userGULLULUTokens, setUserGULLULUTokens] = useState<number | null>(0);
-  const [transactionStatus, setTransactionStatus] = useState<boolean | null>(null);
-const [hashlinkaddress, setHashLinkAddress] = useState<string | null>(null);
-
+  const [transactionStatus, setTransactionStatus] = useState<boolean | null>(
+    null
+  );
+  const [hashlinkaddress, setHashLinkAddress] = useState<string | null>(null);
 
   useEffect(() => {
     if (userGULLULUTokens !== null && userGULLULUTokens > 0) {
@@ -56,7 +58,6 @@ const [hashlinkaddress, setHashLinkAddress] = useState<string | null>(null);
   const hideStakingCard = () => {
     setShowStakingCard(false);
   };
-
 
   console.log("PUBLICKEY:", publicKey);
   const { connection } = useConnection();
@@ -86,7 +87,6 @@ const [hashlinkaddress, setHashLinkAddress] = useState<string | null>(null);
   // console.log("NEW USD BALANCE:", newUSDPrice * balance);
   // setUsdBalance(newUSDPrice * balance); // NOTE: This is approximate value, Verify
 
-
   const [mint] = web3.PublicKey.findProgramAddressSync(
     [Buffer.from(MINT_SEED)],
     MEME_PROGRAM_ID
@@ -96,6 +96,7 @@ const [hashlinkaddress, setHashLinkAddress] = useState<string | null>(null);
     [Buffer.from(TOKEN_SEED)],
     MEME_PROGRAM_ID
   );
+
 
   useEffect(() => {
     if (wallet.publicKey) {
@@ -125,7 +126,6 @@ const [hashlinkaddress, setHashLinkAddress] = useState<string | null>(null);
         }
 
         setBalance(newBalance / LAMPORTS_PER_SOL);
-
 
         const destination = await getAssociatedTokenAddress(
           mint,
@@ -165,12 +165,10 @@ const [hashlinkaddress, setHashLinkAddress] = useState<string | null>(null);
   const { setVisible: setModalVisible } = useWalletModal();
 
   const onClick = () => {
-
     if (buttonState === "no-wallet") {
       setModalVisible(true);
-    }
-    else {
-      handleButtonClick()
+    } else {
+      handleButtonClick();
     }
   };
 
@@ -179,10 +177,7 @@ const [hashlinkaddress, setHashLinkAddress] = useState<string | null>(null);
     //@ts-ignore
     event
   ) => {
-
-
-
-    console.log("PAYER:", payer)
+    console.log("PAYER:", payer);
 
     const fromAta = await getAssociatedTokenAddress(mint, tokenPda, true);
 
@@ -215,7 +210,6 @@ const [hashlinkaddress, setHashLinkAddress] = useState<string | null>(null);
 
     console.log("Number of tokens available:", pgTokenBalance);
     console.log("WALLET BALANCE:", walletBalance / LAMPORTS_PER_SOL + " SOL");
-
 
     console.log("SOLANA WALLET:", window.solana);
 
@@ -283,44 +277,42 @@ const [hashlinkaddress, setHashLinkAddress] = useState<string | null>(null);
     const decimals = 9;
     console.log("Mint amount:", mintAmount);
 
-
     
-    //@ts-ignore
-    const txHash = await program.methods
-      .buyTokens(new BN(mintAmount * 10 ** decimals))
-      //@ts-ignore
 
-      .accounts(context)
-      .rpc();
+
+    let txHash: any = undefined;
+    try {
+      //@ts-ignore
+      txHash = await program.methods
+        .buyTokens(new BN(mintAmount * 10 ** decimals))
+        //@ts-ignore
+
+        .accounts(context)
+        .rpc();
+    } catch (error) {
+      setTransactionStatus(false);
+    }
 
     await provider.connection.confirmTransaction(txHash);
     console.log(`  https://explorer.solana.com/tx/${txHash}?cluster=devnet`);
 
-    const hashlinkaddress = (`  https://explorer.solana.com/tx/${txHash}?cluster=devnet`);
+    const hashlinkaddress = `  https://explorer.solana.com/tx/${txHash}?cluster=devnet`;
     setHashLinkAddress(hashlinkaddress);
 
     const confirmation = await provider.connection.confirmTransaction(txHash);
-    if (confirmation.value.err) {
-      console.log("Transaction failed", confirmation.value.err);
-      setTransactionStatus(null);
+    console.log(confirmation.value);
+    if (confirmation) {
+      if (confirmation.value.err) {
+        console.log("Transaction failed");
+        setTransactionStatus(false);
+      } else {
+        console.log("Transaction successful", confirmation);
+        setTransactionStatus(true);
+      }
     } else {
-      console.log("Transaction successful", confirmation);
-      setTransactionStatus(true);
+      setTransactionStatus(false);
+      console.log("transaction not successful");
     }
-
-    console.log(selectedCurrency)
-
-    let selectedCurrencyBalance = 0;
-    if (selectedCurrency === "SOL") {
-      selectedCurrencyBalance = balance; 
-    } else if (selectedCurrency === "USDT") {
-      selectedCurrencyBalance = usdBalance; 
-    } 
-  
-    if (selectedCurrencyBalance === 0) {
-      setTransactionStatus(null);
-    }
- 
   };
 
   const handlePopupClose = () => {
@@ -329,13 +321,17 @@ const [hashlinkaddress, setHashLinkAddress] = useState<string | null>(null);
 
   const Gululu_value_USD = 0.00022;
 
-  const formattedTokens = userGULLULUTokens !== null ? userGULLULUTokens.toFixed(4) : "0.00";
+  const formattedTokens =
+    userGULLULUTokens !== null ? userGULLULUTokens.toFixed(4) : "0.00";
 
   return (
-    <div className="relative flex flex-wrap items-start bg-[#F7E8D5] px-8  pb-14 pt-10 md:pt-0 justify-center" >
-      
+    <div className="relative flex flex-wrap items-start bg-[#F7E8D5] px-8  pb-14 pt-10 md:pt-0 justify-center">
       {transactionStatus !== null && (
-        <TransactionStatusPopup status={transactionStatus} onClose={handlePopupClose} hashlinkaddress={hashlinkaddress || ''}/>
+        <TransactionStatusPopup
+          status={transactionStatus}
+          onClose={handlePopupClose}
+          hashlinkaddress={hashlinkaddress || ""}
+        />
       )}
 
       <div className=" relative flex flex-col xl:max-w-[45%] w-[95%] items-center justify-center ">
@@ -369,7 +365,10 @@ const [hashlinkaddress, setHashLinkAddress] = useState<string | null>(null);
         {showStakingCard ? (
           <StakingCard hideStakingCard={hideStakingCard} />
         ) : (
-          <div className=" buytoken bg-[#CFEEFF] rounded-3xl md:w-[85%] w-[100%] pt-20 pb-10 z-50 " id="buytoken">
+          <div
+            className=" buytoken bg-[#CFEEFF] rounded-3xl md:w-[85%] w-[100%] pt-20 pb-10 z-50 "
+            id="buytoken"
+          >
             <div>
               <h3 className="sm:px-24 px-4 font-omnes text-center leading-7 text-2xl ">
                 GULULU launches on doge day! Last <br /> chance to buy!
@@ -428,7 +427,8 @@ const [hashlinkaddress, setHashLinkAddress] = useState<string | null>(null);
                   setResult={setMintAmount}
                   selectedCurrency={selectedCurrency}
                   setSelectedCurrency={setSelectedCurrency}
-                // Gululu_value_USD={Gululu_value_USD}
+                   
+                  // Gululu_value_USD={Gululu_value_USD}
                 />
               </div>
             </div>
