@@ -166,12 +166,12 @@ export type Meme = {
       }
     },
     {
-      "name": "UserDetails",
+      "name": "ReferrerUser",
       "type": {
         "kind": "struct",
         "fields": [
-          { "name": "referralSol", "type": "u64" },
-          { "name": "referralUsd", "type": "u64" }
+          { "name": "referralSol", "type": "f64" },
+          { "name": "referralUsd", "type": "f64" }
         ]
       }
     },
@@ -267,6 +267,10 @@ export type Meme = {
     }
   ]
 }
+
+
+
+
 
 
 
@@ -457,12 +461,12 @@ export type Meme = {
         }
       },
       {
-        "name": "UserDetails",
+        "name": "ReferrerUser",
         "type": {
           "kind": "struct",
           "fields": [
-            { "name": "referralSol", "type": "u64" },
-            { "name": "referralUsd", "type": "u64" }
+            { "name": "referralSol", "type": "f64" },
+            { "name": "referralUsd", "type": "f64" }
           ]
         }
       },
