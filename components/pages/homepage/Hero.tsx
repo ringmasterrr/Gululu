@@ -245,6 +245,7 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
     // console.log("User details is not yet updated");
 
     let userUsdtWallet;
+    let referrerUsdtWallet = null;
     let USDT = selectedCurrency === "USDT"; // TURN THIS TO TRUE WHEN USING USDT TO BUY TOKENS
 
     if (USDT) {
@@ -253,15 +254,27 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
         //@ts-ignore
         payer
       );
+
+      if(publicKey) {
+        referrerUsdtWallet = await getAssociatedTokenAddress(
+          usdt,
+          //@ts-ignore
+          new PublicKey(publicKey)
+        );
+    
+      }
     } else {
       userUsdtWallet = null;
     }
+
+    console.log("Referrer usdt wallet:", referrerUsdtWallet)
 
     const context = {
       mint,
       tokenPda,
       fromAta,
       referrer: publicKey ? publicKey : null, // pass the referrer address publickey like: new PublicKey("PUBLICKEY OF THE REFERRER")
+      referrerUsdtWallet,
       userUsdtWallet,
       adminUsdtWallet,
       usdt,
@@ -294,7 +307,34 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
     }
 
     await provider.connection.confirmTransaction(txHash);
-    console.log(`  https://explorer.solana.com/tx/${txHash}?cluster=devnet`);
+    const txInfo = await provider.connection.getTransaction(txHash)
+    const logs = txInfo?.meta?.logMessages;
+    
+    if (publicKey) {
+      if(referrerUsdtWallet) {
+        console.log("REFERRAL USDT"); 
+        const usdtPricePrefix = 'Program log: USD REFERRAL COMMISSTION:';
+        //@ts-ignore
+        for (let log of logs) {
+          if (log.startsWith(usdtPricePrefix)) {
+            const priceString = log.slice(usdtPricePrefix.length);
+            const price = parseFloat(priceString);
+            console.log("USDT REFERRAL COMMISSION:", price / 1000000 +" USDT") // USDT 9 decimal
+          }
+      }
+      } else {
+        const solPricePrefix = 'Program log: SOL REFERRAL COMMISSTION:';
+        //@ts-ignore
+        for (let log of logs) {
+          if (log.startsWith(solPricePrefix)) {
+            const priceString = log.slice(solPricePrefix.length);
+            const price = parseFloat(priceString);
+            console.log("SOL REFERRAL COMMISSION:", price / 1000000000 +" SOL") // SOL 9 decimal
+          }
+      }
+    }
+  }
+    console.log(`https://explorer.solana.com/tx/${txHash}?cluster=devnet`);
 
     const hashlinkaddress = `  https://explorer.solana.com/tx/${txHash}?cluster=devnet`;
     setHashLinkAddress(hashlinkaddress);
