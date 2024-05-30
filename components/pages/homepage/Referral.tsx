@@ -80,7 +80,7 @@ const Section5 = ({
             alt="i"
             width={1000}
             height={1000}
-            className="lg:absolute w-[40rem] right-[33rem]"
+            className="lg:absolute w-[35rem] right-[33rem]"
           />
         </div>
       </div>
