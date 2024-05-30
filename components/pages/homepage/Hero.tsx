@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Countdown from "../../utilities/Countdown";
 import SelectCurrency from "../../utilities/Dropdown";
 import { AnchorProvider, BN, Program, web3 } from "@coral-xyz/anchor";
@@ -29,7 +29,7 @@ import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 import { useWalletMultiButton } from "@solana/wallet-adapter-base-ui";
 import { TransactionStatusPopup } from "@/components/ui/StatusAlert";
 
-const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
+const Section1 = ({ publicKey, setReferralSolAmount, setReferralUSDTAmount }: { publicKey: string | undefined, setReferralSolAmount: Dispatch<SetStateAction<number>>; setReferralUSDTAmount : Dispatch<SetStateAction<number>> }) => {
   const [mintAmount, setMintAmount] = useState(0);
   const [balance, setBalance] = useState<number>(0);
   const [usdBalance, setUsdBalance] = useState<number>(0);
@@ -320,6 +320,7 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
             const priceString = log.slice(usdtPricePrefix.length);
             const price = parseFloat(priceString);
             console.log("USDT REFERRAL COMMISSION:", price / 1000000 +" USDT") // USDT 9 decimal
+            setReferralUSDTAmount(price / 1000000) 
           }
       }
       } else {
@@ -330,6 +331,8 @@ const Section1 = ({ publicKey }: { publicKey: string | undefined }) => {
             const priceString = log.slice(solPricePrefix.length);
             const price = parseFloat(priceString);
             console.log("SOL REFERRAL COMMISSION:", price / 1000000000 +" SOL") // SOL 9 decimal
+            setReferralSolAmount(price / 1000000)
+
           }
       }
     }

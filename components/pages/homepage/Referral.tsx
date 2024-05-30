@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import React from "react";
 import ReferralBox from "../../utilities/Refferal";
@@ -5,7 +7,13 @@ import SocialIcon from "../../ui/Socials";
 import Heading from "@/components/ui/Heading";
 import Paragraph from "@/components/ui/Para";
 
-const Section5 = () => {
+const Section5 = ({
+  referralSolAmount,
+  referralUSDTAmount,
+}: {
+  referralSolAmount: number | undefined;
+  referralUSDTAmount: number | undefined;
+}) => {
   return (
     <div className="flex flex-col items-center   bg-[#FFC67D] py-10 ">
       <Heading text="REFERRAL" />
@@ -34,18 +42,34 @@ const Section5 = () => {
         />
       </div>
       <div className=" flex items-end justify-end lg:w-[70rem]">
-        <div className="relative gap-2 flex flex-col bg-[#CFEEFF]  lg:pl-[25rem] pb-10 my-24  rounded-3xl md:px-[2rem] px-10 z-10 lg:h-[27rem] lg:items-end items-center justify-center py-10 lg:py-0">
-          <div className="w-[90%] flex flex-col items-center">
+        <div className="relative gap-2 flex flex-col bg-[#CFEEFF]  lg:pl-[25rem] pb-10 my-22  rounded-3xl md:px-[2rem] px-10 z-10 lg:h-[27rem] lg:items-end items-center justify-center py-10 lg:py-0">
+          <div className="w-[90%] flex flex-col items-center gap-6">
             <h3 className="text-[1.7rem] text-center font-omnes">
-              Referral Generated: $123.222
+              Referral Generated
             </h3>
-            <button
-              
-              className="w-fit bg-black text-white px-10 py-2 my-4 rounded-lg hover:bg-slate-700 focus:outline-none "
-            >
-              Claim Rewards
-            </button>
-            <h3 className="sm:text-[1.7rem] text-lg font-semibold text-center font-omnesregular sm:pt-6 py-2 ">
+            <div className="flex md:flex-row flex-wrap md:gap-32 gap-8 items-center justify-center mx-4">
+              <div className="flex gap-2 sm:text-sm text-base font-bold">
+                <Image
+                  src={"/sol.svg"}
+                  alt="i"
+                  width={500}
+                  height={100}
+                  className="w-6 h-6 "
+                />
+                SOL: {referralSolAmount}
+              </div>
+              <div className="flex gap-2 sm:text-sm text-base font-bold">
+                <Image
+                  src={"/usdt.svg"}
+                  alt="i"
+                  width={500}
+                  height={100}
+                  className="w-6 h-6 "
+                />
+                USDT: {referralUSDTAmount}
+              </div>
+            </div>
+            <h3 className="sm:text-[1.5rem] text-lg font-semibold text-center font-omnesregular sm:pt-6 py-2 ">
               Share Your Unique Referral Link
             </h3>
 
