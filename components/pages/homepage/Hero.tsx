@@ -331,7 +331,7 @@ const Section1 = ({ publicKey, setReferralSolAmount, setReferralUSDTAmount }: { 
             const priceString = log.slice(solPricePrefix.length);
             const price = parseFloat(priceString);
             console.log("SOL REFERRAL COMMISSION:", price / 1000000000 +" SOL") // SOL 9 decimal
-            setReferralSolAmount(price / 1000000)
+            setReferralSolAmount(price / 1000000000)
 
           }
       }
