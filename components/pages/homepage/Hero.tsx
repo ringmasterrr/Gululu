@@ -267,6 +267,7 @@ const [hashlinkaddress, setHashLinkAddress] = useState<string | null>(null);
           //@ts-ignore
           new PublicKey(publicKey)
         );
+    
       }
     } else {
       userUsdtWallet = null;
@@ -303,22 +304,49 @@ const [hashlinkaddress, setHashLinkAddress] = useState<string | null>(null);
       //@ts-ignore
 
       .accounts(context)
-      .rpc();
+      .rpc()
 
     await provider.connection.confirmTransaction(txHash);
-    console.log(`  https://explorer.solana.com/tx/${txHash}?cluster=devnet`);
+    const txInfo = await provider.connection.getTransaction(txHash)
+    const logs = txInfo?.meta?.logMessages;
+    
+    if (publicKey) {
+      if(referrerUsdtWallet) {
+        console.log("REFERRAL USDT"); 
+        const usdtPricePrefix = 'Program log: USD REFERRAL COMMISSTION:';
+        //@ts-ignore
+        for (let log of logs) {
+          if (log.startsWith(usdtPricePrefix)) {
+            const priceString = log.slice(usdtPricePrefix.length);
+            const price = parseFloat(priceString);
+            console.log("USDT REFERRAL COMMISSION:", price / 1000000 +" USDT") // USDT 9 decimal
+          }
+      }
+      } else {
+        const solPricePrefix = 'Program log: SOL REFERRAL COMMISSTION:';
+        //@ts-ignore
+        for (let log of logs) {
+          if (log.startsWith(solPricePrefix)) {
+            const priceString = log.slice(solPricePrefix.length);
+            const price = parseFloat(priceString);
+            console.log("SOL REFERRAL COMMISSION:", price / 1000000000 +" SOL") // SOL 9 decimal
+          }
+      }
+    }
+  }
+    console.log(`https://explorer.solana.com/tx/${txHash}?cluster=devnet`);
 
     const hashlinkaddress = (`  https://explorer.solana.com/tx/${txHash}?cluster=devnet`);
     setHashLinkAddress(hashlinkaddress);
 
-    const confirmation = await provider.connection.confirmTransaction(txHash);
-    if (confirmation.value.err) {
-      console.log("Transaction failed", confirmation.value.err);
-      setTransactionStatus(null);
-    } else {
-      console.log("Transaction successful", confirmation);
-      setTransactionStatus(true);
-    }
+    // const confirmation = await provider.connection.confirmTransaction(txHash);
+    // if (confirmation.value.err) {
+    //   console.log("Transaction failed", confirmation.value.err);
+    //   setTransactionStatus(null);
+    // } else {
+    //   console.log("Transaction successful", confirmation);
+    //   setTransactionStatus(true);
+    // }
 
     console.log(selectedCurrency)
 
