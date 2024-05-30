@@ -119,7 +119,7 @@ const Section9: React.FC = () => {
           <div className="font-omnes flex flex-row justify-between items-start px-8 py-4  uppercase">
             <h3>If I buy</h3>
 
-            <div className="flex flex-col items-end">
+            {/* <div className="flex flex-col items-end">
               <select value={currency} onChange={handleCurrencyChange}>
                 <option value="INR">INR</option>
                 <option value="USD">USD</option>
@@ -129,7 +129,7 @@ const Section9: React.FC = () => {
                   ? `${(0.005 * parseFloat(coinAmount)).toFixed(2)}`
                   : `${(0.005 * 83 * parseFloat(coinAmount)).toFixed(2)}`}
               </h2>
-            </div>
+            </div> */}
           </div>
           <input
             type="number"
