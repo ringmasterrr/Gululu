@@ -362,7 +362,7 @@ const Section1 = ({ publicKey, setReferralSolAmount, setReferralUSDTAmount }: { 
     setTransactionStatus(null);
   };
 
-  const Gululu_value_USD = 0.00022;
+  const Gululu_value_USD = 0.0085;
 
   const formattedTokens =
     userGULLULUTokens !== null ? userGULLULUTokens.toFixed(4) : "0.00";
