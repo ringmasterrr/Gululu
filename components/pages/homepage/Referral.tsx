@@ -39,6 +39,12 @@ const Section5 = () => {
             <h3 className="text-[1.7rem] text-center font-omnes">
               Referral Generated: $123.222
             </h3>
+            <button
+              
+              className="w-fit bg-black text-white px-10 py-2 my-4 rounded-lg hover:bg-slate-700 focus:outline-none "
+            >
+              Claim Rewards
+            </button>
             <h3 className="sm:text-[1.7rem] text-lg font-semibold text-center font-omnesregular sm:pt-6 py-2 ">
               Share Your Unique Referral Link
             </h3>

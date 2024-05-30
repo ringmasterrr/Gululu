@@ -5,7 +5,7 @@ import Heading from "@/components/ui/Heading";
 
 const Roadmap = () => {
   return (
-    <div className="bg-theme-peach">
+    <div className="bg-[#FFC8BA]">
       <div className="py-20 max-w-[1920px] mx-auto">
         <Heading text="Roadmap" />
         <div className="flex flex-col sm:gap-72 gap-48 md:py-20 py-32 mt-16 ">
