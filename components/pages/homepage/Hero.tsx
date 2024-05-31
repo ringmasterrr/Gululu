@@ -339,7 +339,7 @@ const Section1 = ({ publicKey, setReferralSolAmount, setReferralUSDTAmount }: { 
   }
     console.log(`https://explorer.solana.com/tx/${txHash}?cluster=devnet`);
 
-    const hashlinkaddress = `  https://explorer.solana.com/tx/${txHash}?cluster=devnet`;
+    const hashlinkaddress = `https://explorer.solana.com/tx/${txHash}?cluster=devnet`;
     setHashLinkAddress(hashlinkaddress);
 
     const confirmation = await provider.connection.confirmTransaction(txHash);
