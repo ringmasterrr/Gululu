@@ -28,15 +28,24 @@ import BuyGululu from "@/components/ui/BuyGululu";
 import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 import { useWalletMultiButton } from "@solana/wallet-adapter-base-ui";
 import { TransactionStatusPopup } from "@/components/ui/StatusAlert";
+import {Gululu_price} from "@/components/utilities/gululu_phases";
 
-const Section1 = ({ publicKey, setReferralSolAmount, setReferralUSDTAmount }: { publicKey: string | undefined, setReferralSolAmount: Dispatch<SetStateAction<number>>; setReferralUSDTAmount : Dispatch<SetStateAction<number>> }) => {
+const Section1 = ({
+  publicKey,
+  setReferralSolAmount,
+  setReferralUSDTAmount,
+}: {
+  publicKey: string | undefined;
+  setReferralSolAmount: Dispatch<SetStateAction<number>>;
+  setReferralUSDTAmount: Dispatch<SetStateAction<number>>;
+}) => {
   const [mintAmount, setMintAmount] = useState(0);
   const [balance, setBalance] = useState<number>(0);
   const [usdBalance, setUsdBalance] = useState<number>(0);
   const [selectedCurrency, setSelectedCurrency] = useState("SOL");
   const [showStakingButton, setShowStakingButton] = useState(false);
   const [showStakingCard, setShowStakingCard] = useState(false);
-  const [inputAmount, setInputAmount] = useState()
+  const [inputAmount, setInputAmount] = useState();
   const [userGULLULUTokens, setUserGULLULUTokens] = useState<number | null>(0);
   const [transactionStatus, setTransactionStatus] = useState<boolean | null>(
     null
@@ -97,6 +106,15 @@ const Section1 = ({ publicKey, setReferralSolAmount, setReferralUSDTAmount }: { 
     MEME_PROGRAM_ID
   );
 
+
+  const [value, setValue] = useState(0)
+
+  useEffect(() => {
+
+    const v = Gululu_price()
+    setValue(v)
+  
+  });
 
   useEffect(() => {
     if (wallet.publicKey) {
@@ -255,19 +273,18 @@ const Section1 = ({ publicKey, setReferralSolAmount, setReferralUSDTAmount }: { 
         payer
       );
 
-      if(publicKey) {
+      if (publicKey) {
         referrerUsdtWallet = await getAssociatedTokenAddress(
           usdt,
           //@ts-ignore
           new PublicKey(publicKey)
         );
-    
       }
     } else {
       userUsdtWallet = null;
     }
 
-    console.log("Referrer usdt wallet:", referrerUsdtWallet)
+    console.log("Referrer usdt wallet:", referrerUsdtWallet);
 
     const context = {
       mint,
@@ -290,9 +307,6 @@ const Section1 = ({ publicKey, setReferralSolAmount, setReferralUSDTAmount }: { 
     const decimals = 9;
     console.log("Mint amount:", mintAmount);
 
-    
-
-
     let txHash: any = undefined;
     try {
       //@ts-ignore
@@ -307,36 +321,38 @@ const Section1 = ({ publicKey, setReferralSolAmount, setReferralUSDTAmount }: { 
     }
 
     await provider.connection.confirmTransaction(txHash);
-    const txInfo = await provider.connection.getTransaction(txHash)
+    const txInfo = await provider.connection.getTransaction(txHash);
     const logs = txInfo?.meta?.logMessages;
-    
+
     if (publicKey) {
-      if(referrerUsdtWallet) {
-        console.log("REFERRAL USDT"); 
-        const usdtPricePrefix = 'Program log: USD REFERRAL COMMISSTION:';
+      if (referrerUsdtWallet) {
+        console.log("REFERRAL USDT");
+        const usdtPricePrefix = "Program log: USD REFERRAL COMMISSTION:";
         //@ts-ignore
         for (let log of logs) {
           if (log.startsWith(usdtPricePrefix)) {
             const priceString = log.slice(usdtPricePrefix.length);
             const price = parseFloat(priceString);
-            console.log("USDT REFERRAL COMMISSION:", price / 1000000 +" USDT") // USDT 9 decimal
-            setReferralUSDTAmount(price / 1000000) 
+            console.log("USDT REFERRAL COMMISSION:", price / 1000000 + " USDT"); // USDT 9 decimal
+            setReferralUSDTAmount(price / 1000000);
           }
-      }
+        }
       } else {
-        const solPricePrefix = 'Program log: SOL REFERRAL COMMISSTION:';
+        const solPricePrefix = "Program log: SOL REFERRAL COMMISSTION:";
         //@ts-ignore
         for (let log of logs) {
           if (log.startsWith(solPricePrefix)) {
             const priceString = log.slice(solPricePrefix.length);
             const price = parseFloat(priceString);
-            console.log("SOL REFERRAL COMMISSION:", price / 1000000000 +" SOL") // SOL 9 decimal
-            setReferralSolAmount(price / 1000000000)
-
+            console.log(
+              "SOL REFERRAL COMMISSION:",
+              price / 1000000000 + " SOL"
+            ); // SOL 9 decimal
+            setReferralSolAmount(price / 1000000000);
           }
+        }
       }
     }
-  }
     console.log(`https://explorer.solana.com/tx/${txHash}?cluster=devnet`);
 
     const hashlinkaddress = `https://explorer.solana.com/tx/${txHash}?cluster=devnet`;
@@ -470,7 +486,7 @@ const Section1 = ({ publicKey, setReferralSolAmount, setReferralUSDTAmount }: { 
                   setResult={setMintAmount}
                   selectedCurrency={selectedCurrency}
                   setSelectedCurrency={setSelectedCurrency}
-                   
+
                   // Gululu_value_USD={Gululu_value_USD}
                 />
               </div>
