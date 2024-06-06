@@ -1,8 +1,9 @@
-"use client"
-import { useState } from "react";
+"use client";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import { useWallet } from "@solana/wallet-adapter-react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,6 +11,19 @@ const Header = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const { disconnecting } = useWallet();
+
+  const handleDisconnect = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
+
+  useEffect(() => {
+    if (disconnecting) {
+      handleDisconnect();
+    }
+  }, [disconnecting]);
 
   return (
     <div className="bg-[#F7E8D5]">
@@ -47,9 +61,9 @@ const Header = () => {
               Audit
             </Link>
           </div>
-          
+
           <WalletMultiButton style={{}} />
-          
+
           <div className="flex space-x-2 pl-2">
             <Image
               src="/twitter-icon.svg"
