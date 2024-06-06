@@ -2,43 +2,143 @@ export type Meme = {
   "version": "0.1.0",
   "name": "meme",
   "constants": [
-    { "name": "TOTAL_SUPPLY", "type": "u64", "value": "5_000_000_000" }
+    {
+      "name": "TOTAL_SUPPLY",
+      "type": "u64",
+      "value": "5_000_000_000"
+    }
   ],
   "instructions": [
     {
       "name": "initToken",
       "accounts": [
-        { "name": "metadata", "isMut": true, "isSigner": false },
-        { "name": "mint", "isMut": true, "isSigner": false },
-        { "name": "tokenPda", "isMut": true, "isSigner": false },
-        { "name": "destination", "isMut": true, "isSigner": false },
-        { "name": "payer", "isMut": true, "isSigner": true },
-        { "name": "rent", "isMut": false, "isSigner": false },
-        { "name": "systemProgram", "isMut": false, "isSigner": false },
-        { "name": "tokenProgram", "isMut": false, "isSigner": false },
-        { "name": "associatedTokenProgram", "isMut": false, "isSigner": false },
-        { "name": "tokenMetadataProgram", "isMut": false, "isSigner": false }
+        {
+          "name": "metadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "destination",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "associatedTokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenMetadataProgram",
+          "isMut": false,
+          "isSigner": false
+        }
       ],
-      "args": [{ "name": "metadata", "type": { "defined": "InitTokenParams" } }]
+      "args": [
+        {
+          "name": "metadata",
+          "type": {
+            "defined": "InitTokenParams"
+          }
+        }
+      ]
     },
     {
       "name": "phaseUpdate",
       "accounts": [
-        { "name": "tokenPda", "isMut": true, "isSigner": false },
-        { "name": "authority", "isMut": true, "isSigner": true },
-        { "name": "rent", "isMut": false, "isSigner": false },
-        { "name": "systemProgram", "isMut": false, "isSigner": false }
+        {
+          "name": "tokenPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
       ],
-      "args": [{ "name": "phase", "type": { "defined": "PhaseParams" } }]
+      "args": [
+        {
+          "name": "phase",
+          "type": {
+            "defined": "PhaseParams"
+          }
+        }
+      ]
     },
     {
       "name": "buyTokens",
       "accounts": [
-        { "name": "mint", "isMut": true, "isSigner": false },
-        { "name": "tokenPda", "isMut": true, "isSigner": false },
-        { "name": "fromAta", "isMut": true, "isSigner": false },
-        { "name": "destination", "isMut": true, "isSigner": false },
-        { "name": "payer", "isMut": true, "isSigner": true },
+        {
+          "name": "mint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "fromAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "destination",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "referrerUser",
+          "isMut": true,
+          "isSigner": false,
+          "isOptional": true
+        },
         {
           "name": "referrer",
           "isMut": true,
@@ -57,134 +157,399 @@ export type Meme = {
           "isSigner": false,
           "isOptional": true
         },
-        { "name": "adminUsdtWallet", "isMut": true, "isSigner": false },
-        { "name": "usdt", "isMut": true, "isSigner": false },
-        { "name": "priceFeed", "isMut": false, "isSigner": false },
-        { "name": "rent", "isMut": false, "isSigner": false },
-        { "name": "systemProgram", "isMut": false, "isSigner": false },
-        { "name": "tokenProgram", "isMut": false, "isSigner": false },
-        { "name": "associatedTokenProgram", "isMut": false, "isSigner": false }
+        {
+          "name": "adminUsdtWallet",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "usdt",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "priceFeed",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "associatedTokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
       ],
-      "args": [{ "name": "quantity", "type": "u64" }]
+      "args": [
+        {
+          "name": "quantity",
+          "type": "u64"
+        }
+      ]
     },
     {
       "name": "initialize",
       "accounts": [
-        { "name": "admin", "isMut": true, "isSigner": true },
-        { "name": "poolInfo", "isMut": true, "isSigner": false },
-        { "name": "stakingToken", "isMut": true, "isSigner": false },
-        { "name": "adminStakingWallet", "isMut": true, "isSigner": false },
-        { "name": "rent", "isMut": false, "isSigner": false },
-        { "name": "systemProgram", "isMut": false, "isSigner": false },
-        { "name": "tokenProgram", "isMut": false, "isSigner": false },
-        { "name": "associatedTokenProgram", "isMut": false, "isSigner": false }
+        {
+          "name": "admin",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "poolInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stakingToken",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "adminStakingWallet",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "associatedTokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
       ],
       "args": []
     },
     {
       "name": "stake",
       "accounts": [
-        { "name": "user", "isMut": true, "isSigner": true },
-        { "name": "userInfo", "isMut": true, "isSigner": false },
-        { "name": "userStakingWallet", "isMut": true, "isSigner": false },
-        { "name": "poolInfo", "isMut": true, "isSigner": false },
-        { "name": "adminStakingWallet", "isMut": true, "isSigner": false },
-        { "name": "stakingToken", "isMut": true, "isSigner": false },
-        { "name": "tokenProgram", "isMut": false, "isSigner": false },
-        { "name": "associatedTokenProgram", "isMut": false, "isSigner": false },
-        { "name": "rent", "isMut": false, "isSigner": false },
-        { "name": "systemProgram", "isMut": false, "isSigner": false }
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userStakingWallet",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "adminStakingWallet",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stakingToken",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "associatedTokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
       ],
-      "args": [{ "name": "amount", "type": "u64" }]
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
     },
     {
       "name": "unstake",
       "accounts": [
-        { "name": "user", "isMut": true, "isSigner": true },
-        { "name": "userInfo", "isMut": true, "isSigner": false },
-        { "name": "userStakingWallet", "isMut": true, "isSigner": false },
-        { "name": "poolInfo", "isMut": true, "isSigner": false },
-        { "name": "adminStakingWallet", "isMut": true, "isSigner": false },
-        { "name": "stakingToken", "isMut": true, "isSigner": false },
-        { "name": "tokenPda", "isMut": true, "isSigner": false },
-        { "name": "fromAta", "isMut": true, "isSigner": false },
-        { "name": "tokenProgram", "isMut": false, "isSigner": false },
-        { "name": "associatedTokenProgram", "isMut": false, "isSigner": false },
-        { "name": "systemProgram", "isMut": false, "isSigner": false }
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userStakingWallet",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "adminStakingWallet",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stakingToken",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "fromAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "associatedTokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
       ],
       "args": []
     },
     {
       "name": "claimReward",
       "accounts": [
-        { "name": "user", "isMut": true, "isSigner": true },
-        { "name": "userInfo", "isMut": true, "isSigner": false },
-        { "name": "userStakingWallet", "isMut": true, "isSigner": false },
-        { "name": "tokenPda", "isMut": true, "isSigner": false },
-        { "name": "fromAta", "isMut": true, "isSigner": false },
-        { "name": "stakingToken", "isMut": true, "isSigner": false },
-        { "name": "tokenProgram", "isMut": false, "isSigner": false },
-        { "name": "associatedTokenProgram", "isMut": false, "isSigner": false },
-        { "name": "systemProgram", "isMut": false, "isSigner": false }
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userStakingWallet",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "fromAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stakingToken",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "associatedTokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
       ],
       "args": []
     }
   ],
   "accounts": [
     {
-      "name": "TokenPda",
+      "name": "tokenPda",
       "type": {
         "kind": "struct",
         "fields": [
-          { "name": "authority", "type": "publicKey" },
-          { "name": "mintKey", "type": "publicKey" },
-          { "name": "mintCount", "type": "u64" },
-          { "name": "phaseOne", "type": "i64" },
-          { "name": "phaseTwo", "type": "i64" },
-          { "name": "phaseThree", "type": "i64" },
-          { "name": "phaseFour", "type": "i64" },
-          { "name": "phaseFive", "type": "i64" },
-          { "name": "phaseFiveEnd", "type": "i64" },
-          { "name": "phaseOneMint", "type": "u64" },
-          { "name": "phaseTwoMint", "type": "u64" },
-          { "name": "phaseThreeMint", "type": "u64" },
-          { "name": "phaseFourMint", "type": "u64" },
-          { "name": "phaseFiveMint", "type": "u64" }
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "mintKey",
+            "type": "publicKey"
+          },
+          {
+            "name": "mintCount",
+            "type": "u64"
+          },
+          {
+            "name": "phaseOne",
+            "type": "i64"
+          },
+          {
+            "name": "phaseTwo",
+            "type": "i64"
+          },
+          {
+            "name": "phaseThree",
+            "type": "i64"
+          },
+          {
+            "name": "phaseFour",
+            "type": "i64"
+          },
+          {
+            "name": "phaseFive",
+            "type": "i64"
+          },
+          {
+            "name": "phaseFiveEnd",
+            "type": "i64"
+          },
+          {
+            "name": "phaseOneMint",
+            "type": "u64"
+          },
+          {
+            "name": "phaseTwoMint",
+            "type": "u64"
+          },
+          {
+            "name": "phaseThreeMint",
+            "type": "u64"
+          },
+          {
+            "name": "phaseFourMint",
+            "type": "u64"
+          },
+          {
+            "name": "phaseFiveMint",
+            "type": "u64"
+          }
         ]
       }
     },
     {
-      "name": "PoolInfo",
+      "name": "poolInfo",
       "type": {
         "kind": "struct",
         "fields": [
-          { "name": "admin", "type": "publicKey" },
-          { "name": "startSlot", "type": "u64" },
-          { "name": "endSlot", "type": "u64" },
-          { "name": "token", "type": "publicKey" }
+          {
+            "name": "admin",
+            "type": "publicKey"
+          },
+          {
+            "name": "startSlot",
+            "type": "u64"
+          },
+          {
+            "name": "endSlot",
+            "type": "u64"
+          },
+          {
+            "name": "token",
+            "type": "publicKey"
+          }
         ]
       }
     },
     {
-      "name": "ReferrerUser",
+      "name": "referrerUser",
       "type": {
         "kind": "struct",
         "fields": [
-          { "name": "referralSol", "type": "f64" },
-          { "name": "referralUsd", "type": "f64" }
+          {
+            "name": "referralSol",
+            "type": "u64"
+          },
+          {
+            "name": "referralUsdt",
+            "type": "u64"
+          }
         ]
       }
     },
     {
-      "name": "UserInfo",
+      "name": "userInfo",
       "type": {
         "kind": "struct",
         "fields": [
-          { "name": "amount", "type": "u64" },
-          { "name": "rewardDebt", "type": "u64" },
-          { "name": "depositTime", "type": "i64" },
-          { "name": "reward", "type": "u64" },
-          { "name": "rewardCarry", "type": "u64" }
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "rewardDebt",
+            "type": "u64"
+          },
+          {
+            "name": "depositTime",
+            "type": "i64"
+          },
+          {
+            "name": "reward",
+            "type": "u64"
+          },
+          {
+            "name": "rewardCarry",
+            "type": "u64"
+          }
         ]
       }
     }
@@ -195,10 +560,22 @@ export type Meme = {
       "type": {
         "kind": "struct",
         "fields": [
-          { "name": "name", "type": "string" },
-          { "name": "symbol", "type": "string" },
-          { "name": "uri", "type": "string" },
-          { "name": "decimals", "type": "u8" }
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "symbol",
+            "type": "string"
+          },
+          {
+            "name": "uri",
+            "type": "string"
+          },
+          {
+            "name": "decimals",
+            "type": "u8"
+          }
         ]
       }
     },
@@ -207,12 +584,30 @@ export type Meme = {
       "type": {
         "kind": "struct",
         "fields": [
-          { "name": "phaseOne", "type": "i64" },
-          { "name": "phaseTwo", "type": "i64" },
-          { "name": "phaseThree", "type": "i64" },
-          { "name": "phaseFour", "type": "i64" },
-          { "name": "phaseFive", "type": "i64" },
-          { "name": "phaseFiveEnd", "type": "i64" }
+          {
+            "name": "phaseOne",
+            "type": "i64"
+          },
+          {
+            "name": "phaseTwo",
+            "type": "i64"
+          },
+          {
+            "name": "phaseThree",
+            "type": "i64"
+          },
+          {
+            "name": "phaseFour",
+            "type": "i64"
+          },
+          {
+            "name": "phaseFive",
+            "type": "i64"
+          },
+          {
+            "name": "phaseFiveEnd",
+            "type": "i64"
+          }
         ]
       }
     }
@@ -258,309 +653,703 @@ export type Meme = {
       "name": "PhaseFiveEnded",
       "msg": "Phase Five mint ended...."
     },
-    { "code": 6008, "name": "MintEnded", "msg": "Mint has ended...." },
-    { "code": 6009, "name": "InvalidPriceFeed", "msg": "Invalid Price Feed" },
+    {
+      "code": 6008,
+      "name": "MintEnded",
+      "msg": "Mint has ended...."
+    },
+    {
+      "code": 6009,
+      "name": "InvalidPriceFeed",
+      "msg": "Invalid Price Feed"
+    },
     {
       "code": 6010,
       "name": "PriceFeedDown",
       "msg": "SOL/USD price feed is down, try again later"
+    },
+    {
+      "code": 6011,
+      "name": "NoRefferalAmount",
+      "msg": "There is no referral amount for this user"
     }
   ]
-}
+};
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  export const IDL: Meme = {
-    "version": "0.1.0",
-    "name": "meme",
-    "constants": [
-      { "name": "TOTAL_SUPPLY", "type": "u64", "value": "5_000_000_000" }
-    ],
-    "instructions": [
-      {
-        "name": "initToken",
-        "accounts": [
-          { "name": "metadata", "isMut": true, "isSigner": false },
-          { "name": "mint", "isMut": true, "isSigner": false },
-          { "name": "tokenPda", "isMut": true, "isSigner": false },
-          { "name": "destination", "isMut": true, "isSigner": false },
-          { "name": "payer", "isMut": true, "isSigner": true },
-          { "name": "rent", "isMut": false, "isSigner": false },
-          { "name": "systemProgram", "isMut": false, "isSigner": false },
-          { "name": "tokenProgram", "isMut": false, "isSigner": false },
-          { "name": "associatedTokenProgram", "isMut": false, "isSigner": false },
-          { "name": "tokenMetadataProgram", "isMut": false, "isSigner": false }
-        ],
-        "args": [{ "name": "metadata", "type": { "defined": "InitTokenParams" } }]
-      },
-      {
-        "name": "phaseUpdate",
-        "accounts": [
-          { "name": "tokenPda", "isMut": true, "isSigner": false },
-          { "name": "authority", "isMut": true, "isSigner": true },
-          { "name": "rent", "isMut": false, "isSigner": false },
-          { "name": "systemProgram", "isMut": false, "isSigner": false }
-        ],
-        "args": [{ "name": "phase", "type": { "defined": "PhaseParams" } }]
-      },
-      {
-        "name": "buyTokens",
-        "accounts": [
-          { "name": "mint", "isMut": true, "isSigner": false },
-          { "name": "tokenPda", "isMut": true, "isSigner": false },
-          { "name": "fromAta", "isMut": true, "isSigner": false },
-          { "name": "destination", "isMut": true, "isSigner": false },
-          { "name": "payer", "isMut": true, "isSigner": true },
+export const IDL: Meme = {
+  "version": "0.1.0",
+  "name": "meme",
+  "constants": [
+    {
+      "name": "TOTAL_SUPPLY",
+      "type": "u64",
+      "value": "5_000_000_000"
+    }
+  ],
+  "instructions": [
+    {
+      "name": "initToken",
+      "accounts": [
+        {
+          "name": "metadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "destination",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "associatedTokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenMetadataProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "metadata",
+          "type": {
+            "defined": "InitTokenParams"
+          }
+        }
+      ]
+    },
+    {
+      "name": "phaseUpdate",
+      "accounts": [
+        {
+          "name": "tokenPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "phase",
+          "type": {
+            "defined": "PhaseParams"
+          }
+        }
+      ]
+    },
+    {
+      "name": "buyTokens",
+      "accounts": [
+        {
+          "name": "mint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "fromAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "destination",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "referrerUser",
+          "isMut": true,
+          "isSigner": false,
+          "isOptional": true
+        },
+        {
+          "name": "referrer",
+          "isMut": true,
+          "isSigner": false,
+          "isOptional": true
+        },
+        {
+          "name": "referrerUsdtWallet",
+          "isMut": true,
+          "isSigner": false,
+          "isOptional": true
+        },
+        {
+          "name": "userUsdtWallet",
+          "isMut": true,
+          "isSigner": false,
+          "isOptional": true
+        },
+        {
+          "name": "adminUsdtWallet",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "usdt",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "priceFeed",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "associatedTokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "quantity",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "initialize",
+      "accounts": [
+        {
+          "name": "admin",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "poolInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stakingToken",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "adminStakingWallet",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "associatedTokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "stake",
+      "accounts": [
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userStakingWallet",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "adminStakingWallet",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stakingToken",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "associatedTokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "unstake",
+      "accounts": [
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userStakingWallet",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "adminStakingWallet",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stakingToken",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "fromAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "associatedTokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "claimReward",
+      "accounts": [
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userStakingWallet",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "fromAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stakingToken",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "associatedTokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "tokenPda",
+      "type": {
+        "kind": "struct",
+        "fields": [
           {
-            "name": "referrer",
-            "isMut": true,
-            "isSigner": false,
-            "isOptional": true
+            "name": "authority",
+            "type": "publicKey"
           },
           {
-            "name": "referrerUsdtWallet",
-            "isMut": true,
-            "isSigner": false,
-            "isOptional": true
+            "name": "mintKey",
+            "type": "publicKey"
           },
           {
-            "name": "userUsdtWallet",
-            "isMut": true,
-            "isSigner": false,
-            "isOptional": true
+            "name": "mintCount",
+            "type": "u64"
           },
-          { "name": "adminUsdtWallet", "isMut": true, "isSigner": false },
-          { "name": "usdt", "isMut": true, "isSigner": false },
-          { "name": "priceFeed", "isMut": false, "isSigner": false },
-          { "name": "rent", "isMut": false, "isSigner": false },
-          { "name": "systemProgram", "isMut": false, "isSigner": false },
-          { "name": "tokenProgram", "isMut": false, "isSigner": false },
-          { "name": "associatedTokenProgram", "isMut": false, "isSigner": false }
-        ],
-        "args": [{ "name": "quantity", "type": "u64" }]
-      },
-      {
-        "name": "initialize",
-        "accounts": [
-          { "name": "admin", "isMut": true, "isSigner": true },
-          { "name": "poolInfo", "isMut": true, "isSigner": false },
-          { "name": "stakingToken", "isMut": true, "isSigner": false },
-          { "name": "adminStakingWallet", "isMut": true, "isSigner": false },
-          { "name": "rent", "isMut": false, "isSigner": false },
-          { "name": "systemProgram", "isMut": false, "isSigner": false },
-          { "name": "tokenProgram", "isMut": false, "isSigner": false },
-          { "name": "associatedTokenProgram", "isMut": false, "isSigner": false }
-        ],
-        "args": []
-      },
-      {
-        "name": "stake",
-        "accounts": [
-          { "name": "user", "isMut": true, "isSigner": true },
-          { "name": "userInfo", "isMut": true, "isSigner": false },
-          { "name": "userStakingWallet", "isMut": true, "isSigner": false },
-          { "name": "poolInfo", "isMut": true, "isSigner": false },
-          { "name": "adminStakingWallet", "isMut": true, "isSigner": false },
-          { "name": "stakingToken", "isMut": true, "isSigner": false },
-          { "name": "tokenProgram", "isMut": false, "isSigner": false },
-          { "name": "associatedTokenProgram", "isMut": false, "isSigner": false },
-          { "name": "rent", "isMut": false, "isSigner": false },
-          { "name": "systemProgram", "isMut": false, "isSigner": false }
-        ],
-        "args": [{ "name": "amount", "type": "u64" }]
-      },
-      {
-        "name": "unstake",
-        "accounts": [
-          { "name": "user", "isMut": true, "isSigner": true },
-          { "name": "userInfo", "isMut": true, "isSigner": false },
-          { "name": "userStakingWallet", "isMut": true, "isSigner": false },
-          { "name": "poolInfo", "isMut": true, "isSigner": false },
-          { "name": "adminStakingWallet", "isMut": true, "isSigner": false },
-          { "name": "stakingToken", "isMut": true, "isSigner": false },
-          { "name": "tokenPda", "isMut": true, "isSigner": false },
-          { "name": "fromAta", "isMut": true, "isSigner": false },
-          { "name": "tokenProgram", "isMut": false, "isSigner": false },
-          { "name": "associatedTokenProgram", "isMut": false, "isSigner": false },
-          { "name": "systemProgram", "isMut": false, "isSigner": false }
-        ],
-        "args": []
-      },
-      {
-        "name": "claimReward",
-        "accounts": [
-          { "name": "user", "isMut": true, "isSigner": true },
-          { "name": "userInfo", "isMut": true, "isSigner": false },
-          { "name": "userStakingWallet", "isMut": true, "isSigner": false },
-          { "name": "tokenPda", "isMut": true, "isSigner": false },
-          { "name": "fromAta", "isMut": true, "isSigner": false },
-          { "name": "stakingToken", "isMut": true, "isSigner": false },
-          { "name": "tokenProgram", "isMut": false, "isSigner": false },
-          { "name": "associatedTokenProgram", "isMut": false, "isSigner": false },
-          { "name": "systemProgram", "isMut": false, "isSigner": false }
-        ],
-        "args": []
+          {
+            "name": "phaseOne",
+            "type": "i64"
+          },
+          {
+            "name": "phaseTwo",
+            "type": "i64"
+          },
+          {
+            "name": "phaseThree",
+            "type": "i64"
+          },
+          {
+            "name": "phaseFour",
+            "type": "i64"
+          },
+          {
+            "name": "phaseFive",
+            "type": "i64"
+          },
+          {
+            "name": "phaseFiveEnd",
+            "type": "i64"
+          },
+          {
+            "name": "phaseOneMint",
+            "type": "u64"
+          },
+          {
+            "name": "phaseTwoMint",
+            "type": "u64"
+          },
+          {
+            "name": "phaseThreeMint",
+            "type": "u64"
+          },
+          {
+            "name": "phaseFourMint",
+            "type": "u64"
+          },
+          {
+            "name": "phaseFiveMint",
+            "type": "u64"
+          }
+        ]
       }
-    ],
-    "accounts": [
-      {
-        "name": "TokenPda",
-        "type": {
-          "kind": "struct",
-          "fields": [
-            { "name": "authority", "type": "publicKey" },
-            { "name": "mintKey", "type": "publicKey" },
-            { "name": "mintCount", "type": "u64" },
-            { "name": "phaseOne", "type": "i64" },
-            { "name": "phaseTwo", "type": "i64" },
-            { "name": "phaseThree", "type": "i64" },
-            { "name": "phaseFour", "type": "i64" },
-            { "name": "phaseFive", "type": "i64" },
-            { "name": "phaseFiveEnd", "type": "i64" },
-            { "name": "phaseOneMint", "type": "u64" },
-            { "name": "phaseTwoMint", "type": "u64" },
-            { "name": "phaseThreeMint", "type": "u64" },
-            { "name": "phaseFourMint", "type": "u64" },
-            { "name": "phaseFiveMint", "type": "u64" }
-          ]
-        }
-      },
-      {
-        "name": "PoolInfo",
-        "type": {
-          "kind": "struct",
-          "fields": [
-            { "name": "admin", "type": "publicKey" },
-            { "name": "startSlot", "type": "u64" },
-            { "name": "endSlot", "type": "u64" },
-            { "name": "token", "type": "publicKey" }
-          ]
-        }
-      },
-      {
-        "name": "ReferrerUser",
-        "type": {
-          "kind": "struct",
-          "fields": [
-            { "name": "referralSol", "type": "f64" },
-            { "name": "referralUsd", "type": "f64" }
-          ]
-        }
-      },
-      {
-        "name": "UserInfo",
-        "type": {
-          "kind": "struct",
-          "fields": [
-            { "name": "amount", "type": "u64" },
-            { "name": "rewardDebt", "type": "u64" },
-            { "name": "depositTime", "type": "i64" },
-            { "name": "reward", "type": "u64" },
-            { "name": "rewardCarry", "type": "u64" }
-          ]
-        }
+    },
+    {
+      "name": "poolInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "admin",
+            "type": "publicKey"
+          },
+          {
+            "name": "startSlot",
+            "type": "u64"
+          },
+          {
+            "name": "endSlot",
+            "type": "u64"
+          },
+          {
+            "name": "token",
+            "type": "publicKey"
+          }
+        ]
       }
-    ],
-    "types": [
-      {
-        "name": "InitTokenParams",
-        "type": {
-          "kind": "struct",
-          "fields": [
-            { "name": "name", "type": "string" },
-            { "name": "symbol", "type": "string" },
-            { "name": "uri", "type": "string" },
-            { "name": "decimals", "type": "u8" }
-          ]
-        }
-      },
-      {
-        "name": "PhaseParams",
-        "type": {
-          "kind": "struct",
-          "fields": [
-            { "name": "phaseOne", "type": "i64" },
-            { "name": "phaseTwo", "type": "i64" },
-            { "name": "phaseThree", "type": "i64" },
-            { "name": "phaseFour", "type": "i64" },
-            { "name": "phaseFive", "type": "i64" },
-            { "name": "phaseFiveEnd", "type": "i64" }
-          ]
-        }
+    },
+    {
+      "name": "referrerUser",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "referralSol",
+            "type": "u64"
+          },
+          {
+            "name": "referralUsdt",
+            "type": "u64"
+          }
+        ]
       }
-    ],
-    "errors": [
-      {
-        "code": 6000,
-        "name": "DataTooLarge",
-        "msg": "Exceeds total supply! Available tokens:"
-      },
-      {
-        "code": 6001,
-        "name": "ReferenceExists",
-        "msg": "This user is alreday referred"
-      },
-      {
-        "code": 6002,
-        "name": "MintNotStarted",
-        "msg": "Mint has not started yet, come-back later"
-      },
-      {
-        "code": 6003,
-        "name": "PhaseOneEnded",
-        "msg": "Phase one mint ended, wait for the next phase"
-      },
-      {
-        "code": 6004,
-        "name": "PhaseTwoEnded",
-        "msg": "Phase Two mint ended, wait for the next phase"
-      },
-      {
-        "code": 6005,
-        "name": "PhaseThreeEnded",
-        "msg": "Phase Three mint ended, wait for the next phase"
-      },
-      {
-        "code": 6006,
-        "name": "PhaseFourEnded",
-        "msg": "Phase Four mint ended, wait for the next phase"
-      },
-      {
-        "code": 6007,
-        "name": "PhaseFiveEnded",
-        "msg": "Phase Five mint ended...."
-      },
-      { "code": 6008, "name": "MintEnded", "msg": "Mint has ended...." },
-      { "code": 6009, "name": "InvalidPriceFeed", "msg": "Invalid Price Feed" },
-      {
-        "code": 6010,
-        "name": "PriceFeedDown",
-        "msg": "SOL/USD price feed is down, try again later"
+    },
+    {
+      "name": "userInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "rewardDebt",
+            "type": "u64"
+          },
+          {
+            "name": "depositTime",
+            "type": "i64"
+          },
+          {
+            "name": "reward",
+            "type": "u64"
+          },
+          {
+            "name": "rewardCarry",
+            "type": "u64"
+          }
+        ]
       }
-    ]
-  }
-  
+    }
+  ],
+  "types": [
+    {
+      "name": "InitTokenParams",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "symbol",
+            "type": "string"
+          },
+          {
+            "name": "uri",
+            "type": "string"
+          },
+          {
+            "name": "decimals",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PhaseParams",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "phaseOne",
+            "type": "i64"
+          },
+          {
+            "name": "phaseTwo",
+            "type": "i64"
+          },
+          {
+            "name": "phaseThree",
+            "type": "i64"
+          },
+          {
+            "name": "phaseFour",
+            "type": "i64"
+          },
+          {
+            "name": "phaseFive",
+            "type": "i64"
+          },
+          {
+            "name": "phaseFiveEnd",
+            "type": "i64"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "DataTooLarge",
+      "msg": "Exceeds total supply! Available tokens:"
+    },
+    {
+      "code": 6001,
+      "name": "ReferenceExists",
+      "msg": "This user is alreday referred"
+    },
+    {
+      "code": 6002,
+      "name": "MintNotStarted",
+      "msg": "Mint has not started yet, come-back later"
+    },
+    {
+      "code": 6003,
+      "name": "PhaseOneEnded",
+      "msg": "Phase one mint ended, wait for the next phase"
+    },
+    {
+      "code": 6004,
+      "name": "PhaseTwoEnded",
+      "msg": "Phase Two mint ended, wait for the next phase"
+    },
+    {
+      "code": 6005,
+      "name": "PhaseThreeEnded",
+      "msg": "Phase Three mint ended, wait for the next phase"
+    },
+    {
+      "code": 6006,
+      "name": "PhaseFourEnded",
+      "msg": "Phase Four mint ended, wait for the next phase"
+    },
+    {
+      "code": 6007,
+      "name": "PhaseFiveEnded",
+      "msg": "Phase Five mint ended...."
+    },
+    {
+      "code": 6008,
+      "name": "MintEnded",
+      "msg": "Mint has ended...."
+    },
+    {
+      "code": 6009,
+      "name": "InvalidPriceFeed",
+      "msg": "Invalid Price Feed"
+    },
+    {
+      "code": 6010,
+      "name": "PriceFeedDown",
+      "msg": "SOL/USD price feed is down, try again later"
+    },
+    {
+      "code": 6011,
+      "name": "NoRefferalAmount",
+      "msg": "There is no referral amount for this user"
+    }
+  ]
+};

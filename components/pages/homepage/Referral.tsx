@@ -1,11 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReferralBox from "../../utilities/Refferal";
 import SocialIcon from "../../ui/Socials";
 import Heading from "@/components/ui/Heading";
 import Paragraph from "@/components/ui/Para";
+import { AnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
+import { AnchorProvider, Program, web3 } from "@coral-xyz/anchor";
+import { MEME_PROGRAM_ID } from "@/components/utilities/programConsts";
+import { IDL } from "@/components/utilities/idl";
 
 const Section5 = ({
   referralSolAmount,
