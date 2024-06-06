@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { useWallet } from "@solana/wallet-adapter-react";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,12 +25,14 @@ const Header = () => {
     }
   }, [disconnecting]);
 
+  const router = useRouter();
+
   return (
     <div className="bg-[#F7E8D5]">
       <div className="flex items-center xl:px-44 p-4 pt-10 justify-between">
         <div className="text-3xl font-black font-omnesblack">GULULU</div>
         <div className="md:hidden">
-          <button
+          <button 
             onClick={toggleMenu}
             className="block text-gray-500 hover:text-black focus:text-black focus:outline-none"
           >
@@ -48,18 +50,38 @@ const Header = () => {
         </div>
         <div className="hidden md:flex items-center gap-10">
           <div className="flex justify-center font-omnesreg text-lg font-semibold text-left items-center gap-10">
-            <Link href="/" className="font-omnes">
+            <button disabled
+              onClick={() => {
+                router.push("/");
+              }}
+              className="font-omnes"
+            >
               Home
-            </Link>
-            <Link href="/About" className="hover:font-bold">
+            </button>
+            <button disabled
+              onClick={() => {
+                router.push("/About");
+              }}
+              className="hover:font-bold"
+            >
               About
-            </Link>
-            <Link href="/Whitepaper" className="hover:font-bold">
+            </button>
+            <button disabled
+              onClick={() => {
+                router.push("/Whitepaper");
+              }}
+              className="hover:font-bold"
+            >
               Whitepaper
-            </Link>
-            <Link href="/Audit" className="hover:font-bold">
+            </button>
+            <button disabled
+              onClick={() => {
+                router.push("/Audit");
+              }}
+              className="hover:font-bold"
+            >
               Audit
-            </Link>
+            </button>
           </div>
 
           <WalletMultiButton style={{}} />
@@ -82,25 +104,48 @@ const Header = () => {
           </div>
         </div>
       </div>
+
       {isMenuOpen && (
         <div className="md:hidden">
-          <div className="flex flex-col items-start gap-4 p-4 text-lg ">
-            <Link href="/" className="font-omnes pl-2">
+          <div className="flex flex-col items-start gap-4 p-4 text-lg">
+            <button disabled
+              onClick={() => {
+                router.push("/");
+              }}
+              className="font-omnes pl-2"
+            >
               Home
-            </Link>
-            <Link href="/About" className="hover:font-bold pl-2">
-              About
-            </Link>
-            <Link href="/Whitepaper" className="hover:font-bold pl-2">
-              Whitepaper
-            </Link>
-            <Link href="/Audit" className="hover:font-bold pl-2">
-              Audit
-            </Link>
-            <WalletMultiButton style={{}} />
-            <button className="font-bold px-4 py-2 font-omnes bg-black text-white rounded-full inline-block">
-              BUY GULULU
             </button>
+
+            <button disabled
+              onClick={() => {
+                router.push("/About");
+              }}
+              className="hover:font-bold pl-2"
+            >
+              About
+            </button>
+
+            <button disabled
+              onClick={() => {
+                router.push("/Whitepaper");
+              }}
+              className="hover:font-bold pl-2"
+            >
+              Whitepaper
+            </button>
+
+            <button disabled
+              onClick={() => {
+                router.push("/Audit");
+              }}
+              className="hover:font-bold pl-2"
+            >
+              Audit
+            </button>
+
+            <WalletMultiButton style={{}} />
+            
           </div>
         </div>
       )}
