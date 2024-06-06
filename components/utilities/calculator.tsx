@@ -3,7 +3,7 @@ import Image from "next/image";
 import Dropp from "./Dropdown";
 
 const gululu = {
-  value_USD: 0.0002,
+  value_USD: 0.0085,
 };
 
 export default function YourComponent({ result, setResult, selectedCurrency, setSelectedCurrency,}: { result: number, setResult: Dispatch<number>, selectedCurrency: string, setSelectedCurrency: Dispatch<string> }) {

@@ -81,6 +81,7 @@ const Section1 = ({ publicKey, setReferralSolAmount, setReferralUSDTAmount }: { 
   const TOKEN_SEED = "token";
   const MINT_SEED = "mint";
   const BUYER_SEED = "buyer";
+  const REFERRER_SEED = "referral";
 
   // const priceFeedAccount = await pythSolanaReceiver.fetchPriceFeedAccount(0,SOL_PRICE_FEED_ID);
   // const newUSDPrice = priceFeedAccount?.priceMessage.price / 100000000;
@@ -120,6 +121,8 @@ const Section1 = ({ publicKey, setReferralSolAmount, setReferralUSDTAmount }: { 
             await connection.getTokenAccountBalance(userUsdtWallet)
           ).value.uiAmount;
 
+          console.log("USER USDT BALANCE:", USER_USDC_BALANCE )
+
           if (USER_USDC_BALANCE != null) {
             setUsdBalance(USER_USDC_BALANCE);
           }
@@ -144,6 +147,41 @@ const Section1 = ({ publicKey, setReferralSolAmount, setReferralUSDTAmount }: { 
             setUserGULLULUTokens(userGULLULUTokens);
           }
         }
+
+
+
+
+
+        // Referrer user sol and usdt balance, Display this in Referral.tsx
+        let [referrerUser] = await web3.PublicKey.findProgramAddressSync(
+          [
+            Buffer.from(REFERRER_SEED),
+            //@ts-ignore
+            wallet.publicKey.toBuffer(),
+          ],
+          MEME_PROGRAM_ID
+        ); 
+
+        const inform = await connection.getAccountInfo(referrerUser);
+        console.log("INFORM:", inform);
+
+        if (inform) {
+          const referrerUserAcct = await program.account.referrerUser.fetch(referrerUser);
+
+          setReferralSolAmount(referrerUserAcct.referralSol.toNumber() / 1000000000)
+          setReferralUSDTAmount(referrerUserAcct.referralUsdt.toNumber() / 1000000)
+          console.log("Referrer SOL BALANCE:",referrerUserAcct.referralSol.toNumber());
+          console.log("REFERRER USDT BALANCE:",referrerUserAcct.referralUsdt.toNumber())
+
+        }
+
+
+
+
+
+
+
+
 
         setTimeout(getBalanceEvery10Seconds, 10000);
       })();
@@ -244,6 +282,22 @@ const Section1 = ({ publicKey, setReferralSolAmount, setReferralUSDTAmount }: { 
 
     // console.log("User details is not yet updated");
 
+    let referrerUser = null;
+
+    if(publicKey) {
+      const referrer = new PublicKey(publicKey);
+      [referrerUser] = await web3.PublicKey.findProgramAddressSync(
+        [
+          Buffer.from(REFERRER_SEED),
+          //@ts-ignore
+          referrer.toBuffer(),
+        ],
+        MEME_PROGRAM_ID
+      ); 
+    }
+
+    console.log("REFERRER USER ACCOUNT:", referrerUser);
+    
     let userUsdtWallet;
     let referrerUsdtWallet = null;
     let USDT = selectedCurrency === "USDT"; // TURN THIS TO TRUE WHEN USING USDT TO BUY TOKENS
@@ -256,24 +310,24 @@ const Section1 = ({ publicKey, setReferralSolAmount, setReferralUSDTAmount }: { 
       );
 
       if(publicKey) {
+        const referrer = new PublicKey(publicKey);
         referrerUsdtWallet = await getAssociatedTokenAddress(
           usdt,
           //@ts-ignore
-          new PublicKey(publicKey)
+          referrer
         );
-    
       }
     } else {
       userUsdtWallet = null;
     }
 
-    console.log("Referrer usdt wallet:", referrerUsdtWallet)
 
     const context = {
       mint,
       tokenPda,
       fromAta,
       referrer: publicKey ? publicKey : null, // pass the referrer address publickey like: new PublicKey("PUBLICKEY OF THE REFERRER")
+      referrerUser,
       referrerUsdtWallet,
       userUsdtWallet,
       adminUsdtWallet,
@@ -294,49 +348,24 @@ const Section1 = ({ publicKey, setReferralSolAmount, setReferralUSDTAmount }: { 
 
 
     let txHash: any = undefined;
-    try {
+    // try {
       //@ts-ignore
-      txHash = await program.methods
-        .buyTokens(new BN(mintAmount * 10 ** decimals))
-        //@ts-ignore
+    txHash = await program.methods
+      .buyTokens(new BN(mintAmount * 10 ** decimals))
+      //@ts-ignore
+      .accounts(context)
+      .rpc();
 
-        .accounts(context)
-        .rpc();
-    } catch (error) {
-      setTransactionStatus(false);
-    }
+    // } catch (error) {
+    //   setTransactionStatus(false);
+    // }
+
+    console.log("TX HASH:", txHash)
 
     await provider.connection.confirmTransaction(txHash);
     const txInfo = await provider.connection.getTransaction(txHash)
     const logs = txInfo?.meta?.logMessages;
     
-    if (publicKey) {
-      if(referrerUsdtWallet) {
-        console.log("REFERRAL USDT"); 
-        const usdtPricePrefix = 'Program log: USD REFERRAL COMMISSTION:';
-        //@ts-ignore
-        for (let log of logs) {
-          if (log.startsWith(usdtPricePrefix)) {
-            const priceString = log.slice(usdtPricePrefix.length);
-            const price = parseFloat(priceString);
-            console.log("USDT REFERRAL COMMISSION:", price / 1000000 +" USDT") // USDT 9 decimal
-            setReferralUSDTAmount(price / 1000000) 
-          }
-      }
-      } else {
-        const solPricePrefix = 'Program log: SOL REFERRAL COMMISSTION:';
-        //@ts-ignore
-        for (let log of logs) {
-          if (log.startsWith(solPricePrefix)) {
-            const priceString = log.slice(solPricePrefix.length);
-            const price = parseFloat(priceString);
-            console.log("SOL REFERRAL COMMISSION:", price / 1000000000 +" SOL") // SOL 9 decimal
-            setReferralSolAmount(price / 1000000000)
-
-          }
-      }
-    }
-  }
     console.log(`https://explorer.solana.com/tx/${txHash}?cluster=devnet`);
 
     const hashlinkaddress = `  https://explorer.solana.com/tx/${txHash}?cluster=devnet`;
