@@ -10,6 +10,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import copy from "copy-to-clipboard";
 import { FiCopy } from "react-icons/fi";
+import { useRouter } from "next/navigation";
 
 type TransactionStatusProps = {
   status: boolean | null;
@@ -25,6 +26,7 @@ export function TransactionStatusPopup({
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     if (status !== null) {
@@ -42,6 +44,10 @@ export function TransactionStatusPopup({
     copy(hashlinkaddress);
     setCopied(true);
     setTimeout(() => setCopied(false), 1000);
+  };
+
+  const handleViewTransaction = () => {
+    router.push(hashlinkaddress);
   };
 
   return (
@@ -110,7 +116,7 @@ export function TransactionStatusPopup({
                   </div>
                 </div>
                 <AlertDialogAction
-                  onClick={handleClose}
+                  onClick={handleViewTransaction}
                   className="w-full rounded-full bg-black font-omnes"
                 >
                   VIEW TRANSACTION
@@ -129,4 +135,3 @@ export function TransactionStatusPopup({
     </div>
   );
 }
-

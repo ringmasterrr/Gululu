@@ -344,24 +344,24 @@ const Section1: React.FC<OtherComponentProps> = ({ hideStakingCard }) => {
               />
             </div>
             <Countdown css={"!mt-4"} />
-            <div className=" flex 2xl:flex-row flex-col items-center justify-between  mt-6 px-10 ">
+            <div className=" flex 2xl:flex-row flex-col items-center 2xl:items-end  justify-between  mt-6 px-10 gap-4">
               <div className="flex flex-col items-center justify-center gap-2">
-                <div className="font-medium">
+                <div className="font-medium flex flex-col gap-1 items-center justify-center">
                   Staked Amount: <span className="font-bold">{userStakeAmount} GULULU</span>
                 </div>
                 <button 
-                className=" text-base font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block "
+                className=" text-base font-bold z-20 w-56 h-14 font-omnes bg-black text-white rounded-full inline-block "
                 onClick={handleUnstake}
                 >
                   UNSTAKE
                 </button>
               </div>
               <div className="flex flex-col items-center justify-center gap-2">
-                <div className="font-medium">
-                  Reward collected: <span className="font-bold">{typeof reward === 'number' ? reward.toLocaleString('en-US', { minimumFractionDigits: 9, maximumFractionDigits: 9 }) : '0.000000000'} GULULU</span>
+                <div className="font-medium flex flex-col gap-1 items-center justify-center">
+                  Reward collected: <span className="font-bold">{typeof reward === 'number' ? reward.toLocaleString('en-US', { minimumFractionDigits: 9, maximumFractionDigits: 9 }) : '0'} GULULU</span>
                 </div>
                 <button 
-                className=" text-base font-bold z-20 w-64 h-14 font-omnes bg-black text-white rounded-full inline-block "
+                className=" text-base font-bold z-20 w-56 h-14 font-omnes bg-black text-white rounded-full inline-block "
                 onClick={handleClaimReward}
                 >
                   CLAIM REWARD

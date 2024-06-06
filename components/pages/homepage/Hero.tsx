@@ -363,7 +363,7 @@ const Section1 = ({
     console.log("Mint amount:", mintAmount);
 
     let txHash: any = undefined;
-    // try {
+    try {
       //@ts-ignore
     txHash = await program.methods
       .buyTokens(new BN(mintAmount * 10 ** decimals))
@@ -371,9 +371,9 @@ const Section1 = ({
       .accounts(context)
       .rpc();
 
-    // } catch (error) {
-    //   setTransactionStatus(false);
-    // }
+    } catch (error) {
+      setTransactionStatus(false);
+    }
 
     console.log("TX HASH:", txHash)
 
