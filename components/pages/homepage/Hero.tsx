@@ -28,7 +28,7 @@ import BuyGululu from "@/components/ui/BuyGululu";
 import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 import { useWalletMultiButton } from "@solana/wallet-adapter-base-ui";
 import { TransactionStatusPopup } from "@/components/ui/StatusAlert";
-import {Gululu_price} from "@/components/utilities/gululu_phases";
+import GululuPrice from "@/components/utilities/gululu_phases";
 
 const Section1 = ({
   publicKey,
@@ -108,14 +108,20 @@ const Section1 = ({
   );
 
 
-  const [value, setValue] = useState(0)
+  const [value, setValue] = useState(0); 
 
   useEffect(() => {
+    const v = GululuPrice();
+    setValue(v);
+    
+    const interval = setInterval(() => {
+      const updatedValue = GululuPrice();
+      setValue(updatedValue);
+    }, 1000 * 60); 
 
-    const v = Gululu_price()
-    setValue(v)
-  
-  });
+    return () => clearInterval(interval); 
+  }, []); 
+
 
   useEffect(() => {
     if (wallet.publicKey) {
@@ -192,14 +198,6 @@ const Section1 = ({
           console.log("REFERRER USDT BALANCE:",referrerUserAcct.referralUsdt.toNumber())
 
         }
-
-
-
-
-
-
-
-
 
         setTimeout(getBalanceEvery10Seconds, 10000);
       })();
@@ -406,7 +404,6 @@ const Section1 = ({
     setTransactionStatus(null);
   };
 
-  const Gululu_value_USD = 0.0085;
 
   const formattedTokens =
     userGULLULUTokens !== null ? userGULLULUTokens.toFixed(4) : "0.00";
@@ -479,7 +476,7 @@ const Section1 = ({
               <div className="flex items-center justify-between 2xl:gap-5 gap-2 px-4">
                 <div className="border-b-4 border-black 2xl:w-40 xl:w-32 w-52 "></div>
                 <h3 className="text-center 2xl:text-lg  font-omnes my-4">
-                  1 GULULU = {Gululu_value_USD}
+                  1 GULULU = ${value}
                 </h3>
                 <div className="border-b-4 border-black 2xl:w-40 xl:w-32 w-52 "></div>
               </div>

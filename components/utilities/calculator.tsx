@@ -1,14 +1,29 @@
 import { useState, useEffect, Dispatch } from "react";
 import Image from "next/image";
 import Dropp from "./Dropdown";
+import GululuPrice from "@/components/utilities/gululu_phases";
 
-const gululu = {
-  value_USD: 0.0085,
-};
+
+
 
 export default function YourComponent({ result, setResult, selectedCurrency, setSelectedCurrency,}: { result: number, setResult: Dispatch<number>, selectedCurrency: string, setSelectedCurrency: Dispatch<string> }) {
   const [investedAmount, setInvestedAmount] = useState(0);
   const [exchangeRate, setExchangeRate] = useState<number | null>(null); // Specify exchangeRate as number or null
+  const [value, setValue] = useState(0); 
+
+  useEffect(() => {
+    const v = GululuPrice();
+    setValue(v);
+    
+    const interval = setInterval(() => {
+      const updatedValue = GululuPrice();
+      setValue(updatedValue);
+    }, 1000 * 60); 
+
+    return () => clearInterval(interval); 
+  }, []); 
+
+
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Get the input value
@@ -45,7 +60,7 @@ export default function YourComponent({ result, setResult, selectedCurrency, set
 
   useEffect(() => {
     if (exchangeRate !== null) {
-      setResult((investedAmount * exchangeRate) / gululu.value_USD);
+      setResult((investedAmount * exchangeRate) / value);
     }
   }, [investedAmount, exchangeRate]);
 
