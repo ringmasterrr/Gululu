@@ -27,7 +27,7 @@ export default function Home({
 
 
   return (
-    <div className="overflow-hidden ">
+    <div className="overflow-hidden max-w-[1920px]">
       <Header />
       <Section1  publicKey = {searchParams.ref} setReferralUSDTAmount={setReferralUSDTAmount} setReferralSolAmount={setReferralSolAmount} />
       <Section2 />
