@@ -429,19 +429,20 @@ const Section1 = ({
 
         <div className="xl:pl-24">
           <div className="relative">
-            <Image
+            {/* <Image
               src={"/paw.svg"}
               alt="paw"
               height={500}
               width={500}
               className=" absolute md:w-20 w-16 2xl:right-[30rem] xl:right-[28rem] md:-left-[30%] sm:-left-[25%] -left-[12%] top-8  "
-            />
-            <h1 className="md:text-[3.5rem] md:text-5xl text-[2.3rem] text-center font-omnesblack md:pb-7 md:leading-[4.7rem]">
-              HI, MY NAME IS <br /> GULULU
-            </h1>
+            /> */}
+            {/* <h1 className="md:text-[3.5rem]  text-[2.3rem] text-center font-omnesblack ">
+            Gululu
+            </h1> */}
+            <h3 className="text-[2.3rem] leading-tight font-omnesblack text-center md:pb-7">Gululu: Where Memes Meet the Magic of Blockchain!</h3>
           </div>
           <h3 className="md:text-[1.56rem] text-xl text-center font-omnes pb-4 leading-[2.2rem]">
-            I like chess and beating everyone <br /> in the Solana Ecosystem
+          Step into the whimsical world of Gululu, the ultimate memecoin on Solana that celebrates the internet&apos;s beloved cats and dogs!
           </h3>
         </div>
       </div>

@@ -288,7 +288,7 @@ const Section1: React.FC<OtherComponentProps> = ({ hideStakingCard }) => {
               </h3>
 
               <h3 className="text-center tracking-widest text-xl font-omnesblack  leading-3 ">
-                Claimable Balance
+                Balance
               </h3>
 
               <div className="flex gap-2 sm:text-sm lg:text-xl text-lg font-bold items-center justify-center">

@@ -24,10 +24,7 @@ const Section5 = ({
       <div className="relative text-xl font-semibold text-center font-omnesreg xl:px-[20rem] md:px-[10rem] px-4 flex items-center justify-center">
         <Paragraph
           text="
-        GULULU offers a new passive rewards opportunity to the meme coin scene
-        but could also benefit from token price appreciation. GULULU has a fully
-        diluted starting market cap nearly 900 times cheaper than the original
-        Dogecoin."
+        GULULU offers a new passive rewards opportunity to the meme coin scene which will also benefit from token price appreciation. Get your friends to join the community and buy/stake GULULU, to enjoy massive referral benefits"
         />
 
         <Image

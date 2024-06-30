@@ -2,16 +2,16 @@ import React from "react";
 
 
 const RoadmapData = ({
-  stage,
+  roadmap,
   description,
 }: {
-  stage: number;
+  roadmap: string;
   description: string;
 }) => {
   return (
     <div>
-      <h3 className="md:text-5xl text-4xl font-omnesblack uppercase pb-6">
-        Stage {stage}
+      <h3 className="md:text-4xl text-3xl font-omnesblack uppercase pb-6">
+        {roadmap}
       </h3>
       <p className="md:text-xl text-lg font-omnesreg font-semibold">
         {description}

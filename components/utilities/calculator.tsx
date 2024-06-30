@@ -69,7 +69,7 @@ export default function YourComponent({ result, setResult, selectedCurrency, set
   return (
     <div className="flex md:flex-row flex-wrap gap-8 mx-4 py-8 text-black items-end justify-center" >
       <div className="text-black font-bold flex flex-col items-center justify-center text-center gap-3">
-        Your Invested Amount{" "}
+        Your Investment
         <input
           type="number"
           value={investedAmount}

@@ -13,11 +13,8 @@ const Roadmap = () => {
           <div className="relative flex items-end justify-center xl:justify-start xl:ml-[15%] 2xl:ml-[20rem] sm:ml-12 mx-4 md:h-[30rem]">
             <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] sm:p-16 p-12 z-10">
               <RoadmapData
-                stage={1}
-                description="Utilising smart contracts powered by Ethereum, GULULU is much
-                more than a meme coin and brings passive earning potential to
-                the community. Harness the power of your GULULU tokens by
-                staking and earning rewards, making your tokens work for you."
+                roadmap="Launch Phase Pre-sale (Q3 2024)"
+                description="We start with a bang by launching Gululu memecoin pre-sale and building our initial community. The first batch of exclusive cat and dog meme tokens will be released, along with exciting meme contests and fun challenges to kick things off!"
               />
 
               <Decorations
@@ -55,11 +52,9 @@ const Roadmap = () => {
           <div className="relative flex items-end justify-center xl:justify-end xl:mr-[6%] 2xl:mr-[14rem] sm:mr-12 mx-4 md:h-[30rem]">
             <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] sm:p-16 p-12 z-10">
               <RoadmapData
-                stage={2}
-                description="Utilising smart contracts powered by Ethereum, GULULU is much
-                more than a meme coin and brings passive earning potential to
-                the community. Harness the power of your GULULU tokens by
-                staking and earning rewards, making your tokens work for you."
+                roadmap="Expansion Phase (Q4 2024)"
+                description="We aim to grow our community and expand our token offerings. This phase will introduce meme trading markets and exclusive NFT drops. We'll also host community events and meme battles to keep the excitement alive and the community engaged.
+"
               />
 
               <Decorations
@@ -97,11 +92,8 @@ const Roadmap = () => {
           <div className="relative flex items-end justify-center xl:justify-start xl:ml-[15%] 2xl:ml-[20rem] mx-4 md:h-[30rem]">
             <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] sm:p-16 p-12 z-10">
               <RoadmapData
-                stage={3}
-                description="Utilising smart contracts powered by Ethereum, GULULU is much
-                more than a meme coin and brings passive earning potential to
-                the community. Harness the power of your GULULU tokens by
-                staking and earning rewards, making your tokens work for you."
+                roadmap=" Integration Phase (Q1 2025)"
+                description="Partner with popular meme pages and pet influencers to broaden our reach. We'll develop a user-friendly mobile app to make trading and staking seamless. Exciting collaborations and campaigns will be launched to attract a wider audience and enhance user experience."
               />
 
               <Decorations
@@ -135,11 +127,8 @@ const Roadmap = () => {
           <div className="relative flex items-end justify-center xl:justify-end xl:mr-[6%] 2xl:mr-[14rem] sm:mr-12 mx-4 md:h-[30rem]">
             <div className="relative flex flex-col bg-[#CFEEFF] md:w-[40rem] rounded-3xl md:py-20 md:px-[5.8rem] sm:p-16 p-12 z-10">
               <RoadmapData
-                stage={4}
-                description="Utilising smart contracts powered by Ethereum, GULULU is much
-                more than a meme coin and brings passive earning potential to
-                the community. Harness the power of your GULULU tokens by
-                staking and earning rewards, making your tokens work for you."
+                roadmap="Evolution Phase (Q2 2025)"
+                description="Introduce advanced features like staking and liquidity pools. Expand our ecosystem with strategic partnerships in the pet and meme industries. Continuous improvements and new meme token releases will ensure the community remains engaged and entertained."
               />
 
               <Decorations
